@@ -1,2 +1,0 @@
-(this["webpackJsonphack-the-crisis"]=this["webpackJsonphack-the-crisis"]||[]).push([[3],{37:function(e,a,t){"use strict";t.r(a);var r=t(0),n=t.n(r);a.default=function(){return n.a.createElement("div",{className:"App"},n.a.createElement("header",{className:"App-header"},n.a.createElement("p",null,"Edit ",n.a.createElement("code",null,"src/App.tsx")," and save to reload."),n.a.createElement("a",{className:"App-link",href:"https://reactjs.org",target:"_blank",rel:"noopener noreferrer"},"Learn React")))}}}]);
-//# sourceMappingURL=3.b5fb0d06.chunk.js.map
