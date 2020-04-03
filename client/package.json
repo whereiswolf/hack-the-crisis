@@ -2,6 +2,10 @@
   "name": "hack-the-crisis",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://whereiswolf.github.io/hack-the-crisis",
+  "repository": {
+    "url": "https://github.com/whereiswolf/hack-the-crisis.git"
+  },
   "dependencies": {
     "@reduxjs/toolkit": "^1.3.2",
     "@testing-library/jest-dom": "^4.2.4",
@@ -40,11 +44,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
