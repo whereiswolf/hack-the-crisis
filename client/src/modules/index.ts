@@ -1,9 +1,9 @@
 import { Module } from 'types'
-import dogs from './dogs'
+import example from './example'
 
 const modules: Module[] = [
   // Append modules here
-  dogs,
+  example,
 ]
 
 export default modules.reduce(

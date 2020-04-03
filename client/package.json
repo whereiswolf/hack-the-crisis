@@ -2,14 +2,23 @@
   "name": "hack-the-crisis",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://whereiswolf.github.io/hack-the-crisis",
+  "repository": {
+    "url": "https://github.com/whereiswolf/hack-the-crisis.git"
+  },
   "dependencies": {
+    "@material-ui/core": "^4.9.8",
     "@reduxjs/toolkit": "^1.3.2",
-    "@testing-library/jest-dom": "^4.2.4",
-    "@testing-library/react": "^9.3.2",
-    "@testing-library/user-event": "^7.1.2",
+    "@testing-library/jest-dom": "^5.3.0",
+    "@testing-library/react": "^10.0.2",
+    "@testing-library/user-event": "^10.0.1",
     "@types/react-loadable": "^5.5.3",
     "@types/react-router-dom": "^5.1.3",
+    "formik": "^2.1.4",
     "gh-pages": "^2.2.0",
+    "husky": "^4.2.3",
+    "lint-staged": "^10.1.1",
+    "moment": "^2.24.0",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "react-loadable": "^5.5.0",
@@ -19,11 +28,11 @@
     "react-scripts": "3.4.1",
     "redux": "^4.0.5",
     "styled-components": "^5.0.1",
-    "typescript": "~3.7.2"
+    "typescript": "~3.8.3"
   },
   "devDependencies": {
-    "@types/jest": "^24.0.0",
-    "@types/node": "^12.0.0",
+    "@types/jest": "^25.1.5",
+    "@types/node": "^13.11.0",
     "@types/react": "^16.9.0",
     "@types/react-dom": "^16.9.0",
     "@types/react-redux": "^7.1.7",
@@ -40,11 +49,7 @@
     "extends": "react-app"
   },
   "browserslist": {
-    "production": [
-      ">0.2%",
-      "not dead",
-      "not op_mini all"
-    ],
+    "production": [">0.2%", "not dead", "not op_mini all"],
     "development": [
       "last 1 chrome version",
       "last 1 firefox version",
