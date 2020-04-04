@@ -30,10 +30,10 @@ export interface Business {
   name: string
   city: string
   address: string
-  siteUrl: String
+  siteUrl?: string
   amount: number
   description: string
-  history: string
+  history?: string
   imageUrl: string
   category: Category
   type: string
@@ -42,9 +42,4 @@ export interface Business {
 
 export interface VoucherData {
   voucher: Voucher
-}
-
-export interface Category {
-  id: number
-  name: string
 }

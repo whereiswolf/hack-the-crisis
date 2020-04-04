@@ -26,6 +26,7 @@ export const dark = {
   },
   info: {
     main: colors.primary[40],
+    dark: colors.primary[50],
   },
 }
 
