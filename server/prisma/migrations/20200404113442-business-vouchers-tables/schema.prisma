@@ -4,19 +4,17 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url = "***"
 }
 
 model Voucher {
   id Int @default(autoincrement()) @id
-  name String @unique
-  expirationDate String?
-  description String
-  imageUrl String
+  name String?
   price Float
   promotion Float?
-  businessId Int?
-  company Voucher? @relation(fields: [businessId], references: [id])
+  expirationDate String
+  description String
+  imageUrl String
 }
 
 model Business {
@@ -29,8 +27,4 @@ model Business {
   description String
   history String?
   imageUrl String
-  type String
-  vouchers Voucher[]
 }
-
-
