@@ -17,6 +17,7 @@
     "@types/node-fetch": "2.5.5",
     "@types/shortid": "^0.0.29",
     "apollo-server": "2.11.0",
+    "bcrypt": "^4.0.1",
     "graphql": "14.6.0",
     "graphql-upload": "^10.0.0",
     "mkdirp": "^1.0.4",

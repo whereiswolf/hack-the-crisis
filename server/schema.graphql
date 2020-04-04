@@ -376,6 +376,7 @@ input OrderCreateInput {
   count: Int
   email: String!
   name: String!
+  user: UserCreateOneWithoutOrdersInput
   voucher: VoucherCreateOneWithoutOrdersInput!
 }
 
@@ -388,6 +389,7 @@ input OrderCreateWithoutVoucherInput {
   count: Int
   email: String!
   name: String!
+  user: UserCreateOneWithoutOrdersInput
 }
 
 input OrderFilter {
@@ -404,6 +406,7 @@ input OrderScalarWhereInput {
   name: StringFilter
   NOT: [OrderScalarWhereInput!]
   OR: [OrderScalarWhereInput!]
+  userId: NullableIntFilter
   voucherId: IntFilter
 }
 
@@ -412,6 +415,7 @@ input OrderUpdateInput {
   email: String
   id: Int
   name: String
+  user: UserUpdateOneWithoutOrdersInput
   voucher: VoucherUpdateOneRequiredWithoutOrdersInput
 }
 
@@ -444,6 +448,7 @@ input OrderUpdateWithoutVoucherDataInput {
   email: String
   id: Int
   name: String
+  user: UserUpdateOneWithoutOrdersInput
 }
 
 input OrderUpdateWithWhereUniqueWithoutVoucherInput {
@@ -465,6 +470,8 @@ input OrderWhereInput {
   name: StringFilter
   NOT: [OrderWhereInput!]
   OR: [OrderWhereInput!]
+  user: UserWhereInput
+  userId: NullableIntFilter
   voucher: VoucherWhereInput
   voucherId: IntFilter
 }
@@ -483,6 +490,8 @@ type Query {
   recommended: Voucher!
   tag(where: TagWhereUniqueInput!): Tag
   tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
+  user(where: UserWhereUniqueInput!): User
+  users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
   voucher(where: VoucherWhereUniqueInput!): Voucher
   vouchers(businessId: Int, businessType: String, category: Int, city: String, distance: Int, name: String): [Voucher!]!
 }
@@ -676,6 +685,57 @@ input TagWhereUniqueInput {
 
 """The `Upload` scalar type represents a file upload."""
 scalar Upload
+
+type User {
+  email: String!
+  id: Int!
+  orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
+  password: String!
+}
+
+input UserCreateOneWithoutOrdersInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutOrdersInput
+}
+
+input UserCreateWithoutOrdersInput {
+  email: String!
+  password: String!
+}
+
+input UserUpdateOneWithoutOrdersInput {
+  connect: UserWhereUniqueInput
+  create: UserCreateWithoutOrdersInput
+  delete: Boolean
+  disconnect: Boolean
+  update: UserUpdateWithoutOrdersDataInput
+  upsert: UserUpsertWithoutOrdersInput
+}
+
+input UserUpdateWithoutOrdersDataInput {
+  email: String
+  id: Int
+  password: String
+}
+
+input UserUpsertWithoutOrdersInput {
+  create: UserCreateWithoutOrdersInput!
+  update: UserUpdateWithoutOrdersDataInput!
+}
+
+input UserWhereInput {
+  AND: [UserWhereInput!]
+  email: StringFilter
+  id: IntFilter
+  NOT: [UserWhereInput!]
+  OR: [UserWhereInput!]
+  orders: OrderFilter
+  password: StringFilter
+}
+
+input UserWhereUniqueInput {
+  id: Int
+}
 
 type Voucher {
   business: Business

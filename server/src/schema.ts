@@ -6,13 +6,14 @@ import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { searchBusinesses } from './modules/business'
 import { processUpload } from './modules/file'
 
-import Voucher from './modules/voucher/voucher.model';
-import Category from './modules/category/category.model';
-import Business from './modules/business/business.model';
-import Order from './modules/order/order.model';
-import Tag from './modules/tag/tag.model';
-import Rating from './modules/rating/rating.model';
-import File from './modules/file/file.model';
+import Voucher from './modules/voucher/voucher.model'
+import Category from './modules/category/category.model'
+import Business from './modules/business/business.model'
+import Order from './modules/order/order.model'
+import Tag from './modules/tag/tag.model'
+import Rating from './modules/rating/rating.model'
+import File from './modules/file/file.model'
+import User from './modules/user/user.model'
 
 const Upload = GraphQLUpload
 
@@ -28,9 +29,10 @@ const Query = objectType({
         businessType: stringArg({ nullable: true }),
         city: stringArg({ nullable: true }),
         distance: intArg({ nullable: true }),
-        category: intArg({ nullable: true })
+        category: intArg({ nullable: true }),
       },
     })
+    t.crud.voucher()
     t.list.field('businesses', {
       type: 'Business',
       resolve: searchBusinesses,
@@ -43,13 +45,14 @@ const Query = objectType({
       type: 'Voucher',
       resolve: getSpecialForYouVouchers,
     })
-    t.crud.tags()
-    t.crud.categories()
-    t.crud.orders()
     t.crud.business()
-    t.crud.category()
-    t.crud.voucher()
+    t.crud.users()
+    t.crud.user()
+    t.crud.tags()
     t.crud.tag()
+    t.crud.categories()
+    t.crud.category()
+    t.crud.orders()
     t.crud.order()
   },
 })
@@ -94,6 +97,7 @@ export const schema = makeSchema({
     Category,
     Rating,
     Order,
+    User,
   ],
   plugins: [nexusPrismaPlugin()],
   outputs: {
