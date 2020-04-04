@@ -6,10 +6,10 @@ export const MODULE_BASE_PATH = '/vouchers'
 
 export default addBasePath(MODULE_BASE_PATH, [
   {
-    path: '/',
+    path: '/:id',
     exact: true,
     component: Loadable({
-      loader: () => import('./containers/Test'),
+      loader: () => import('./containers/Order'),
       loading: Loader,
     }),
   },
