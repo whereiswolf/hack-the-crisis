@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import path from 'path'
-import { schema } from './schema'
-import { createContext } from './context'
+import { schema } from './src/schema'
+import { createContext } from './src/context'
 import express from 'express'
 
 const app = express()
@@ -13,6 +13,6 @@ new ApolloServer({ schema, context: createContext }).listen(
 
 app.use('/static', express.static(path.join(__dirname, '../images')))
 
-app.listen(3000, () => {
-  console.log(`🚀 Static files at: 3000`)
+app.listen(2000, () => {
+  console.log(`🚀 Static files at: 2000`)
 })

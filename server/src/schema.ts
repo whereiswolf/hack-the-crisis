@@ -1,101 +1,36 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import { arg, makeSchema, objectType, stringArg, intArg } from 'nexus'
-import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { GraphQLUpload } from 'graphql-upload'
+
+import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { searchBusinesses } from './modules/business'
-import { processUpload } from './utils/files';
+import { processUpload } from './modules/file'
+import { createOneUser } from './modules/user'
+import { loginUser } from './modules/auth'
+
+import Voucher from './modules/voucher/voucher.model'
+import Category from './modules/category/category.model'
+import Business from './modules/business/business.model'
+import Order from './modules/order/order.model'
+import Tag from './modules/tag/tag.model'
+import Rating from './modules/rating/rating.model'
+import File from './modules/file/file.model'
+import User from './modules/user/user.model'
+import Auth from './modules/auth/auth.model'
 
 const Upload = GraphQLUpload
-
-const Order = objectType({
-  name: 'Order',
-  definition(t) {
-    t.model.id()
-    t.model.email()
-    t.model.name()
-    t.model.count()
-    t.model.voucher()
-  },
-})
-
-const Voucher = objectType({
-  name: 'Voucher',
-  definition(t) {
-    t.model.id()
-    t.model.name()
-    t.model.price()
-    t.model.promotion()
-    t.model.expirationDate()
-    t.model.description()
-    t.model.imageUrl()
-    t.model.business()
-    t.model.tags()
-    t.model.orders()
-  },
-})
-
-const Tag = objectType({
-  name: 'Tag',
-  definition(t) {
-    t.model.id()
-    t.model.name()
-    t.model.vouchers()
-  },
-})
-
-const Rating = objectType({
-  name: 'Rating',
-  definition(t) {
-    t.model.id()
-    t.model.rate()
-    t.model.businesses()
-  },
-})
-
-const Category = objectType({
-  name: 'Category',
-  definition(t) {
-    t.model.id()
-    t.model.name()
-    t.model.businesses()
-  },
-})
-
-const Business = objectType({
-  name: 'Business',
-  definition(t) {
-    t.model.id()
-    t.model.name()
-    t.model.city()
-    t.model.address()
-    t.model.siteUrl()
-    t.model.amount()
-    t.model.description()
-    t.model.history()
-    t.model.imageUrl()
-    t.model.category()
-    t.model.type()
-    t.model.vouchers({
-      pagination: false,
-    })
-    t.model.ratings()
-  },
-})
-
-export const File = objectType({
-  name: 'File',
-  definition(t) {
-    t.id('id')
-    t.string('path')
-    t.string('filename')
-    t.string('mimetype')
-    t.string('encoding')
-  },
-})
 
 const Query = objectType({
   name: 'Query',
   definition(t) {
+    t.field('login', {
+      type: 'Auth',
+      resolve: loginUser,
+      args: {
+        email: stringArg(),
+        password: stringArg(),
+      }
+    })
     t.list.field('vouchers', {
       type: 'Voucher',
       resolve: searchVouchers,
@@ -103,8 +38,12 @@ const Query = objectType({
         name: stringArg({ nullable: true }),
         businessId: intArg({ nullable: true }),
         businessType: stringArg({ nullable: true }),
+        city: stringArg({ nullable: true }),
+        distance: intArg({ nullable: true }),
+        category: intArg({ nullable: true }),
       },
-    }),
+    })
+    t.crud.voucher()
     t.list.field('businesses', {
       type: 'Business',
       resolve: searchBusinesses,
@@ -112,18 +51,19 @@ const Query = objectType({
         name: stringArg({ nullable: true }),
         categoryId: intArg({ nullable: true }),
       },
-    }),
+    })
     t.field('recommended', {
       type: 'Voucher',
       resolve: getSpecialForYouVouchers,
-    }),
-    t.crud.tags(),
-    t.crud.categories(),
+    })
+    t.crud.business()
+    t.crud.users()
+    t.crud.user()
+    t.crud.tags()
+    t.crud.tag()
+    t.crud.categories()
+    t.crud.category()
     t.crud.orders()
-    t.crud.business(),
-    t.crud.category(),
-    t.crud.voucher(),
-    t.crud.tag(),
     t.crud.order()
   },
 })
@@ -137,7 +77,15 @@ const Mutation = objectType({
         file: arg({ type: 'Upload', required: true }),
       },
       resolve: processUpload,
-    }),
+    })
+    t.field('createOneUser', {
+      type: 'User',
+      args: {
+        email: stringArg(),
+        password: stringArg(),
+      },
+      resolve: createOneUser,
+    })
     t.crud.createOneTag()
     t.crud.createOneCategory()
     t.crud.createOneBusiness()
@@ -160,14 +108,16 @@ export const schema = makeSchema({
   types: [
     Query,
     Mutation,
+    File,
+    Upload,
     Voucher,
     Business,
     Tag,
     Category,
     Rating,
     Order,
-    File,
-    Upload,
+    User,
+    Auth,
   ],
   plugins: [nexusPrismaPlugin()],
   outputs: {

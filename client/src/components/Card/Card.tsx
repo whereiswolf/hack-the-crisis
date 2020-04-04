@@ -1,16 +1,16 @@
 import React from 'react'
 import { ButtonBase, Typography, Grid, makeStyles } from '@material-ui/core'
 import { Voucher } from 'types'
-import styles, { getImageStyles } from './VoucherCard.style'
+import styles, { getImageStyles } from './Card.style'
 
 const useStyles = makeStyles(styles)
 
-interface VoucherCardProps {
+interface CardProps {
   data: Voucher
   onClick?: () => void
 }
 
-const VoucherCard: React.FC<VoucherCardProps> = ({
+const Card: React.FC<CardProps> = ({
   data: { price, imageUrl, name },
   onClick,
   ...props
@@ -31,4 +31,4 @@ const VoucherCard: React.FC<VoucherCardProps> = ({
   )
 }
 
-export default VoucherCard
+export default Card

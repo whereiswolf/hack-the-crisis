@@ -16,6 +16,9 @@ export const dark = {
   warning: {
     main: colors.accent[100],
   },
+  error: {
+    main: colors.accent[100],
+  },
   text: {
     primary: colors.text[100],
     secondary: colors.text[50],

@@ -43,3 +43,8 @@ export interface Business {
 export interface VoucherData {
   voucher: Voucher
 }
+
+export interface Category {
+  id: number
+  name: string
+}
