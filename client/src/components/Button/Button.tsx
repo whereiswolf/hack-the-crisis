@@ -9,7 +9,6 @@ interface ButtonProps extends ButtonBaseProps {
   variant?: 'outlined' | 'contained'
   color?: 'primary' | 'secondary'
   children?: ReactNode | string
-  fullWidth?: boolean
 }
 
 const useStyles = makeStyles(styles)

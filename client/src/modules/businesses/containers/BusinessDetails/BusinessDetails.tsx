@@ -3,7 +3,6 @@ import { Grid } from '@material-ui/core'
 import BusinessInfo from './BusinessInfo'
 import BusinessVouchers from './BusinessVouchers'
 import BusinessCard from './BusinessCard'
-import { Wrapper } from './BusinessDetails.style'
 
 interface BusinessDetailsProps {}
 
@@ -27,7 +26,7 @@ const businessMock = {
 
 const BusinessDetails: React.FC<BusinessDetailsProps> = () => {
   return (
-    <Wrapper container direction="column">
+    <Grid container direction="column">
       <Grid item container>
         <Grid item md={8} container direction="column">
           <Grid item>
@@ -44,7 +43,7 @@ const BusinessDetails: React.FC<BusinessDetailsProps> = () => {
       <Grid item>
         <BusinessVouchers />
       </Grid>
-    </Wrapper>
+    </Grid>
   )
 }
 

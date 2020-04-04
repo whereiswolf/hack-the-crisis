@@ -30,7 +30,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
   },
 }) => {
   return (
-    <Grid>
+    <Grid style={{ padding: '40px 100px' }}>
       <Grid container alignItems="center">
         <Avatar url={imageUrl} />
         <Content>
