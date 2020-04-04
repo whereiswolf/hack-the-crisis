@@ -1,0 +1,12 @@
+# IF THERE'S A GIT CONFLICT IN THIS FILE, DON'T SOLVE IT MANUALLY!
+# INSTEAD EXECUTE `prisma migrate fix`
+# Prisma Migrate lockfile v1
+# Read more about conflict resolution here: TODO
+
+20200404113442-business-vouchers-tables
+20200404115123-vouchers-to-business-relation
+20200404121620-change-relation-vouchres-business
+20200404122717-add-tags-and-categories
+20200404123254-many-to-many
+20200404123836-naming-change
+20200404124604-n-m-relations

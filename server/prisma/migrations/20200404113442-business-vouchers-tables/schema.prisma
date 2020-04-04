@@ -1,0 +1,30 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = "***"
+}
+
+model Voucher {
+  id Int @default(autoincrement()) @id
+  name String?
+  price Float
+  promotion Float?
+  expirationDate String
+  description String
+  imageUrl String
+}
+
+model Business {
+  id Int @default(autoincrement()) @id
+  name String
+  city String
+  address String
+  siteUrl String?
+  amount Float
+  description String
+  history String?
+  imageUrl String
+}
