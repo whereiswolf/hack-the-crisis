@@ -1,2 +1,0 @@
-(this["webpackJsonphack-the-crisis"]=this["webpackJsonphack-the-crisis"]||[]).push([[9],{212:function(s,t,n){"use strict";n.r(t),n.d(t,"default",(function(){return c}));var e=n(0),i=n.n(e),c=function(){return i.a.createElement("div",null,"BusinessList")}}}]);
-//# sourceMappingURL=9.40feadf6.chunk.js.map
