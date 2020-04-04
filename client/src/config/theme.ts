@@ -19,6 +19,13 @@ const theme: ThemeOptions = {
     button: {
       textTransform: 'none',
     },
+    h2: {
+      fontSize: 68,
+      fontWeight: 900,
+    },
+    body1: {
+      fontWeight: 300,
+    },
   },
 }
 
