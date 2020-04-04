@@ -951,6 +951,7 @@ export interface NexusGenFieldTypes {
     createOneCategory: NexusGenRootTypes['Category']; // Category!
     createOneOrder: NexusGenRootTypes['Order']; // Order!
     createOneTag: NexusGenRootTypes['Tag']; // Tag!
+    createOneUser: NexusGenRootTypes['User']; // User!
     createOneVoucher: NexusGenRootTypes['Voucher']; // Voucher!
     deleteOneBusiness: NexusGenRootTypes['Business'] | null; // Business
     deleteOneCategory: NexusGenRootTypes['Category'] | null; // Category
@@ -1047,6 +1048,10 @@ export interface NexusGenArgTypes {
     }
     createOneTag: { // args
       data: NexusGenInputs['TagCreateInput']; // TagCreateInput!
+    }
+    createOneUser: { // args
+      email?: string | null; // String
+      password?: string | null; // String
     }
     createOneVoucher: { // args
       data: NexusGenInputs['VoucherCreateInput']; // VoucherCreateInput!

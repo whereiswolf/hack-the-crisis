@@ -5,6 +5,7 @@ import { GraphQLUpload } from 'graphql-upload'
 import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { searchBusinesses } from './modules/business'
 import { processUpload } from './modules/file'
+import { createOneUser } from './modules/user'
 
 import Voucher from './modules/voucher/voucher.model'
 import Category from './modules/category/category.model'
@@ -66,6 +67,14 @@ const Mutation = objectType({
         file: arg({ type: 'Upload', required: true }),
       },
       resolve: processUpload,
+    })
+    t.field('createOneUser', {
+      type: 'User',
+      args: {
+        email: stringArg(),
+        password: stringArg()
+      },
+      resolve: createOneUser
     })
     t.crud.createOneTag()
     t.crud.createOneCategory()

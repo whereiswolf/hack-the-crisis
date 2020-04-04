@@ -314,6 +314,7 @@ type Mutation {
   createOneCategory(data: CategoryCreateInput!): Category!
   createOneOrder(data: OrderCreateInput!): Order!
   createOneTag(data: TagCreateInput!): Tag!
+  createOneUser(email: String, password: String): User!
   createOneVoucher(data: VoucherCreateInput!): Voucher!
   deleteOneBusiness(where: BusinessWhereUniqueInput!): Business
   deleteOneCategory(where: CategoryWhereUniqueInput!): Category
