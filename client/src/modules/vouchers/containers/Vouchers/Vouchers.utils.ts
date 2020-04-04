@@ -1,10 +1,11 @@
 import { gql } from 'apollo-boost'
 
 const VOUCHERS = gql`
-  {
-    rates(currency: "USD") {
-      currency
-      rate
+  query {
+    vouchers {
+      id
+      name
+      price
     }
   }
 `

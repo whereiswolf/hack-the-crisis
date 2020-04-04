@@ -4,8 +4,8 @@ import { useTranslation } from 'react-i18next'
 import BusinessType, { BusinessTypeTranslation } from 'enums/BusinessType'
 
 interface TypePanelProps {
-  type: BusinessType | null
-  onTypeChange: (type: BusinessType) => any
+  type: string | null
+  onTypeChange: (type: string | null) => any
 }
 
 const types = [

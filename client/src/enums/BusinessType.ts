@@ -1,7 +1,7 @@
-enum BusinessType {
-  All,
-  Local,
-  Online,
+const BusinessType = {
+  All: null,
+  Local: 'Local',
+  Online: 'Online',
 }
 
 const KEY = 'BusinessType'
