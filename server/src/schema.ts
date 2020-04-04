@@ -11,6 +11,26 @@ const Voucher = objectType({
     t.model.expirationDate()
     t.model.description()
     t.model.imageUrl()
+    t.model.business()
+    t.model.tags()
+  },
+})
+
+const Tag = objectType({
+  name: 'Tag',
+  definition(t) {
+    t.model.id()
+    t.model.name()
+    t.model.vouchers()
+  },
+})
+
+const Category = objectType({
+  name: 'Category',
+  definition(t) {
+    t.model.id()
+    t.model.name()
+    t.model.businesses()
   },
 })
 
@@ -26,6 +46,7 @@ const Business = objectType({
     t.model.description()
     t.model.history()
     t.model.imageUrl()
+    t.model.category()
     t.model.vouchers({
       pagination: false,
     })
@@ -58,7 +79,7 @@ const Mutation = objectType({
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Voucher, Business],
+  types: [Query, Mutation, Voucher, Business, Tag, Category],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',

@@ -5,6 +5,7 @@
 type Business {
   address: String!
   amount: Float!
+  category: Category
   city: String!
   description: String!
   history: String
@@ -23,6 +24,7 @@ input BusinessCreateOneWithoutVouchersInput {
 input BusinessCreateWithoutVouchersInput {
   address: String!
   amount: Float!
+  category: CategoryCreateOneWithoutBusinessesInput
   city: String!
   description: String!
   history: String
@@ -36,6 +38,25 @@ input BusinessWhereUniqueInput {
   id: Int
 }
 
+type Category {
+  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  id: Int!
+  name: String!
+}
+
+input CategoryCreateOneWithoutBusinessesInput {
+  connect: CategoryWhereUniqueInput
+  create: CategoryCreateWithoutBusinessesInput
+}
+
+input CategoryCreateWithoutBusinessesInput {
+  name: String!
+}
+
+input CategoryWhereUniqueInput {
+  id: Int
+}
+
 type Mutation {
   createOneVoucher(data: VoucherCreateInput!): Voucher!
 }
@@ -45,7 +66,60 @@ type Query {
   vouchers: [Voucher!]!
 }
 
+type Tag {
+  id: Int!
+  name: String!
+  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
+}
+
+input TagCreateManyWithoutVouchersInput {
+  connect: [TagWhereUniqueInput!]
+  create: [TagCreateWithoutVouchersInput!]
+}
+
+input TagCreateOneWithoutTagsOnVouchersesInput {
+  connect: TagWhereUniqueInput
+  create: TagCreateWithoutTagsOnVouchersesInput
+}
+
+input TagCreateWithoutTagsOnVouchersesInput {
+  name: String!
+  vouchers: VoucherCreateManyWithoutTagsInput
+}
+
+input TagCreateWithoutVouchersInput {
+  name: String!
+  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutTagInput
+}
+
+input TagsOnVouchersCreateManyWithoutTagInput {
+  connect: [TagsOnVouchersWhereUniqueInput!]
+  create: [TagsOnVouchersCreateWithoutTagInput!]
+}
+
+input TagsOnVouchersCreateManyWithoutVoucherInput {
+  connect: [TagsOnVouchersWhereUniqueInput!]
+  create: [TagsOnVouchersCreateWithoutVoucherInput!]
+}
+
+input TagsOnVouchersCreateWithoutTagInput {
+  voucher: VoucherCreateOneWithoutTagsOnVouchersesInput!
+}
+
+input TagsOnVouchersCreateWithoutVoucherInput {
+  tag: TagCreateOneWithoutTagsOnVouchersesInput!
+}
+
+input TagsOnVouchersWhereUniqueInput {
+  voucherId_tagId: VoucherIdTagIdCompoundUniqueInput
+}
+
+input TagWhereUniqueInput {
+  id: Int
+}
+
 type Voucher {
+  business: Business
   description: String!
   expirationDate: String
   id: Int!
@@ -53,14 +127,59 @@ type Voucher {
   name: String!
   price: Float!
   promotion: Float
+  tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
 }
 
 input VoucherCreateInput {
-  company: BusinessCreateOneWithoutVouchersInput
+  business: BusinessCreateOneWithoutVouchersInput
   description: String!
   expirationDate: String
   imageUrl: String!
   name: String!
   price: Float!
   promotion: Float
+  tags: TagCreateManyWithoutVouchersInput
+  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutVoucherInput
+}
+
+input VoucherCreateManyWithoutTagsInput {
+  connect: [VoucherWhereUniqueInput!]
+  create: [VoucherCreateWithoutTagsInput!]
+}
+
+input VoucherCreateOneWithoutTagsOnVouchersesInput {
+  connect: VoucherWhereUniqueInput
+  create: VoucherCreateWithoutTagsOnVouchersesInput
+}
+
+input VoucherCreateWithoutTagsInput {
+  business: BusinessCreateOneWithoutVouchersInput
+  description: String!
+  expirationDate: String
+  imageUrl: String!
+  name: String!
+  price: Float!
+  promotion: Float
+  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutVoucherInput
+}
+
+input VoucherCreateWithoutTagsOnVouchersesInput {
+  business: BusinessCreateOneWithoutVouchersInput
+  description: String!
+  expirationDate: String
+  imageUrl: String!
+  name: String!
+  price: Float!
+  promotion: Float
+  tags: TagCreateManyWithoutVouchersInput
+}
+
+input VoucherIdTagIdCompoundUniqueInput {
+  tagId: Int!
+  voucherId: Int!
+}
+
+input VoucherWhereUniqueInput {
+  id: Int
+  name: String
 }

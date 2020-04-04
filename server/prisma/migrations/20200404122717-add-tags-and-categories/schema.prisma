@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url = "***"
 }
 
 model Voucher {
@@ -17,16 +17,16 @@ model Voucher {
   promotion Float?
   businessId Int?
   business Business? @relation(fields: [businessId], references: [id])
-  tags Tag[] @relation(references: [id])
+  tags VoucherTag? @relation(references: [id])
 }
 
-model Tag {
+model VoucherTag {
   id Int @default(autoincrement()) @id
   name String
   vouchers Voucher[] @relation(references: [id])
 }
 
-model Category {
+model BusinessCategory {
   id Int @default(autoincrement()) @id
   name String
   businesses Business[]
@@ -45,7 +45,7 @@ model Business {
   type String
   vouchers Voucher[]
   categoryId Int?
-  category Category? @relation(fields: [categoryId], references: [id])
+  category BusinessCategory? @relation(fields: [categoryId], references: [id])
 }
 
 

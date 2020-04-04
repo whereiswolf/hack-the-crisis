@@ -1,0 +1,166 @@
+{
+  "version": "0.3.14-fixed",
+  "steps": [
+    {
+      "tag": "CreateModel",
+      "model": "TagsOnVouchers"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TagsOnVouchers",
+      "field": "voucher",
+      "type": "Voucher",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "voucher"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "voucher"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[voucherId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "voucher"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TagsOnVouchers",
+      "field": "voucherId",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TagsOnVouchers",
+      "field": "tag",
+      "type": "VoucherTag",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "tag"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "tag"
+        },
+        "directive": "relation"
+      },
+      "argument": "fields",
+      "value": "[tagId]"
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Field",
+          "model": "TagsOnVouchers",
+          "field": "tag"
+        },
+        "directive": "relation"
+      },
+      "argument": "references",
+      "value": "[id]"
+    },
+    {
+      "tag": "CreateField",
+      "model": "TagsOnVouchers",
+      "field": "tagId",
+      "type": "Int",
+      "arity": "Required"
+    },
+    {
+      "tag": "CreateDirective",
+      "location": {
+        "path": {
+          "tag": "Model",
+          "model": "TagsOnVouchers"
+        },
+        "directive": "id"
+      }
+    },
+    {
+      "tag": "CreateArgument",
+      "location": {
+        "tag": "Directive",
+        "path": {
+          "tag": "Model",
+          "model": "TagsOnVouchers"
+        },
+        "directive": "id"
+      },
+      "argument": "",
+      "value": "[voucherId, tagId]"
+    },
+    {
+      "tag": "UpdateField",
+      "model": "Voucher",
+      "field": "tags",
+      "arity": "List"
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "Voucher",
+          "field": "tags"
+        },
+        "directive": "relation"
+      }
+    },
+    {
+      "tag": "DeleteDirective",
+      "location": {
+        "path": {
+          "tag": "Field",
+          "model": "VoucherTag",
+          "field": "vouchers"
+        },
+        "directive": "relation"
+      }
+    }
+  ]
+}
