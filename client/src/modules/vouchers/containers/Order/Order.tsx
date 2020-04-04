@@ -1,23 +1,18 @@
 import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
-import { gql } from 'apollo-boost'
-import { useTranslation } from 'react-i18next'
+
 import {
-  Card,
-  CardContent,
   Avatar,
   Typography,
   Select,
   FormControl,
-  InputLabel,
   TextField,
 } from '@material-ui/core'
-import strings from '../strings'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
-import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
 import { Button } from 'components'
-import { colors } from 'config'
+import { useId, GET_ORDER } from './Order.utils'
+import { VoucherData } from 'types'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -52,20 +47,13 @@ const useStyles = makeStyles((theme: Theme) =>
   })
 )
 
-const EXCHANGE_RATES = gql`
-  {
-    rates(currency: "USD") {
-      currency
-      rate
-    }
-  }
-`
-
 interface OrderProps {}
 
 const Order: React.FC<OrderProps> = () => {
-  // const { loading, error } = useQuery(EXCHANGE_RATES)
-  // const { t } = useTranslation()
+  const id = useId()
+  const { data } = useQuery<VoucherData>(GET_ORDER, {
+    variables: { id },
+  })
   const classes = useStyles()
 
   return (
@@ -91,12 +79,12 @@ const Order: React.FC<OrderProps> = () => {
                 <Avatar
                   className={classes.orderImg}
                   alt="order-image"
-                  src="https://media-cdn.tripadvisor.com/media/photo-s/12/30/6c/eb/img-20180227-wa0016-largejpg.jpg"
+                  src={data?.voucher?.imageUrl}
                 />
               </Grid>
               <Grid item xs={6} spacing={1}>
-                <Typography variant="h4" component="h4" color="textPrimary">
-                  Special 1-hour sushi lesson (online)
+                <Typography variant="h4" color="textPrimary">
+                  {data?.voucher?.name}
                 </Typography>
               </Grid>
             </Grid>
@@ -112,6 +100,7 @@ const Order: React.FC<OrderProps> = () => {
         </Grid>
         <Grid
           container
+          spacing={0}
           item
           xs={4}
           className={classes.orderConfig}
@@ -119,12 +108,15 @@ const Order: React.FC<OrderProps> = () => {
           alignItems="center"
         >
           <Grid item xs={12}>
-            <Typography variant="h4" component="h4" color="textPrimary">
-              Complete Your order
+            <Typography variant="h4" color="textPrimary">
+              Complete Your{' '}
+              <Typography color="secondary" component="span" variant="h4">
+                order
+              </Typography>
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6" color="textPrimary">
+            <Typography variant="body1" color="textPrimary">
               Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
               eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
               enim ad minim veniam.
@@ -163,7 +155,7 @@ const Order: React.FC<OrderProps> = () => {
               € 30.00
             </Typography>
           </Grid>
-          <Grid container xs={12}>
+          <Grid container xs={12} spacing={0}>
             <Grid item xs={3}>
               <Button>-</Button>
             </Grid>
