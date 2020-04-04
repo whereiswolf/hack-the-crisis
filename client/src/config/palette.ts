@@ -9,7 +9,8 @@ export const dark = {
   },
   secondary: {
     light: colors.secondary[50],
-    main: colors.secondary[100],
+    main: colors.secondary[50],
+    dark: colors.secondary[100],
     contrastText: colors.white,
   },
   warning: {
