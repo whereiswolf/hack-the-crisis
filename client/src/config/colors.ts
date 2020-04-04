@@ -6,6 +6,7 @@ export default {
     60: '#2A2A2C',
     50: '#3B3D46',
     40: '#565861',
+    30: '#9C9C9C',
     20: '#7F7F7F',
   },
   secondary: {
@@ -19,6 +20,7 @@ export default {
   black: '#000',
   text: {
     100: '#F6F6F6',
+    80: '#9C9C9C',
     50: '#BDBDBD',
   },
   light: {
