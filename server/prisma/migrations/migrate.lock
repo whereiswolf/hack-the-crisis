@@ -10,3 +10,7 @@
 20200404123254-many-to-many
 20200404123836-naming-change
 20200404124604-n-m-relations
+20200404134026-delete-unique-voucher-name
+20200404141547-add-rating-table
+20200404141800-change-raiting-column-name
+20200404142918-create-orders-table

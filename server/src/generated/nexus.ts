@@ -20,9 +20,40 @@ declare global {
 }
 
 export interface NexusGenInputs {
+  BusinessCreateInput: { // input type
+    address: string; // String!
+    amount: number; // Float!
+    category?: NexusGenInputs['CategoryCreateOneWithoutBusinessesInput'] | null; // CategoryCreateOneWithoutBusinessesInput
+    city: string; // String!
+    description: string; // String!
+    history?: string | null; // String
+    imageUrl: string; // String!
+    name: string; // String!
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
+    siteUrl?: string | null; // String
+    type: string; // String!
+    vouchers?: NexusGenInputs['VoucherCreateManyWithoutBusinessInput'] | null; // VoucherCreateManyWithoutBusinessInput
+  }
+  BusinessCreateManyWithoutCategoryInput: { // input type
+    connect?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
+    create?: NexusGenInputs['BusinessCreateWithoutCategoryInput'][] | null; // [BusinessCreateWithoutCategoryInput!]
+  }
   BusinessCreateOneWithoutVouchersInput: { // input type
     connect?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
     create?: NexusGenInputs['BusinessCreateWithoutVouchersInput'] | null; // BusinessCreateWithoutVouchersInput
+  }
+  BusinessCreateWithoutCategoryInput: { // input type
+    address: string; // String!
+    amount: number; // Float!
+    city: string; // String!
+    description: string; // String!
+    history?: string | null; // String
+    imageUrl: string; // String!
+    name: string; // String!
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
+    siteUrl?: string | null; // String
+    type: string; // String!
+    vouchers?: NexusGenInputs['VoucherCreateManyWithoutBusinessInput'] | null; // VoucherCreateManyWithoutBusinessInput
   }
   BusinessCreateWithoutVouchersInput: { // input type
     address: string; // String!
@@ -33,11 +64,149 @@ export interface NexusGenInputs {
     history?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
     siteUrl?: string | null; // String
     type: string; // String!
   }
+  BusinessFilter: { // input type
+    every?: NexusGenInputs['BusinessWhereInput'] | null; // BusinessWhereInput
+    none?: NexusGenInputs['BusinessWhereInput'] | null; // BusinessWhereInput
+    some?: NexusGenInputs['BusinessWhereInput'] | null; // BusinessWhereInput
+  }
+  BusinessScalarWhereInput: { // input type
+    address?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    amount?: NexusGenInputs['FloatFilter'] | null; // FloatFilter
+    AND?: NexusGenInputs['BusinessScalarWhereInput'][] | null; // [BusinessScalarWhereInput!]
+    categoryId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    city?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    history?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    imageUrl?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['BusinessScalarWhereInput'][] | null; // [BusinessScalarWhereInput!]
+    OR?: NexusGenInputs['BusinessScalarWhereInput'][] | null; // [BusinessScalarWhereInput!]
+    ratings?: NexusGenInputs['RatingFilter'] | null; // RatingFilter
+    siteUrl?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    vouchers?: NexusGenInputs['VoucherFilter'] | null; // VoucherFilter
+  }
+  BusinessUpdateInput: { // input type
+    address?: string | null; // String
+    amount?: number | null; // Float
+    category?: NexusGenInputs['CategoryUpdateOneWithoutBusinessesInput'] | null; // CategoryUpdateOneWithoutBusinessesInput
+    city?: string | null; // String
+    description?: string | null; // String
+    history?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    siteUrl?: string | null; // String
+    type?: string | null; // String
+    vouchers?: NexusGenInputs['VoucherUpdateManyWithoutBusinessInput'] | null; // VoucherUpdateManyWithoutBusinessInput
+  }
+  BusinessUpdateManyDataInput: { // input type
+    address?: string | null; // String
+    amount?: number | null; // Float
+    city?: string | null; // String
+    description?: string | null; // String
+    history?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    siteUrl?: string | null; // String
+    type?: string | null; // String
+  }
+  BusinessUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['BusinessUpdateManyDataInput']; // BusinessUpdateManyDataInput!
+    where: NexusGenInputs['BusinessScalarWhereInput']; // BusinessScalarWhereInput!
+  }
+  BusinessUpdateManyWithoutCategoryInput: { // input type
+    connect?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
+    create?: NexusGenInputs['BusinessCreateWithoutCategoryInput'][] | null; // [BusinessCreateWithoutCategoryInput!]
+    delete?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['BusinessScalarWhereInput'][] | null; // [BusinessScalarWhereInput!]
+    disconnect?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
+    set?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
+    update?: NexusGenInputs['BusinessUpdateWithWhereUniqueWithoutCategoryInput'][] | null; // [BusinessUpdateWithWhereUniqueWithoutCategoryInput!]
+    updateMany?: NexusGenInputs['BusinessUpdateManyWithWhereNestedInput'][] | null; // [BusinessUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['BusinessUpsertWithWhereUniqueWithoutCategoryInput'][] | null; // [BusinessUpsertWithWhereUniqueWithoutCategoryInput!]
+  }
+  BusinessUpdateOneWithoutVouchersInput: { // input type
+    connect?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+    create?: NexusGenInputs['BusinessCreateWithoutVouchersInput'] | null; // BusinessCreateWithoutVouchersInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['BusinessUpdateWithoutVouchersDataInput'] | null; // BusinessUpdateWithoutVouchersDataInput
+    upsert?: NexusGenInputs['BusinessUpsertWithoutVouchersInput'] | null; // BusinessUpsertWithoutVouchersInput
+  }
+  BusinessUpdateWithWhereUniqueWithoutCategoryInput: { // input type
+    data: NexusGenInputs['BusinessUpdateWithoutCategoryDataInput']; // BusinessUpdateWithoutCategoryDataInput!
+    where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
+  }
+  BusinessUpdateWithoutCategoryDataInput: { // input type
+    address?: string | null; // String
+    amount?: number | null; // Float
+    city?: string | null; // String
+    description?: string | null; // String
+    history?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    siteUrl?: string | null; // String
+    type?: string | null; // String
+    vouchers?: NexusGenInputs['VoucherUpdateManyWithoutBusinessInput'] | null; // VoucherUpdateManyWithoutBusinessInput
+  }
+  BusinessUpdateWithoutVouchersDataInput: { // input type
+    address?: string | null; // String
+    amount?: number | null; // Float
+    category?: NexusGenInputs['CategoryUpdateOneWithoutBusinessesInput'] | null; // CategoryUpdateOneWithoutBusinessesInput
+    city?: string | null; // String
+    description?: string | null; // String
+    history?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    siteUrl?: string | null; // String
+    type?: string | null; // String
+  }
+  BusinessUpsertWithWhereUniqueWithoutCategoryInput: { // input type
+    create: NexusGenInputs['BusinessCreateWithoutCategoryInput']; // BusinessCreateWithoutCategoryInput!
+    update: NexusGenInputs['BusinessUpdateWithoutCategoryDataInput']; // BusinessUpdateWithoutCategoryDataInput!
+    where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
+  }
+  BusinessUpsertWithoutVouchersInput: { // input type
+    create: NexusGenInputs['BusinessCreateWithoutVouchersInput']; // BusinessCreateWithoutVouchersInput!
+    update: NexusGenInputs['BusinessUpdateWithoutVouchersDataInput']; // BusinessUpdateWithoutVouchersDataInput!
+  }
+  BusinessWhereInput: { // input type
+    address?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    amount?: NexusGenInputs['FloatFilter'] | null; // FloatFilter
+    AND?: NexusGenInputs['BusinessWhereInput'][] | null; // [BusinessWhereInput!]
+    category?: NexusGenInputs['CategoryWhereInput'] | null; // CategoryWhereInput
+    categoryId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    city?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    history?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    imageUrl?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['BusinessWhereInput'][] | null; // [BusinessWhereInput!]
+    OR?: NexusGenInputs['BusinessWhereInput'][] | null; // [BusinessWhereInput!]
+    ratings?: NexusGenInputs['RatingFilter'] | null; // RatingFilter
+    siteUrl?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    type?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    vouchers?: NexusGenInputs['VoucherFilter'] | null; // VoucherFilter
+  }
   BusinessWhereUniqueInput: { // input type
     id?: number | null; // Int
+  }
+  CategoryCreateInput: { // input type
+    businesses?: NexusGenInputs['BusinessCreateManyWithoutCategoryInput'] | null; // BusinessCreateManyWithoutCategoryInput
+    name: string; // String!
   }
   CategoryCreateOneWithoutBusinessesInput: { // input type
     connect?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
@@ -46,8 +215,257 @@ export interface NexusGenInputs {
   CategoryCreateWithoutBusinessesInput: { // input type
     name: string; // String!
   }
+  CategoryUpdateInput: { // input type
+    businesses?: NexusGenInputs['BusinessUpdateManyWithoutCategoryInput'] | null; // BusinessUpdateManyWithoutCategoryInput
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  CategoryUpdateOneWithoutBusinessesInput: { // input type
+    connect?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+    create?: NexusGenInputs['CategoryCreateWithoutBusinessesInput'] | null; // CategoryCreateWithoutBusinessesInput
+    delete?: boolean | null; // Boolean
+    disconnect?: boolean | null; // Boolean
+    update?: NexusGenInputs['CategoryUpdateWithoutBusinessesDataInput'] | null; // CategoryUpdateWithoutBusinessesDataInput
+    upsert?: NexusGenInputs['CategoryUpsertWithoutBusinessesInput'] | null; // CategoryUpsertWithoutBusinessesInput
+  }
+  CategoryUpdateWithoutBusinessesDataInput: { // input type
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  CategoryUpsertWithoutBusinessesInput: { // input type
+    create: NexusGenInputs['CategoryCreateWithoutBusinessesInput']; // CategoryCreateWithoutBusinessesInput!
+    update: NexusGenInputs['CategoryUpdateWithoutBusinessesDataInput']; // CategoryUpdateWithoutBusinessesDataInput!
+  }
+  CategoryWhereInput: { // input type
+    AND?: NexusGenInputs['CategoryWhereInput'][] | null; // [CategoryWhereInput!]
+    businesses?: NexusGenInputs['BusinessFilter'] | null; // BusinessFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['CategoryWhereInput'][] | null; // [CategoryWhereInput!]
+    OR?: NexusGenInputs['CategoryWhereInput'][] | null; // [CategoryWhereInput!]
+  }
   CategoryWhereUniqueInput: { // input type
     id?: number | null; // Int
+  }
+  FloatFilter: { // input type
+    equals?: number | null; // Float
+    gt?: number | null; // Float
+    gte?: number | null; // Float
+    in?: number[] | null; // [Float!]
+    lt?: number | null; // Float
+    lte?: number | null; // Float
+    not?: number | null; // Float
+    notIn?: number[] | null; // [Float!]
+  }
+  IntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: number[] | null; // [Int!]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: number | null; // Int
+    notIn?: number[] | null; // [Int!]
+  }
+  NullableFloatFilter: { // input type
+    equals?: number | null; // Float
+    gt?: number | null; // Float
+    gte?: number | null; // Float
+    in?: number[] | null; // [Float!]
+    lt?: number | null; // Float
+    lte?: number | null; // Float
+    not?: number | null; // Float
+    notIn?: number[] | null; // [Float!]
+  }
+  NullableIntFilter: { // input type
+    equals?: number | null; // Int
+    gt?: number | null; // Int
+    gte?: number | null; // Int
+    in?: number[] | null; // [Int!]
+    lt?: number | null; // Int
+    lte?: number | null; // Int
+    not?: number | null; // Int
+    notIn?: number[] | null; // [Int!]
+  }
+  NullableStringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  }
+  OrderCreateInput: { // input type
+    count?: number | null; // Int
+    email: string; // String!
+    name: string; // String!
+    voucher: NexusGenInputs['VoucherCreateOneWithoutOrdersInput']; // VoucherCreateOneWithoutOrdersInput!
+  }
+  OrderCreateManyWithoutVoucherInput: { // input type
+    connect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
+    create?: NexusGenInputs['OrderCreateWithoutVoucherInput'][] | null; // [OrderCreateWithoutVoucherInput!]
+  }
+  OrderCreateWithoutVoucherInput: { // input type
+    count?: number | null; // Int
+    email: string; // String!
+    name: string; // String!
+  }
+  OrderFilter: { // input type
+    every?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
+    none?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
+    some?: NexusGenInputs['OrderWhereInput'] | null; // OrderWhereInput
+  }
+  OrderScalarWhereInput: { // input type
+    AND?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    count?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    email?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    OR?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    voucherId?: NexusGenInputs['IntFilter'] | null; // IntFilter
+  }
+  OrderUpdateInput: { // input type
+    count?: number | null; // Int
+    email?: string | null; // String
+    id?: number | null; // Int
+    name?: string | null; // String
+    voucher?: NexusGenInputs['VoucherUpdateOneRequiredWithoutOrdersInput'] | null; // VoucherUpdateOneRequiredWithoutOrdersInput
+  }
+  OrderUpdateManyDataInput: { // input type
+    count?: number | null; // Int
+    email?: string | null; // String
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  OrderUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['OrderUpdateManyDataInput']; // OrderUpdateManyDataInput!
+    where: NexusGenInputs['OrderScalarWhereInput']; // OrderScalarWhereInput!
+  }
+  OrderUpdateManyWithoutVoucherInput: { // input type
+    connect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
+    create?: NexusGenInputs['OrderCreateWithoutVoucherInput'][] | null; // [OrderCreateWithoutVoucherInput!]
+    delete?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    disconnect?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
+    set?: NexusGenInputs['OrderWhereUniqueInput'][] | null; // [OrderWhereUniqueInput!]
+    update?: NexusGenInputs['OrderUpdateWithWhereUniqueWithoutVoucherInput'][] | null; // [OrderUpdateWithWhereUniqueWithoutVoucherInput!]
+    updateMany?: NexusGenInputs['OrderUpdateManyWithWhereNestedInput'][] | null; // [OrderUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['OrderUpsertWithWhereUniqueWithoutVoucherInput'][] | null; // [OrderUpsertWithWhereUniqueWithoutVoucherInput!]
+  }
+  OrderUpdateWithWhereUniqueWithoutVoucherInput: { // input type
+    data: NexusGenInputs['OrderUpdateWithoutVoucherDataInput']; // OrderUpdateWithoutVoucherDataInput!
+    where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
+  }
+  OrderUpdateWithoutVoucherDataInput: { // input type
+    count?: number | null; // Int
+    email?: string | null; // String
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  OrderUpsertWithWhereUniqueWithoutVoucherInput: { // input type
+    create: NexusGenInputs['OrderCreateWithoutVoucherInput']; // OrderCreateWithoutVoucherInput!
+    update: NexusGenInputs['OrderUpdateWithoutVoucherDataInput']; // OrderUpdateWithoutVoucherDataInput!
+    where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
+  }
+  OrderWhereInput: { // input type
+    AND?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
+    count?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    email?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
+    OR?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
+    voucher?: NexusGenInputs['VoucherWhereInput'] | null; // VoucherWhereInput
+    voucherId?: NexusGenInputs['IntFilter'] | null; // IntFilter
+  }
+  OrderWhereUniqueInput: { // input type
+    id?: number | null; // Int
+  }
+  RatingCreateManyWithoutBusinessesInput: { // input type
+    connect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
+    create?: NexusGenInputs['RatingCreateWithoutBusinessesInput'][] | null; // [RatingCreateWithoutBusinessesInput!]
+  }
+  RatingCreateWithoutBusinessesInput: { // input type
+    rate: number; // Int!
+  }
+  RatingFilter: { // input type
+    every?: NexusGenInputs['RatingWhereInput'] | null; // RatingWhereInput
+    none?: NexusGenInputs['RatingWhereInput'] | null; // RatingWhereInput
+    some?: NexusGenInputs['RatingWhereInput'] | null; // RatingWhereInput
+  }
+  RatingScalarWhereInput: { // input type
+    AND?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
+    businesses?: NexusGenInputs['BusinessFilter'] | null; // BusinessFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    NOT?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
+    OR?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
+    rate?: NexusGenInputs['IntFilter'] | null; // IntFilter
+  }
+  RatingUpdateManyDataInput: { // input type
+    id?: number | null; // Int
+    rate?: number | null; // Int
+  }
+  RatingUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['RatingUpdateManyDataInput']; // RatingUpdateManyDataInput!
+    where: NexusGenInputs['RatingScalarWhereInput']; // RatingScalarWhereInput!
+  }
+  RatingUpdateManyWithoutBusinessesInput: { // input type
+    connect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
+    create?: NexusGenInputs['RatingCreateWithoutBusinessesInput'][] | null; // [RatingCreateWithoutBusinessesInput!]
+    delete?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
+    disconnect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
+    set?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
+    update?: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessesInput'][] | null; // [RatingUpdateWithWhereUniqueWithoutBusinessesInput!]
+    updateMany?: NexusGenInputs['RatingUpdateManyWithWhereNestedInput'][] | null; // [RatingUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessesInput'][] | null; // [RatingUpsertWithWhereUniqueWithoutBusinessesInput!]
+  }
+  RatingUpdateWithWhereUniqueWithoutBusinessesInput: { // input type
+    data: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput']; // RatingUpdateWithoutBusinessesDataInput!
+    where: NexusGenInputs['RatingWhereUniqueInput']; // RatingWhereUniqueInput!
+  }
+  RatingUpdateWithoutBusinessesDataInput: { // input type
+    id?: number | null; // Int
+    rate?: number | null; // Int
+  }
+  RatingUpsertWithWhereUniqueWithoutBusinessesInput: { // input type
+    create: NexusGenInputs['RatingCreateWithoutBusinessesInput']; // RatingCreateWithoutBusinessesInput!
+    update: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput']; // RatingUpdateWithoutBusinessesDataInput!
+    where: NexusGenInputs['RatingWhereUniqueInput']; // RatingWhereUniqueInput!
+  }
+  RatingWhereInput: { // input type
+    AND?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
+    businesses?: NexusGenInputs['BusinessFilter'] | null; // BusinessFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    NOT?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
+    OR?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
+    rate?: NexusGenInputs['IntFilter'] | null; // IntFilter
+  }
+  RatingWhereUniqueInput: { // input type
+    id?: number | null; // Int
+  }
+  StringFilter: { // input type
+    contains?: string | null; // String
+    endsWith?: string | null; // String
+    equals?: string | null; // String
+    gt?: string | null; // String
+    gte?: string | null; // String
+    in?: string[] | null; // [String!]
+    lt?: string | null; // String
+    lte?: string | null; // String
+    not?: string | null; // String
+    notIn?: string[] | null; // [String!]
+    startsWith?: string | null; // String
+  }
+  TagCreateInput: { // input type
+    name: string; // String!
+    vouchers?: NexusGenInputs['VoucherCreateManyWithoutTagsInput'] | null; // VoucherCreateManyWithoutTagsInput
   }
   TagCreateManyWithoutVouchersInput: { // input type
     connect?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
@@ -55,6 +473,64 @@ export interface NexusGenInputs {
   }
   TagCreateWithoutVouchersInput: { // input type
     name: string; // String!
+  }
+  TagFilter: { // input type
+    every?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+    none?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+    some?: NexusGenInputs['TagWhereInput'] | null; // TagWhereInput
+  }
+  TagScalarWhereInput: { // input type
+    AND?: NexusGenInputs['TagScalarWhereInput'][] | null; // [TagScalarWhereInput!]
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['TagScalarWhereInput'][] | null; // [TagScalarWhereInput!]
+    OR?: NexusGenInputs['TagScalarWhereInput'][] | null; // [TagScalarWhereInput!]
+    vouchers?: NexusGenInputs['VoucherFilter'] | null; // VoucherFilter
+  }
+  TagUpdateInput: { // input type
+    id?: number | null; // Int
+    name?: string | null; // String
+    vouchers?: NexusGenInputs['VoucherUpdateManyWithoutTagsInput'] | null; // VoucherUpdateManyWithoutTagsInput
+  }
+  TagUpdateManyDataInput: { // input type
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  TagUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['TagUpdateManyDataInput']; // TagUpdateManyDataInput!
+    where: NexusGenInputs['TagScalarWhereInput']; // TagScalarWhereInput!
+  }
+  TagUpdateManyWithoutVouchersInput: { // input type
+    connect?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
+    create?: NexusGenInputs['TagCreateWithoutVouchersInput'][] | null; // [TagCreateWithoutVouchersInput!]
+    delete?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['TagScalarWhereInput'][] | null; // [TagScalarWhereInput!]
+    disconnect?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
+    set?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
+    update?: NexusGenInputs['TagUpdateWithWhereUniqueWithoutVouchersInput'][] | null; // [TagUpdateWithWhereUniqueWithoutVouchersInput!]
+    updateMany?: NexusGenInputs['TagUpdateManyWithWhereNestedInput'][] | null; // [TagUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['TagUpsertWithWhereUniqueWithoutVouchersInput'][] | null; // [TagUpsertWithWhereUniqueWithoutVouchersInput!]
+  }
+  TagUpdateWithWhereUniqueWithoutVouchersInput: { // input type
+    data: NexusGenInputs['TagUpdateWithoutVouchersDataInput']; // TagUpdateWithoutVouchersDataInput!
+    where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+  }
+  TagUpdateWithoutVouchersDataInput: { // input type
+    id?: number | null; // Int
+    name?: string | null; // String
+  }
+  TagUpsertWithWhereUniqueWithoutVouchersInput: { // input type
+    create: NexusGenInputs['TagCreateWithoutVouchersInput']; // TagCreateWithoutVouchersInput!
+    update: NexusGenInputs['TagUpdateWithoutVouchersDataInput']; // TagUpdateWithoutVouchersDataInput!
+    where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+  }
+  TagWhereInput: { // input type
+    AND?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    OR?: NexusGenInputs['TagWhereInput'][] | null; // [TagWhereInput!]
+    vouchers?: NexusGenInputs['VoucherFilter'] | null; // VoucherFilter
   }
   TagWhereUniqueInput: { // input type
     id?: number | null; // Int
@@ -65,13 +541,199 @@ export interface NexusGenInputs {
     expirationDate?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
+    orders?: NexusGenInputs['OrderCreateManyWithoutVoucherInput'] | null; // OrderCreateManyWithoutVoucherInput
     price: number; // Float!
     promotion?: number | null; // Float
     tags?: NexusGenInputs['TagCreateManyWithoutVouchersInput'] | null; // TagCreateManyWithoutVouchersInput
   }
+  VoucherCreateManyWithoutBusinessInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    create?: NexusGenInputs['VoucherCreateWithoutBusinessInput'][] | null; // [VoucherCreateWithoutBusinessInput!]
+  }
+  VoucherCreateManyWithoutTagsInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    create?: NexusGenInputs['VoucherCreateWithoutTagsInput'][] | null; // [VoucherCreateWithoutTagsInput!]
+  }
+  VoucherCreateOneWithoutOrdersInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
+    create?: NexusGenInputs['VoucherCreateWithoutOrdersInput'] | null; // VoucherCreateWithoutOrdersInput
+  }
+  VoucherCreateWithoutBusinessInput: { // input type
+    description: string; // String!
+    expirationDate?: string | null; // String
+    imageUrl: string; // String!
+    name: string; // String!
+    orders?: NexusGenInputs['OrderCreateManyWithoutVoucherInput'] | null; // OrderCreateManyWithoutVoucherInput
+    price: number; // Float!
+    promotion?: number | null; // Float
+    tags?: NexusGenInputs['TagCreateManyWithoutVouchersInput'] | null; // TagCreateManyWithoutVouchersInput
+  }
+  VoucherCreateWithoutOrdersInput: { // input type
+    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
+    description: string; // String!
+    expirationDate?: string | null; // String
+    imageUrl: string; // String!
+    name: string; // String!
+    price: number; // Float!
+    promotion?: number | null; // Float
+    tags?: NexusGenInputs['TagCreateManyWithoutVouchersInput'] | null; // TagCreateManyWithoutVouchersInput
+  }
+  VoucherCreateWithoutTagsInput: { // input type
+    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
+    description: string; // String!
+    expirationDate?: string | null; // String
+    imageUrl: string; // String!
+    name: string; // String!
+    orders?: NexusGenInputs['OrderCreateManyWithoutVoucherInput'] | null; // OrderCreateManyWithoutVoucherInput
+    price: number; // Float!
+    promotion?: number | null; // Float
+  }
+  VoucherFilter: { // input type
+    every?: NexusGenInputs['VoucherWhereInput'] | null; // VoucherWhereInput
+    none?: NexusGenInputs['VoucherWhereInput'] | null; // VoucherWhereInput
+    some?: NexusGenInputs['VoucherWhereInput'] | null; // VoucherWhereInput
+  }
+  VoucherScalarWhereInput: { // input type
+    AND?: NexusGenInputs['VoucherScalarWhereInput'][] | null; // [VoucherScalarWhereInput!]
+    businessId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    expirationDate?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    imageUrl?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['VoucherScalarWhereInput'][] | null; // [VoucherScalarWhereInput!]
+    OR?: NexusGenInputs['VoucherScalarWhereInput'][] | null; // [VoucherScalarWhereInput!]
+    orders?: NexusGenInputs['OrderFilter'] | null; // OrderFilter
+    price?: NexusGenInputs['FloatFilter'] | null; // FloatFilter
+    promotion?: NexusGenInputs['NullableFloatFilter'] | null; // NullableFloatFilter
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+  }
+  VoucherUpdateInput: { // input type
+    business?: NexusGenInputs['BusinessUpdateOneWithoutVouchersInput'] | null; // BusinessUpdateOneWithoutVouchersInput
+    description?: string | null; // String
+    expirationDate?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    orders?: NexusGenInputs['OrderUpdateManyWithoutVoucherInput'] | null; // OrderUpdateManyWithoutVoucherInput
+    price?: number | null; // Float
+    promotion?: number | null; // Float
+    tags?: NexusGenInputs['TagUpdateManyWithoutVouchersInput'] | null; // TagUpdateManyWithoutVouchersInput
+  }
+  VoucherUpdateManyDataInput: { // input type
+    description?: string | null; // String
+    expirationDate?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    price?: number | null; // Float
+    promotion?: number | null; // Float
+  }
+  VoucherUpdateManyWithWhereNestedInput: { // input type
+    data: NexusGenInputs['VoucherUpdateManyDataInput']; // VoucherUpdateManyDataInput!
+    where: NexusGenInputs['VoucherScalarWhereInput']; // VoucherScalarWhereInput!
+  }
+  VoucherUpdateManyWithoutBusinessInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    create?: NexusGenInputs['VoucherCreateWithoutBusinessInput'][] | null; // [VoucherCreateWithoutBusinessInput!]
+    delete?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['VoucherScalarWhereInput'][] | null; // [VoucherScalarWhereInput!]
+    disconnect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    set?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    update?: NexusGenInputs['VoucherUpdateWithWhereUniqueWithoutBusinessInput'][] | null; // [VoucherUpdateWithWhereUniqueWithoutBusinessInput!]
+    updateMany?: NexusGenInputs['VoucherUpdateManyWithWhereNestedInput'][] | null; // [VoucherUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['VoucherUpsertWithWhereUniqueWithoutBusinessInput'][] | null; // [VoucherUpsertWithWhereUniqueWithoutBusinessInput!]
+  }
+  VoucherUpdateManyWithoutTagsInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    create?: NexusGenInputs['VoucherCreateWithoutTagsInput'][] | null; // [VoucherCreateWithoutTagsInput!]
+    delete?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    deleteMany?: NexusGenInputs['VoucherScalarWhereInput'][] | null; // [VoucherScalarWhereInput!]
+    disconnect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    set?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
+    update?: NexusGenInputs['VoucherUpdateWithWhereUniqueWithoutTagsInput'][] | null; // [VoucherUpdateWithWhereUniqueWithoutTagsInput!]
+    updateMany?: NexusGenInputs['VoucherUpdateManyWithWhereNestedInput'][] | null; // [VoucherUpdateManyWithWhereNestedInput!]
+    upsert?: NexusGenInputs['VoucherUpsertWithWhereUniqueWithoutTagsInput'][] | null; // [VoucherUpsertWithWhereUniqueWithoutTagsInput!]
+  }
+  VoucherUpdateOneRequiredWithoutOrdersInput: { // input type
+    connect?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
+    create?: NexusGenInputs['VoucherCreateWithoutOrdersInput'] | null; // VoucherCreateWithoutOrdersInput
+    update?: NexusGenInputs['VoucherUpdateWithoutOrdersDataInput'] | null; // VoucherUpdateWithoutOrdersDataInput
+    upsert?: NexusGenInputs['VoucherUpsertWithoutOrdersInput'] | null; // VoucherUpsertWithoutOrdersInput
+  }
+  VoucherUpdateWithWhereUniqueWithoutBusinessInput: { // input type
+    data: NexusGenInputs['VoucherUpdateWithoutBusinessDataInput']; // VoucherUpdateWithoutBusinessDataInput!
+    where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+  }
+  VoucherUpdateWithWhereUniqueWithoutTagsInput: { // input type
+    data: NexusGenInputs['VoucherUpdateWithoutTagsDataInput']; // VoucherUpdateWithoutTagsDataInput!
+    where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+  }
+  VoucherUpdateWithoutBusinessDataInput: { // input type
+    description?: string | null; // String
+    expirationDate?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    orders?: NexusGenInputs['OrderUpdateManyWithoutVoucherInput'] | null; // OrderUpdateManyWithoutVoucherInput
+    price?: number | null; // Float
+    promotion?: number | null; // Float
+    tags?: NexusGenInputs['TagUpdateManyWithoutVouchersInput'] | null; // TagUpdateManyWithoutVouchersInput
+  }
+  VoucherUpdateWithoutOrdersDataInput: { // input type
+    business?: NexusGenInputs['BusinessUpdateOneWithoutVouchersInput'] | null; // BusinessUpdateOneWithoutVouchersInput
+    description?: string | null; // String
+    expirationDate?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    price?: number | null; // Float
+    promotion?: number | null; // Float
+    tags?: NexusGenInputs['TagUpdateManyWithoutVouchersInput'] | null; // TagUpdateManyWithoutVouchersInput
+  }
+  VoucherUpdateWithoutTagsDataInput: { // input type
+    business?: NexusGenInputs['BusinessUpdateOneWithoutVouchersInput'] | null; // BusinessUpdateOneWithoutVouchersInput
+    description?: string | null; // String
+    expirationDate?: string | null; // String
+    id?: number | null; // Int
+    imageUrl?: string | null; // String
+    name?: string | null; // String
+    orders?: NexusGenInputs['OrderUpdateManyWithoutVoucherInput'] | null; // OrderUpdateManyWithoutVoucherInput
+    price?: number | null; // Float
+    promotion?: number | null; // Float
+  }
+  VoucherUpsertWithWhereUniqueWithoutBusinessInput: { // input type
+    create: NexusGenInputs['VoucherCreateWithoutBusinessInput']; // VoucherCreateWithoutBusinessInput!
+    update: NexusGenInputs['VoucherUpdateWithoutBusinessDataInput']; // VoucherUpdateWithoutBusinessDataInput!
+    where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+  }
+  VoucherUpsertWithWhereUniqueWithoutTagsInput: { // input type
+    create: NexusGenInputs['VoucherCreateWithoutTagsInput']; // VoucherCreateWithoutTagsInput!
+    update: NexusGenInputs['VoucherUpdateWithoutTagsDataInput']; // VoucherUpdateWithoutTagsDataInput!
+    where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+  }
+  VoucherUpsertWithoutOrdersInput: { // input type
+    create: NexusGenInputs['VoucherCreateWithoutOrdersInput']; // VoucherCreateWithoutOrdersInput!
+    update: NexusGenInputs['VoucherUpdateWithoutOrdersDataInput']; // VoucherUpdateWithoutOrdersDataInput!
+  }
+  VoucherWhereInput: { // input type
+    AND?: NexusGenInputs['VoucherWhereInput'][] | null; // [VoucherWhereInput!]
+    business?: NexusGenInputs['BusinessWhereInput'] | null; // BusinessWhereInput
+    businessId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
+    description?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    expirationDate?: NexusGenInputs['NullableStringFilter'] | null; // NullableStringFilter
+    id?: NexusGenInputs['IntFilter'] | null; // IntFilter
+    imageUrl?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    name?: NexusGenInputs['StringFilter'] | null; // StringFilter
+    NOT?: NexusGenInputs['VoucherWhereInput'][] | null; // [VoucherWhereInput!]
+    OR?: NexusGenInputs['VoucherWhereInput'][] | null; // [VoucherWhereInput!]
+    orders?: NexusGenInputs['OrderFilter'] | null; // OrderFilter
+    price?: NexusGenInputs['FloatFilter'] | null; // FloatFilter
+    promotion?: NexusGenInputs['NullableFloatFilter'] | null; // NullableFloatFilter
+    tags?: NexusGenInputs['TagFilter'] | null; // TagFilter
+  }
   VoucherWhereUniqueInput: { // input type
     id?: number | null; // Int
-    name?: string | null; // String
   }
 }
 
@@ -82,7 +744,9 @@ export interface NexusGenRootTypes {
   Business: prisma.Business;
   Category: prisma.Category;
   Mutation: {};
+  Order: prisma.Order;
   Query: {};
+  Rating: prisma.Rating;
   Tag: prisma.Tag;
   Voucher: prisma.Voucher;
   String: string;
@@ -93,16 +757,104 @@ export interface NexusGenRootTypes {
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
+  BusinessCreateInput: NexusGenInputs['BusinessCreateInput'];
+  BusinessCreateManyWithoutCategoryInput: NexusGenInputs['BusinessCreateManyWithoutCategoryInput'];
   BusinessCreateOneWithoutVouchersInput: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'];
+  BusinessCreateWithoutCategoryInput: NexusGenInputs['BusinessCreateWithoutCategoryInput'];
   BusinessCreateWithoutVouchersInput: NexusGenInputs['BusinessCreateWithoutVouchersInput'];
+  BusinessFilter: NexusGenInputs['BusinessFilter'];
+  BusinessScalarWhereInput: NexusGenInputs['BusinessScalarWhereInput'];
+  BusinessUpdateInput: NexusGenInputs['BusinessUpdateInput'];
+  BusinessUpdateManyDataInput: NexusGenInputs['BusinessUpdateManyDataInput'];
+  BusinessUpdateManyWithWhereNestedInput: NexusGenInputs['BusinessUpdateManyWithWhereNestedInput'];
+  BusinessUpdateManyWithoutCategoryInput: NexusGenInputs['BusinessUpdateManyWithoutCategoryInput'];
+  BusinessUpdateOneWithoutVouchersInput: NexusGenInputs['BusinessUpdateOneWithoutVouchersInput'];
+  BusinessUpdateWithWhereUniqueWithoutCategoryInput: NexusGenInputs['BusinessUpdateWithWhereUniqueWithoutCategoryInput'];
+  BusinessUpdateWithoutCategoryDataInput: NexusGenInputs['BusinessUpdateWithoutCategoryDataInput'];
+  BusinessUpdateWithoutVouchersDataInput: NexusGenInputs['BusinessUpdateWithoutVouchersDataInput'];
+  BusinessUpsertWithWhereUniqueWithoutCategoryInput: NexusGenInputs['BusinessUpsertWithWhereUniqueWithoutCategoryInput'];
+  BusinessUpsertWithoutVouchersInput: NexusGenInputs['BusinessUpsertWithoutVouchersInput'];
+  BusinessWhereInput: NexusGenInputs['BusinessWhereInput'];
   BusinessWhereUniqueInput: NexusGenInputs['BusinessWhereUniqueInput'];
+  CategoryCreateInput: NexusGenInputs['CategoryCreateInput'];
   CategoryCreateOneWithoutBusinessesInput: NexusGenInputs['CategoryCreateOneWithoutBusinessesInput'];
   CategoryCreateWithoutBusinessesInput: NexusGenInputs['CategoryCreateWithoutBusinessesInput'];
+  CategoryUpdateInput: NexusGenInputs['CategoryUpdateInput'];
+  CategoryUpdateOneWithoutBusinessesInput: NexusGenInputs['CategoryUpdateOneWithoutBusinessesInput'];
+  CategoryUpdateWithoutBusinessesDataInput: NexusGenInputs['CategoryUpdateWithoutBusinessesDataInput'];
+  CategoryUpsertWithoutBusinessesInput: NexusGenInputs['CategoryUpsertWithoutBusinessesInput'];
+  CategoryWhereInput: NexusGenInputs['CategoryWhereInput'];
   CategoryWhereUniqueInput: NexusGenInputs['CategoryWhereUniqueInput'];
+  FloatFilter: NexusGenInputs['FloatFilter'];
+  IntFilter: NexusGenInputs['IntFilter'];
+  NullableFloatFilter: NexusGenInputs['NullableFloatFilter'];
+  NullableIntFilter: NexusGenInputs['NullableIntFilter'];
+  NullableStringFilter: NexusGenInputs['NullableStringFilter'];
+  OrderCreateInput: NexusGenInputs['OrderCreateInput'];
+  OrderCreateManyWithoutVoucherInput: NexusGenInputs['OrderCreateManyWithoutVoucherInput'];
+  OrderCreateWithoutVoucherInput: NexusGenInputs['OrderCreateWithoutVoucherInput'];
+  OrderFilter: NexusGenInputs['OrderFilter'];
+  OrderScalarWhereInput: NexusGenInputs['OrderScalarWhereInput'];
+  OrderUpdateInput: NexusGenInputs['OrderUpdateInput'];
+  OrderUpdateManyDataInput: NexusGenInputs['OrderUpdateManyDataInput'];
+  OrderUpdateManyWithWhereNestedInput: NexusGenInputs['OrderUpdateManyWithWhereNestedInput'];
+  OrderUpdateManyWithoutVoucherInput: NexusGenInputs['OrderUpdateManyWithoutVoucherInput'];
+  OrderUpdateWithWhereUniqueWithoutVoucherInput: NexusGenInputs['OrderUpdateWithWhereUniqueWithoutVoucherInput'];
+  OrderUpdateWithoutVoucherDataInput: NexusGenInputs['OrderUpdateWithoutVoucherDataInput'];
+  OrderUpsertWithWhereUniqueWithoutVoucherInput: NexusGenInputs['OrderUpsertWithWhereUniqueWithoutVoucherInput'];
+  OrderWhereInput: NexusGenInputs['OrderWhereInput'];
+  OrderWhereUniqueInput: NexusGenInputs['OrderWhereUniqueInput'];
+  RatingCreateManyWithoutBusinessesInput: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'];
+  RatingCreateWithoutBusinessesInput: NexusGenInputs['RatingCreateWithoutBusinessesInput'];
+  RatingFilter: NexusGenInputs['RatingFilter'];
+  RatingScalarWhereInput: NexusGenInputs['RatingScalarWhereInput'];
+  RatingUpdateManyDataInput: NexusGenInputs['RatingUpdateManyDataInput'];
+  RatingUpdateManyWithWhereNestedInput: NexusGenInputs['RatingUpdateManyWithWhereNestedInput'];
+  RatingUpdateManyWithoutBusinessesInput: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'];
+  RatingUpdateWithWhereUniqueWithoutBusinessesInput: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessesInput'];
+  RatingUpdateWithoutBusinessesDataInput: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput'];
+  RatingUpsertWithWhereUniqueWithoutBusinessesInput: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessesInput'];
+  RatingWhereInput: NexusGenInputs['RatingWhereInput'];
+  RatingWhereUniqueInput: NexusGenInputs['RatingWhereUniqueInput'];
+  StringFilter: NexusGenInputs['StringFilter'];
+  TagCreateInput: NexusGenInputs['TagCreateInput'];
   TagCreateManyWithoutVouchersInput: NexusGenInputs['TagCreateManyWithoutVouchersInput'];
   TagCreateWithoutVouchersInput: NexusGenInputs['TagCreateWithoutVouchersInput'];
+  TagFilter: NexusGenInputs['TagFilter'];
+  TagScalarWhereInput: NexusGenInputs['TagScalarWhereInput'];
+  TagUpdateInput: NexusGenInputs['TagUpdateInput'];
+  TagUpdateManyDataInput: NexusGenInputs['TagUpdateManyDataInput'];
+  TagUpdateManyWithWhereNestedInput: NexusGenInputs['TagUpdateManyWithWhereNestedInput'];
+  TagUpdateManyWithoutVouchersInput: NexusGenInputs['TagUpdateManyWithoutVouchersInput'];
+  TagUpdateWithWhereUniqueWithoutVouchersInput: NexusGenInputs['TagUpdateWithWhereUniqueWithoutVouchersInput'];
+  TagUpdateWithoutVouchersDataInput: NexusGenInputs['TagUpdateWithoutVouchersDataInput'];
+  TagUpsertWithWhereUniqueWithoutVouchersInput: NexusGenInputs['TagUpsertWithWhereUniqueWithoutVouchersInput'];
+  TagWhereInput: NexusGenInputs['TagWhereInput'];
   TagWhereUniqueInput: NexusGenInputs['TagWhereUniqueInput'];
   VoucherCreateInput: NexusGenInputs['VoucherCreateInput'];
+  VoucherCreateManyWithoutBusinessInput: NexusGenInputs['VoucherCreateManyWithoutBusinessInput'];
+  VoucherCreateManyWithoutTagsInput: NexusGenInputs['VoucherCreateManyWithoutTagsInput'];
+  VoucherCreateOneWithoutOrdersInput: NexusGenInputs['VoucherCreateOneWithoutOrdersInput'];
+  VoucherCreateWithoutBusinessInput: NexusGenInputs['VoucherCreateWithoutBusinessInput'];
+  VoucherCreateWithoutOrdersInput: NexusGenInputs['VoucherCreateWithoutOrdersInput'];
+  VoucherCreateWithoutTagsInput: NexusGenInputs['VoucherCreateWithoutTagsInput'];
+  VoucherFilter: NexusGenInputs['VoucherFilter'];
+  VoucherScalarWhereInput: NexusGenInputs['VoucherScalarWhereInput'];
+  VoucherUpdateInput: NexusGenInputs['VoucherUpdateInput'];
+  VoucherUpdateManyDataInput: NexusGenInputs['VoucherUpdateManyDataInput'];
+  VoucherUpdateManyWithWhereNestedInput: NexusGenInputs['VoucherUpdateManyWithWhereNestedInput'];
+  VoucherUpdateManyWithoutBusinessInput: NexusGenInputs['VoucherUpdateManyWithoutBusinessInput'];
+  VoucherUpdateManyWithoutTagsInput: NexusGenInputs['VoucherUpdateManyWithoutTagsInput'];
+  VoucherUpdateOneRequiredWithoutOrdersInput: NexusGenInputs['VoucherUpdateOneRequiredWithoutOrdersInput'];
+  VoucherUpdateWithWhereUniqueWithoutBusinessInput: NexusGenInputs['VoucherUpdateWithWhereUniqueWithoutBusinessInput'];
+  VoucherUpdateWithWhereUniqueWithoutTagsInput: NexusGenInputs['VoucherUpdateWithWhereUniqueWithoutTagsInput'];
+  VoucherUpdateWithoutBusinessDataInput: NexusGenInputs['VoucherUpdateWithoutBusinessDataInput'];
+  VoucherUpdateWithoutOrdersDataInput: NexusGenInputs['VoucherUpdateWithoutOrdersDataInput'];
+  VoucherUpdateWithoutTagsDataInput: NexusGenInputs['VoucherUpdateWithoutTagsDataInput'];
+  VoucherUpsertWithWhereUniqueWithoutBusinessInput: NexusGenInputs['VoucherUpsertWithWhereUniqueWithoutBusinessInput'];
+  VoucherUpsertWithWhereUniqueWithoutTagsInput: NexusGenInputs['VoucherUpsertWithWhereUniqueWithoutTagsInput'];
+  VoucherUpsertWithoutOrdersInput: NexusGenInputs['VoucherUpsertWithoutOrdersInput'];
+  VoucherWhereInput: NexusGenInputs['VoucherWhereInput'];
   VoucherWhereUniqueInput: NexusGenInputs['VoucherWhereUniqueInput'];
 }
 
@@ -117,6 +869,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     imageUrl: string; // String!
     name: string; // String!
+    ratings: NexusGenRootTypes['Rating'][]; // [Rating!]!
     siteUrl: string | null; // String
     type: string; // String!
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
@@ -127,11 +880,46 @@ export interface NexusGenFieldTypes {
     name: string; // String!
   }
   Mutation: { // field return type
+    createOneBusiness: NexusGenRootTypes['Business']; // Business!
+    createOneCategory: NexusGenRootTypes['Category']; // Category!
+    createOneOrder: NexusGenRootTypes['Order']; // Order!
+    createOneTag: NexusGenRootTypes['Tag']; // Tag!
     createOneVoucher: NexusGenRootTypes['Voucher']; // Voucher!
+    deleteOneBusiness: NexusGenRootTypes['Business'] | null; // Business
+    deleteOneCategory: NexusGenRootTypes['Category'] | null; // Category
+    deleteOneOrder: NexusGenRootTypes['Order'] | null; // Order
+    deleteOneTag: NexusGenRootTypes['Tag'] | null; // Tag
+    deleteOneVoucher: NexusGenRootTypes['Voucher'] | null; // Voucher
+    updateOneBusiness: NexusGenRootTypes['Business'] | null; // Business
+    updateOneCategory: NexusGenRootTypes['Category'] | null; // Category
+    updateOneOrder: NexusGenRootTypes['Order'] | null; // Order
+    updateOneTag: NexusGenRootTypes['Tag'] | null; // Tag
+    updateOneVoucher: NexusGenRootTypes['Voucher'] | null; // Voucher
+  }
+  Order: { // field return type
+    count: number; // Int!
+    email: string; // String!
+    id: number; // Int!
+    name: string; // String!
+    voucher: NexusGenRootTypes['Voucher']; // Voucher!
   }
   Query: { // field return type
+    business: NexusGenRootTypes['Business'] | null; // Business
+    businesses: NexusGenRootTypes['Business'][]; // [Business!]!
+    categories: NexusGenRootTypes['Category'][]; // [Category!]!
+    category: NexusGenRootTypes['Category'] | null; // Category
+    order: NexusGenRootTypes['Order'] | null; // Order
+    orders: NexusGenRootTypes['Order'][]; // [Order!]!
     recommended: NexusGenRootTypes['Voucher']; // Voucher!
+    tag: NexusGenRootTypes['Tag'] | null; // Tag
+    tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
+    voucher: NexusGenRootTypes['Voucher'] | null; // Voucher
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
+  }
+  Rating: { // field return type
+    businesses: NexusGenRootTypes['Business'][]; // [Business!]!
+    id: number; // Int!
+    rate: number; // Int!
   }
   Tag: { // field return type
     id: number; // Int!
@@ -145,6 +933,7 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     imageUrl: string; // String!
     name: string; // String!
+    orders: NexusGenRootTypes['Order'][]; // [Order!]!
     price: number; // Float!
     promotion: number | null; // Float
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
@@ -152,6 +941,15 @@ export interface NexusGenFieldTypes {
 }
 
 export interface NexusGenArgTypes {
+  Business: {
+    ratings: { // args
+      after?: NexusGenInputs['RatingWhereUniqueInput'] | null; // RatingWhereUniqueInput
+      before?: NexusGenInputs['RatingWhereUniqueInput'] | null; // RatingWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
   Category: {
     businesses: { // args
       after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
@@ -162,13 +960,112 @@ export interface NexusGenArgTypes {
     }
   }
   Mutation: {
+    createOneBusiness: { // args
+      data: NexusGenInputs['BusinessCreateInput']; // BusinessCreateInput!
+    }
+    createOneCategory: { // args
+      data: NexusGenInputs['CategoryCreateInput']; // CategoryCreateInput!
+    }
+    createOneOrder: { // args
+      data: NexusGenInputs['OrderCreateInput']; // OrderCreateInput!
+    }
+    createOneTag: { // args
+      data: NexusGenInputs['TagCreateInput']; // TagCreateInput!
+    }
     createOneVoucher: { // args
       data: NexusGenInputs['VoucherCreateInput']; // VoucherCreateInput!
     }
+    deleteOneBusiness: { // args
+      where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
+    }
+    deleteOneCategory: { // args
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
+    deleteOneOrder: { // args
+      where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
+    }
+    deleteOneTag: { // args
+      where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+    }
+    deleteOneVoucher: { // args
+      where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+    }
+    updateOneBusiness: { // args
+      data: NexusGenInputs['BusinessUpdateInput']; // BusinessUpdateInput!
+      where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
+    }
+    updateOneCategory: { // args
+      data: NexusGenInputs['CategoryUpdateInput']; // CategoryUpdateInput!
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
+    updateOneOrder: { // args
+      data: NexusGenInputs['OrderUpdateInput']; // OrderUpdateInput!
+      where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
+    }
+    updateOneTag: { // args
+      data: NexusGenInputs['TagUpdateInput']; // TagUpdateInput!
+      where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+    }
+    updateOneVoucher: { // args
+      data: NexusGenInputs['VoucherUpdateInput']; // VoucherUpdateInput!
+      where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+    }
   }
   Query: {
+    business: { // args
+      where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
+    }
+    businesses: { // args
+      after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      before?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    categories: { // args
+      after?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      before?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    category: { // args
+      where: NexusGenInputs['CategoryWhereUniqueInput']; // CategoryWhereUniqueInput!
+    }
+    order: { // args
+      where: NexusGenInputs['OrderWhereUniqueInput']; // OrderWhereUniqueInput!
+    }
+    orders: { // args
+      after?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
+      before?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    tag: { // args
+      where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+    }
+    tags: { // args
+      after?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
+      before?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    voucher: { // args
+      where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
+    }
     vouchers: { // args
       type?: string | null; // String
+    }
+  }
+  Rating: {
+    businesses: { // args
+      after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      before?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
     }
   }
   Tag: {
@@ -181,6 +1078,13 @@ export interface NexusGenArgTypes {
     }
   }
   Voucher: {
+    orders: { // args
+      after?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
+      before?: NexusGenInputs['OrderWhereUniqueInput'] | null; // OrderWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
     tags: { // args
       after?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
       before?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
@@ -196,9 +1100,9 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Business" | "Category" | "Mutation" | "Query" | "Tag" | "Voucher";
+export type NexusGenObjectNames = "Business" | "Category" | "Mutation" | "Order" | "Query" | "Rating" | "Tag" | "Voucher";
 
-export type NexusGenInputNames = "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutVouchersInput" | "BusinessWhereUniqueInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryWhereUniqueInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagWhereUniqueInput" | "VoucherCreateInput" | "VoucherWhereUniqueInput";
+export type NexusGenInputNames = "BusinessCreateInput" | "BusinessCreateManyWithoutCategoryInput" | "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutCategoryInput" | "BusinessCreateWithoutVouchersInput" | "BusinessFilter" | "BusinessScalarWhereInput" | "BusinessUpdateInput" | "BusinessUpdateManyDataInput" | "BusinessUpdateManyWithWhereNestedInput" | "BusinessUpdateManyWithoutCategoryInput" | "BusinessUpdateOneWithoutVouchersInput" | "BusinessUpdateWithWhereUniqueWithoutCategoryInput" | "BusinessUpdateWithoutCategoryDataInput" | "BusinessUpdateWithoutVouchersDataInput" | "BusinessUpsertWithWhereUniqueWithoutCategoryInput" | "BusinessUpsertWithoutVouchersInput" | "BusinessWhereInput" | "BusinessWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryUpdateInput" | "CategoryUpdateOneWithoutBusinessesInput" | "CategoryUpdateWithoutBusinessesDataInput" | "CategoryUpsertWithoutBusinessesInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "FloatFilter" | "IntFilter" | "NullableFloatFilter" | "NullableIntFilter" | "NullableStringFilter" | "OrderCreateInput" | "OrderCreateManyWithoutVoucherInput" | "OrderCreateWithoutVoucherInput" | "OrderFilter" | "OrderScalarWhereInput" | "OrderUpdateInput" | "OrderUpdateManyDataInput" | "OrderUpdateManyWithWhereNestedInput" | "OrderUpdateManyWithoutVoucherInput" | "OrderUpdateWithWhereUniqueWithoutVoucherInput" | "OrderUpdateWithoutVoucherDataInput" | "OrderUpsertWithWhereUniqueWithoutVoucherInput" | "OrderWhereInput" | "OrderWhereUniqueInput" | "RatingCreateManyWithoutBusinessesInput" | "RatingCreateWithoutBusinessesInput" | "RatingFilter" | "RatingScalarWhereInput" | "RatingUpdateManyDataInput" | "RatingUpdateManyWithWhereNestedInput" | "RatingUpdateManyWithoutBusinessesInput" | "RatingUpdateWithWhereUniqueWithoutBusinessesInput" | "RatingUpdateWithoutBusinessesDataInput" | "RatingUpsertWithWhereUniqueWithoutBusinessesInput" | "RatingWhereInput" | "RatingWhereUniqueInput" | "StringFilter" | "TagCreateInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagFilter" | "TagScalarWhereInput" | "TagUpdateInput" | "TagUpdateManyDataInput" | "TagUpdateManyWithWhereNestedInput" | "TagUpdateManyWithoutVouchersInput" | "TagUpdateWithWhereUniqueWithoutVouchersInput" | "TagUpdateWithoutVouchersDataInput" | "TagUpsertWithWhereUniqueWithoutVouchersInput" | "TagWhereInput" | "TagWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutBusinessInput" | "VoucherCreateManyWithoutTagsInput" | "VoucherCreateOneWithoutOrdersInput" | "VoucherCreateWithoutBusinessInput" | "VoucherCreateWithoutOrdersInput" | "VoucherCreateWithoutTagsInput" | "VoucherFilter" | "VoucherScalarWhereInput" | "VoucherUpdateInput" | "VoucherUpdateManyDataInput" | "VoucherUpdateManyWithWhereNestedInput" | "VoucherUpdateManyWithoutBusinessInput" | "VoucherUpdateManyWithoutTagsInput" | "VoucherUpdateOneRequiredWithoutOrdersInput" | "VoucherUpdateWithWhereUniqueWithoutBusinessInput" | "VoucherUpdateWithWhereUniqueWithoutTagsInput" | "VoucherUpdateWithoutBusinessDataInput" | "VoucherUpdateWithoutOrdersDataInput" | "VoucherUpdateWithoutTagsDataInput" | "VoucherUpsertWithWhereUniqueWithoutBusinessInput" | "VoucherUpsertWithWhereUniqueWithoutTagsInput" | "VoucherUpsertWithoutOrdersInput" | "VoucherWhereInput" | "VoucherWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 

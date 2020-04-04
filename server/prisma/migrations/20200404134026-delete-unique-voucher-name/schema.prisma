@@ -4,16 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
-}
-
-model Order {
-  id Int @default(autoincrement()) @id
-  email String
-  name String
-  count Int @default(1)
-  voucherId Int
-  voucher Voucher @relation(fields: [voucherId], references: [id])
+  url = "***"
 }
 
 model Voucher {
@@ -27,7 +18,6 @@ model Voucher {
   businessId Int?
   business Business? @relation(fields: [businessId], references: [id])
   tags Tag[] @relation(references: [id])
-  orders Order[]
 }
 
 model Tag {
@@ -40,12 +30,6 @@ model Category {
   id Int @default(autoincrement()) @id
   name String
   businesses Business[]
-}
-
-model Rating {
-  id Int @default(autoincrement()) @id
-  rate Int
-  businesses Business[] @relation(references: [id])
 }
 
 model Business {
@@ -62,7 +46,6 @@ model Business {
   vouchers Voucher[]
   categoryId Int?
   category Category? @relation(fields: [categoryId], references: [id])
-  ratings Rating[] @relation(references: [id])
 }
 
 
