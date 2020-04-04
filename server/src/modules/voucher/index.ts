@@ -1,1 +1,5 @@
-export { getRecommendedVouchers } from './voucher.resolver'
+export {
+  getRecommendedVouchers,
+  getSpecialForYouVoucher,
+  searchVouchers,
+} from './voucher.resolver'

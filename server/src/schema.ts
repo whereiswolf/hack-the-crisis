@@ -1,5 +1,6 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
-import { makeSchema, objectType } from 'nexus'
+import { makeSchema, objectType, stringArg } from 'nexus'
+import { getSpecialForYouVoucher, searchVouchers } from './modules/voucher'
 
 const Voucher = objectType({
   name: 'Voucher',
@@ -47,6 +48,7 @@ const Business = objectType({
     t.model.history()
     t.model.imageUrl()
     t.model.category()
+    t.model.type()
     t.model.vouchers({
       pagination: false,
     })
@@ -56,7 +58,17 @@ const Business = objectType({
 const Query = objectType({
   name: 'Query',
   definition(t) {
-    t.crud.vouchers(), t.crud.businesses()
+    t.field('recommended', {
+      type: 'Voucher',
+      resolve: getSpecialForYouVoucher,
+    }),
+      t.list.field('vouchers', {
+        type: 'Voucher',
+        resolve: searchVouchers,
+        args: {
+          type: stringArg({ nullable: true }),
+        },
+      })
   },
 })
 

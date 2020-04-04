@@ -13,6 +13,7 @@ type Business {
   imageUrl: String!
   name: String!
   siteUrl: String
+  type: String!
   vouchers: [Voucher!]!
 }
 
@@ -62,8 +63,8 @@ type Mutation {
 }
 
 type Query {
-  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
-  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
+  recommended: Voucher!
+  vouchers(type: String): [Voucher!]!
 }
 
 type Tag {

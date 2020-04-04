@@ -118,6 +118,7 @@ export interface NexusGenFieldTypes {
     imageUrl: string; // String!
     name: string; // String!
     siteUrl: string | null; // String
+    type: string; // String!
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   Category: { // field return type
@@ -129,7 +130,7 @@ export interface NexusGenFieldTypes {
     createOneVoucher: NexusGenRootTypes['Voucher']; // Voucher!
   }
   Query: { // field return type
-    businesses: NexusGenRootTypes['Business'][]; // [Business!]!
+    recommended: NexusGenRootTypes['Voucher']; // Voucher!
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   Tag: { // field return type
@@ -166,19 +167,8 @@ export interface NexusGenArgTypes {
     }
   }
   Query: {
-    businesses: { // args
-      after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
-      before?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
-    }
     vouchers: { // args
-      after?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-      before?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
+      type?: string | null; // String
     }
   }
   Tag: {
