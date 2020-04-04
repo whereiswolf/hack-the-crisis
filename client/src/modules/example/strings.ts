@@ -3,6 +3,7 @@ import { getTranslationKeys } from 'utils'
 export const MODULE_NAME = 'example'
 
 export const STRINGS = {
+  MODULE_NAME: 'MODULE_NAME',
   DATA_LOADING: 'DATA_LOADING',
   DATA_ERROR: 'DATA_ERROR',
 }
