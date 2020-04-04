@@ -743,6 +743,13 @@ export interface NexusGenEnums {
 export interface NexusGenRootTypes {
   Business: prisma.Business;
   Category: prisma.Category;
+  File: { // root type
+    encoding: string; // String!
+    filename: string; // String!
+    id: string; // ID!
+    mimetype: string; // String!
+    path: string; // String!
+  }
   Mutation: {};
   Order: prisma.Order;
   Query: {};
@@ -754,6 +761,7 @@ export interface NexusGenRootTypes {
   Float: number;
   Boolean: boolean;
   ID: string;
+  Upload: any;
 }
 
 export interface NexusGenAllTypes extends NexusGenRootTypes {
@@ -879,6 +887,13 @@ export interface NexusGenFieldTypes {
     id: number; // Int!
     name: string; // String!
   }
+  File: { // field return type
+    encoding: string; // String!
+    filename: string; // String!
+    id: string; // ID!
+    mimetype: string; // String!
+    path: string; // String!
+  }
   Mutation: { // field return type
     createOneBusiness: NexusGenRootTypes['Business']; // Business!
     createOneCategory: NexusGenRootTypes['Category']; // Category!
@@ -895,6 +910,7 @@ export interface NexusGenFieldTypes {
     updateOneOrder: NexusGenRootTypes['Order'] | null; // Order
     updateOneTag: NexusGenRootTypes['Tag'] | null; // Tag
     updateOneVoucher: NexusGenRootTypes['Voucher'] | null; // Voucher
+    uploadFile: NexusGenRootTypes['File']; // File!
   }
   Order: { // field return type
     count: number; // Int!
@@ -1010,6 +1026,9 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['VoucherUpdateInput']; // VoucherUpdateInput!
       where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
     }
+    uploadFile: { // args
+      file: any; // Upload!
+    }
   }
   Query: {
     business: { // args
@@ -1099,7 +1118,7 @@ export interface NexusGenAbstractResolveReturnTypes {
 
 export interface NexusGenInheritedFields {}
 
-export type NexusGenObjectNames = "Business" | "Category" | "Mutation" | "Order" | "Query" | "Rating" | "Tag" | "Voucher";
+export type NexusGenObjectNames = "Business" | "Category" | "File" | "Mutation" | "Order" | "Query" | "Rating" | "Tag" | "Voucher";
 
 export type NexusGenInputNames = "BusinessCreateInput" | "BusinessCreateManyWithoutCategoryInput" | "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutCategoryInput" | "BusinessCreateWithoutVouchersInput" | "BusinessFilter" | "BusinessScalarWhereInput" | "BusinessUpdateInput" | "BusinessUpdateManyDataInput" | "BusinessUpdateManyWithWhereNestedInput" | "BusinessUpdateManyWithoutCategoryInput" | "BusinessUpdateOneWithoutVouchersInput" | "BusinessUpdateWithWhereUniqueWithoutCategoryInput" | "BusinessUpdateWithoutCategoryDataInput" | "BusinessUpdateWithoutVouchersDataInput" | "BusinessUpsertWithWhereUniqueWithoutCategoryInput" | "BusinessUpsertWithoutVouchersInput" | "BusinessWhereInput" | "BusinessWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryUpdateInput" | "CategoryUpdateOneWithoutBusinessesInput" | "CategoryUpdateWithoutBusinessesDataInput" | "CategoryUpsertWithoutBusinessesInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "FloatFilter" | "IntFilter" | "NullableFloatFilter" | "NullableIntFilter" | "NullableStringFilter" | "OrderCreateInput" | "OrderCreateManyWithoutVoucherInput" | "OrderCreateWithoutVoucherInput" | "OrderFilter" | "OrderScalarWhereInput" | "OrderUpdateInput" | "OrderUpdateManyDataInput" | "OrderUpdateManyWithWhereNestedInput" | "OrderUpdateManyWithoutVoucherInput" | "OrderUpdateWithWhereUniqueWithoutVoucherInput" | "OrderUpdateWithoutVoucherDataInput" | "OrderUpsertWithWhereUniqueWithoutVoucherInput" | "OrderWhereInput" | "OrderWhereUniqueInput" | "RatingCreateManyWithoutBusinessesInput" | "RatingCreateWithoutBusinessesInput" | "RatingFilter" | "RatingScalarWhereInput" | "RatingUpdateManyDataInput" | "RatingUpdateManyWithWhereNestedInput" | "RatingUpdateManyWithoutBusinessesInput" | "RatingUpdateWithWhereUniqueWithoutBusinessesInput" | "RatingUpdateWithoutBusinessesDataInput" | "RatingUpsertWithWhereUniqueWithoutBusinessesInput" | "RatingWhereInput" | "RatingWhereUniqueInput" | "StringFilter" | "TagCreateInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagFilter" | "TagScalarWhereInput" | "TagUpdateInput" | "TagUpdateManyDataInput" | "TagUpdateManyWithWhereNestedInput" | "TagUpdateManyWithoutVouchersInput" | "TagUpdateWithWhereUniqueWithoutVouchersInput" | "TagUpdateWithoutVouchersDataInput" | "TagUpsertWithWhereUniqueWithoutVouchersInput" | "TagWhereInput" | "TagWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutBusinessInput" | "VoucherCreateManyWithoutTagsInput" | "VoucherCreateOneWithoutOrdersInput" | "VoucherCreateWithoutBusinessInput" | "VoucherCreateWithoutOrdersInput" | "VoucherCreateWithoutTagsInput" | "VoucherFilter" | "VoucherScalarWhereInput" | "VoucherUpdateInput" | "VoucherUpdateManyDataInput" | "VoucherUpdateManyWithWhereNestedInput" | "VoucherUpdateManyWithoutBusinessInput" | "VoucherUpdateManyWithoutTagsInput" | "VoucherUpdateOneRequiredWithoutOrdersInput" | "VoucherUpdateWithWhereUniqueWithoutBusinessInput" | "VoucherUpdateWithWhereUniqueWithoutTagsInput" | "VoucherUpdateWithoutBusinessDataInput" | "VoucherUpdateWithoutOrdersDataInput" | "VoucherUpdateWithoutTagsDataInput" | "VoucherUpsertWithWhereUniqueWithoutBusinessInput" | "VoucherUpsertWithWhereUniqueWithoutTagsInput" | "VoucherUpsertWithoutOrdersInput" | "VoucherWhereInput" | "VoucherWhereUniqueInput";
 
@@ -1107,7 +1126,7 @@ export type NexusGenEnumNames = never;
 
 export type NexusGenInterfaceNames = never;
 
-export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String";
+export type NexusGenScalarNames = "Boolean" | "Float" | "ID" | "Int" | "String" | "Upload";
 
 export type NexusGenUnionNames = never;
 
