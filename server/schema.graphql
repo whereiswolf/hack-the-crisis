@@ -279,6 +279,14 @@ input CategoryWhereUniqueInput {
   id: Int
 }
 
+type File {
+  encoding: String!
+  filename: String!
+  id: ID!
+  mimetype: String!
+  path: String!
+}
+
 input FloatFilter {
   equals: Float
   gt: Float
@@ -317,6 +325,7 @@ type Mutation {
   updateOneOrder(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order
   updateOneTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag
   updateOneVoucher(data: VoucherUpdateInput!, where: VoucherWhereUniqueInput!): Voucher
+  uploadFile(file: Upload!): File!
 }
 
 input NullableFloatFilter {
@@ -664,6 +673,9 @@ input TagWhereInput {
 input TagWhereUniqueInput {
   id: Int
 }
+
+"""The `Upload` scalar type represents a file upload."""
+scalar Upload
 
 type Voucher {
   business: Business
