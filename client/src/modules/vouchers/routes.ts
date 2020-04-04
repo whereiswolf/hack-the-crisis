@@ -9,7 +9,7 @@ export default addBasePath(MODULE_BASE_PATH, [
     path: '/',
     exact: true,
     component: Loadable({
-      loader: () => import('./containers/Home'),
+      loader: () => import('./containers/Vouchers'),
       loading: Loader,
     }),
   },

@@ -29,12 +29,14 @@ const Filtering: React.FC<FilteringProps> = ({ filters, onFiltersChange }) => {
 
   return (
     <Wrapper>
-      <Grid container direction="column" justify="center" spacing={2}>
-        <Grid item>
-          <TypePanel type={filters.type} onTypeChange={onTypeChange} />
-        </Grid>
-        <Grid item>
-          <Description />
+      <Grid container direction="column" justify="center" spacing={10}>
+        <Grid item container direction="column" justify="center" spacing={2}>
+          <Grid item>
+            <TypePanel type={filters.type} onTypeChange={onTypeChange} />
+          </Grid>
+          <Grid item>
+            <Description />
+          </Grid>
         </Grid>
         <Grid item>
           <FiltersPanel />

@@ -1,7 +1,7 @@
 import React from 'react'
 import { Typography } from '@material-ui/core'
 import { Trans, useTranslation } from 'react-i18next'
-import strings from 'modules/home/strings'
+import strings from 'modules/vouchers/strings'
 import { Title } from './Description.style'
 
 interface DescriptionProps {}

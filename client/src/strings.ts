@@ -4,7 +4,6 @@ export const MODULE_NAME = 'common'
 
 export const STRINGS = {
   LOGIN: 'LOGIN',
-  BUSINESS_TYPE: 'BUSINESS_TYPE',
 }
 
 export default getTranslationKeys(MODULE_NAME, STRINGS)

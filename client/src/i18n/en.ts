@@ -1,9 +1,9 @@
 import strings from 'strings'
-import { BusinessType } from 'enums'
+import { BusinessTypeTranslation } from 'enums/BusinessType'
 
 export default {
   [strings.LOGIN]: 'Login',
-  [`${strings.BUSINESS_TYPE}${BusinessType.All}`]: 'All',
-  [`${strings.BUSINESS_TYPE}${BusinessType.Local}`]: 'Local businesses',
-  [`${strings.BUSINESS_TYPE}${BusinessType.Online}`]: 'Online',
+  [BusinessTypeTranslation.All]: 'All',
+  [BusinessTypeTranslation.Local]: 'Local businesses',
+  [BusinessTypeTranslation.Online]: 'Online',
 }
