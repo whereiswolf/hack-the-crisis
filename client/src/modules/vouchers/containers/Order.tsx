@@ -2,11 +2,22 @@ import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { gql } from 'apollo-boost'
 import { useTranslation } from 'react-i18next'
-import { Card, CardContent, Avatar, Typography } from '@material-ui/core'
+import {
+  Card,
+  CardContent,
+  Avatar,
+  Typography,
+  Select,
+  FormControl,
+  InputLabel,
+  TextField,
+} from '@material-ui/core'
 import strings from '../strings'
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Paper from '@material-ui/core/Paper'
 import Grid from '@material-ui/core/Grid'
+import { Button } from 'components'
+import { colors } from 'config'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -21,8 +32,8 @@ const useStyles = makeStyles((theme: Theme) =>
     },
     orderConfig: {
       textAlign: 'center',
-      height: '100vh',
-      background: '#1B1B1B',
+      height: '90vh',
+      background: theme.palette.primary.main,
     },
     orderInfo: {
       height: '500px',
@@ -34,6 +45,9 @@ const useStyles = makeStyles((theme: Theme) =>
     orderImg: {
       height: '380px',
       width: '380px',
+    },
+    formControl: {
+      minWidth: 120,
     },
   })
 )
@@ -104,17 +118,67 @@ const Order: React.FC<OrderProps> = () => {
           justify="center"
           alignItems="center"
         >
-          <Typography variant="h4" component="h4" color="textPrimary">
-            Complete Your order
-          </Typography>
-          <Typography variant="h6" color="textPrimary">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
-            ad minim veniam.
-          </Typography>
-          <Typography variant="h6" color="textPrimary">
-            Fill the fields below
-          </Typography>
+          <Grid item xs={12}>
+            <Typography variant="h4" component="h4" color="textPrimary">
+              Complete Your order
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6" color="textPrimary">
+              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+              eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
+              enim ad minim veniam.
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h6" color="textPrimary">
+              Fill the fields below
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl className={classes.formControl}>
+              <Select>
+                <option value={10}>The Voucher is for myself</option>
+                <option value={20}>The Voucher is for someone</option>
+              </Select>
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl className={classes.formControl}>
+              <TextField id="full-name" label="Enter your full name" />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <FormControl className={classes.formControl}>
+              <TextField id="email-address" label="Enter you email" />
+            </FormControl>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h5" color="textPrimary">
+              Total Ammount
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography variant="h4" color="textPrimary">
+              € 30.00
+            </Typography>
+          </Grid>
+          <Grid container xs={12}>
+            <Grid item xs={3}>
+              <Button>-</Button>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography variant="h6" color="textPrimary">
+                Buy 2 Vouchers
+              </Typography>
+            </Grid>
+            <Grid item xs={3}>
+              <Button>+</Button>
+            </Grid>
+          </Grid>
+          <Grid item xs={12}>
+            <Button variant="contained">Go to Payment</Button>
+          </Grid>
         </Grid>
       </Grid>
     </div>
