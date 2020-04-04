@@ -1,0 +1,68 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url = "***"
+}
+
+model Order {
+  id Int @default(autoincrement()) @id
+  email String
+  name String
+  count Int @default(1)
+  voucherId Int
+  voucher Voucher @relation(fields: [voucherId], references: [id])
+}
+
+model Voucher {
+  id Int @default(autoincrement()) @id
+  name String
+  expirationDate String?
+  description String
+  imageUrl String
+  price Float
+  promotion Float?
+  businessId Int?
+  business Business? @relation(fields: [businessId], references: [id])
+  tags Tag[] @relation(references: [id])
+  orders Order[]
+}
+
+model Tag {
+  id Int @default(autoincrement()) @id
+  name String
+  vouchers Voucher[] @relation(references: [id])
+}
+
+model Category {
+  id Int @default(autoincrement()) @id
+  name String
+  businesses Business[]
+}
+
+model Rating {
+  id Int @default(autoincrement()) @id
+  rate Int
+  businesses Business[] @relation(references: [id])
+}
+
+model Business {
+  id Int @default(autoincrement()) @id
+  name String
+  city String
+  address String
+  siteUrl String?
+  amount Float
+  description String
+  history String?
+  imageUrl String
+  type String
+  vouchers Voucher[]
+  categoryId Int?
+  category Category? @relation(fields: [categoryId], references: [id])
+  ratings Rating[] @relation(references: [id])
+}
+
+

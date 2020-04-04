@@ -1,7 +1,11 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
-import { makeSchema, objectType, stringArg, intArg } from 'nexus'
-import { getSpecialForYouVoucher, searchVouchers } from './modules/voucher'
+import { arg, makeSchema, objectType, stringArg, intArg } from 'nexus'
+import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
+import { GraphQLUpload } from 'graphql-upload'
 import { searchBusinesses } from './modules/business'
+import { processUpload } from './utils/files';
+
+const Upload = GraphQLUpload
 
 const Order = objectType({
   name: 'Order',
@@ -78,6 +82,17 @@ const Business = objectType({
   },
 })
 
+export const File = objectType({
+  name: 'File',
+  definition(t) {
+    t.id('id')
+    t.string('path')
+    t.string('filename')
+    t.string('mimetype')
+    t.string('encoding')
+  },
+})
+
 const Query = objectType({
   name: 'Query',
   definition(t) {
@@ -100,9 +115,8 @@ const Query = objectType({
     }),
     t.field('recommended', {
       type: 'Voucher',
-      resolve: getSpecialForYouVoucher,
+      resolve: getSpecialForYouVouchers,
     }),
-
     t.crud.tags(),
     t.crud.categories(),
     t.crud.orders()
@@ -117,6 +131,13 @@ const Query = objectType({
 const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
+    t.field('uploadFile', {
+      type: 'File',
+      args: {
+        file: arg({ type: 'Upload', required: true }),
+      },
+      resolve: processUpload,
+    }),
     t.crud.createOneTag()
     t.crud.createOneCategory()
     t.crud.createOneBusiness()
@@ -136,7 +157,18 @@ const Mutation = objectType({
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Voucher, Business, Tag, Category, Rating, Order],
+  types: [
+    Query,
+    Mutation,
+    Voucher,
+    Business,
+    Tag,
+    Category,
+    Rating,
+    Order,
+    File,
+    Upload,
+  ],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',

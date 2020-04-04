@@ -32,6 +32,7 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
       // color: palette.text.secondary,
     },
     inputRoot: {
+      borderRadius: 7,
       ...input,
       '& > fieldset': {
         border: '0px',
