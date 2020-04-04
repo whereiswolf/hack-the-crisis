@@ -13,6 +13,6 @@ new ApolloServer({ schema, context: createContext }).listen(
 
 app.use('/static', express.static(path.join(__dirname, '../images')))
 
-app.listen(3000, () => {
-  console.log(`🚀 Static files at: 3000`)
+app.listen(2000, () => {
+  console.log(`🚀 Static files at: 2000`)
 })
