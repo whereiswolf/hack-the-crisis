@@ -1,2 +1,2 @@
 (this["webpackJsonphack-the-crisis"]=this["webpackJsonphack-the-crisis"]||[]).push([[10],{206:function(e,t,a){"use strict";a.r(t);var r=a(0),c=a.n(r),i=a(153),n=a(91);t.default=function(){return c.a.createElement(i.a,{variant:"h2",color:"textPrimary"},"Hello",c.a.createElement(n.a,{oldPrice:456.2,newPrice:123123.3}),c.a.createElement(n.a,{oldPrice:456.2,newPrice:123123.3,alignItems:"flex-start"}))}}}]);
-//# sourceMappingURL=10.fbe04bd2.chunk.js.map
+//# sourceMappingURL=10.ff8362b5.chunk.js.map
