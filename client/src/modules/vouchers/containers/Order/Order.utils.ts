@@ -1,4 +1,5 @@
 import { gql } from 'apollo-boost'
+import { useState } from 'react'
 
 export const GET_ORDER = gql`
   query Voucher($id: Int!) {
@@ -12,6 +13,73 @@ export const GET_ORDER = gql`
       tags {
         name
       }
+      business {
+        name
+      }
     }
   }
 `
+
+export const useVouchersNumber = (price = 0) => {
+  const [vouchersNumber, setVouchersNumber] = useState(0)
+  const addVoucher = () => setVouchersNumber(vouchersNumber + 1)
+  const removeVoucher = () =>
+    vouchersNumber > 0 && setVouchersNumber(vouchersNumber - 1)
+
+  return {
+    addVoucher,
+    removeVoucher,
+    vouchersNumber,
+    vouchersPrice: (vouchersNumber * price).toFixed(2),
+  }
+}
+
+const DESTINATION = {
+  MYSELF: 'MYSELF',
+  FRIEND: 'FRIEND',
+}
+
+export const destinationOptions = [
+  { value: DESTINATION.MYSELF, title: 'The Voucher is for myself' },
+  { value: DESTINATION.FRIEND, title: 'The Voucher is for someone else' },
+]
+
+const placeholders = {
+  [DESTINATION.MYSELF]: {
+    name: 'Enter your full name',
+    email: 'Enter your email',
+  },
+  [DESTINATION.FRIEND]: {
+    name: "Enter friend's full name",
+    email: "Enter friend's email",
+  },
+}
+
+export const useOrderForm = () => {
+  const [destination, setDestination] = useState(DESTINATION.MYSELF)
+
+  const [name, setName] = useState('')
+  const [email, setEmail] = useState('')
+  const [note, setNote] = useState('')
+  return {
+    destinationProps: {
+      controlledValue: destination,
+      onChange: (val: any) => setDestination(val),
+    },
+    nameProps: {
+      value: name,
+      onChange: (val: any) => setName(val),
+      placeholder: placeholders[destination].name,
+    },
+    emailProps: {
+      value: email,
+      onChange: (val: any) => setEmail(val),
+      placeholder: placeholders[destination].email,
+    },
+    noteProps: destination === DESTINATION.FRIEND && {
+      value: note,
+      onChange: (val: any) => setNote(val),
+      placeholder: 'Say something to your friend!',
+    },
+  }
+}

@@ -22,6 +22,7 @@ interface SelectProps extends Omit<BaseSelectProps, 'onChange'> {
   }[]
   placeholder?: string
   name?: string
+  controlledValue?: string
 }
 
 const defaultOptions = [
@@ -45,6 +46,7 @@ const Select: React.FC<SelectProps> = ({
   options = defaultOptions,
   placeholder = '',
   name,
+  controlledValue,
   ...props
 }) => {
   const classes = useStyles()
@@ -52,21 +54,21 @@ const Select: React.FC<SelectProps> = ({
   const [isOpen, setIsOpen] = useState(false)
   const toggleDropdown = () => setIsOpen(!isOpen)
   const closeDropdown = () => setIsOpen(false)
-  const onSelect = (value: any) => {
-    setValue(value)
-    if (onChange) onChange(value)
+  const onSelect = (eventValue: any) => {
+    controlledValue || setValue(eventValue)
+    if (onChange) onChange(eventValue)
     closeDropdown()
   }
+  const title =
+    value || controlledValue
+      ? options.find((item) => item.value === (value || controlledValue))?.title
+      : placeholder
   const iconClass = isOpen ? classes.iconOpen : classes.icon
   return (
     <ClickAwayListener onClickAway={closeDropdown}>
       <div className={classes.wrapper}>
         <OutlinedInput
-          value={
-            value
-              ? options.find((item) => item.value === value)?.title
-              : placeholder
-          }
+          value={title}
           labelWidth={0}
           disabled
           inputProps={{
