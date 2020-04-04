@@ -56,18 +56,7 @@ const Business = objectType({
 const Query = objectType({
   name: 'Query',
   definition(t) {
-    t.list.field('vouchers', {
-      type: 'Voucher',
-      resolve: (_, args, ctx) => {
-        return ctx.prisma.voucher.findMany()
-      },
-    })
-    t.list.field('businesses', {
-      type: 'Business',
-      resolve: (_, args, ctx) => {
-        return ctx.prisma.business.findMany();
-      },
-    })
+    t.crud.vouchers(), t.crud.businesses()
   },
 })
 

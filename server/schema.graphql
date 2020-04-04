@@ -62,8 +62,8 @@ type Mutation {
 }
 
 type Query {
-  businesses: [Business!]!
-  vouchers: [Voucher!]!
+  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
 }
 
 type Tag {
@@ -77,41 +77,8 @@ input TagCreateManyWithoutVouchersInput {
   create: [TagCreateWithoutVouchersInput!]
 }
 
-input TagCreateOneWithoutTagsOnVouchersesInput {
-  connect: TagWhereUniqueInput
-  create: TagCreateWithoutTagsOnVouchersesInput
-}
-
-input TagCreateWithoutTagsOnVouchersesInput {
-  name: String!
-  vouchers: VoucherCreateManyWithoutTagsInput
-}
-
 input TagCreateWithoutVouchersInput {
   name: String!
-  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutTagInput
-}
-
-input TagsOnVouchersCreateManyWithoutTagInput {
-  connect: [TagsOnVouchersWhereUniqueInput!]
-  create: [TagsOnVouchersCreateWithoutTagInput!]
-}
-
-input TagsOnVouchersCreateManyWithoutVoucherInput {
-  connect: [TagsOnVouchersWhereUniqueInput!]
-  create: [TagsOnVouchersCreateWithoutVoucherInput!]
-}
-
-input TagsOnVouchersCreateWithoutTagInput {
-  voucher: VoucherCreateOneWithoutTagsOnVouchersesInput!
-}
-
-input TagsOnVouchersCreateWithoutVoucherInput {
-  tag: TagCreateOneWithoutTagsOnVouchersesInput!
-}
-
-input TagsOnVouchersWhereUniqueInput {
-  voucherId_tagId: VoucherIdTagIdCompoundUniqueInput
 }
 
 input TagWhereUniqueInput {
@@ -139,44 +106,6 @@ input VoucherCreateInput {
   price: Float!
   promotion: Float
   tags: TagCreateManyWithoutVouchersInput
-  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutVoucherInput
-}
-
-input VoucherCreateManyWithoutTagsInput {
-  connect: [VoucherWhereUniqueInput!]
-  create: [VoucherCreateWithoutTagsInput!]
-}
-
-input VoucherCreateOneWithoutTagsOnVouchersesInput {
-  connect: VoucherWhereUniqueInput
-  create: VoucherCreateWithoutTagsOnVouchersesInput
-}
-
-input VoucherCreateWithoutTagsInput {
-  business: BusinessCreateOneWithoutVouchersInput
-  description: String!
-  expirationDate: String
-  imageUrl: String!
-  name: String!
-  price: Float!
-  promotion: Float
-  tagsOnVoucherses: TagsOnVouchersCreateManyWithoutVoucherInput
-}
-
-input VoucherCreateWithoutTagsOnVouchersesInput {
-  business: BusinessCreateOneWithoutVouchersInput
-  description: String!
-  expirationDate: String
-  imageUrl: String!
-  name: String!
-  price: Float!
-  promotion: Float
-  tags: TagCreateManyWithoutVouchersInput
-}
-
-input VoucherIdTagIdCompoundUniqueInput {
-  tagId: Int!
-  voucherId: Int!
 }
 
 input VoucherWhereUniqueInput {

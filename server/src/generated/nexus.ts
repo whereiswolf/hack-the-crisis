@@ -53,37 +53,11 @@ export interface NexusGenInputs {
     connect?: NexusGenInputs['TagWhereUniqueInput'][] | null; // [TagWhereUniqueInput!]
     create?: NexusGenInputs['TagCreateWithoutVouchersInput'][] | null; // [TagCreateWithoutVouchersInput!]
   }
-  TagCreateOneWithoutTagsOnVouchersesInput: { // input type
-    connect?: NexusGenInputs['TagWhereUniqueInput'] | null; // TagWhereUniqueInput
-    create?: NexusGenInputs['TagCreateWithoutTagsOnVouchersesInput'] | null; // TagCreateWithoutTagsOnVouchersesInput
-  }
-  TagCreateWithoutTagsOnVouchersesInput: { // input type
-    name: string; // String!
-    vouchers?: NexusGenInputs['VoucherCreateManyWithoutTagsInput'] | null; // VoucherCreateManyWithoutTagsInput
-  }
   TagCreateWithoutVouchersInput: { // input type
     name: string; // String!
-    tagsOnVoucherses?: NexusGenInputs['TagsOnVouchersCreateManyWithoutTagInput'] | null; // TagsOnVouchersCreateManyWithoutTagInput
   }
   TagWhereUniqueInput: { // input type
     id?: number | null; // Int
-  }
-  TagsOnVouchersCreateManyWithoutTagInput: { // input type
-    connect?: NexusGenInputs['TagsOnVouchersWhereUniqueInput'][] | null; // [TagsOnVouchersWhereUniqueInput!]
-    create?: NexusGenInputs['TagsOnVouchersCreateWithoutTagInput'][] | null; // [TagsOnVouchersCreateWithoutTagInput!]
-  }
-  TagsOnVouchersCreateManyWithoutVoucherInput: { // input type
-    connect?: NexusGenInputs['TagsOnVouchersWhereUniqueInput'][] | null; // [TagsOnVouchersWhereUniqueInput!]
-    create?: NexusGenInputs['TagsOnVouchersCreateWithoutVoucherInput'][] | null; // [TagsOnVouchersCreateWithoutVoucherInput!]
-  }
-  TagsOnVouchersCreateWithoutTagInput: { // input type
-    voucher: NexusGenInputs['VoucherCreateOneWithoutTagsOnVouchersesInput']; // VoucherCreateOneWithoutTagsOnVouchersesInput!
-  }
-  TagsOnVouchersCreateWithoutVoucherInput: { // input type
-    tag: NexusGenInputs['TagCreateOneWithoutTagsOnVouchersesInput']; // TagCreateOneWithoutTagsOnVouchersesInput!
-  }
-  TagsOnVouchersWhereUniqueInput: { // input type
-    voucherId_tagId?: NexusGenInputs['VoucherIdTagIdCompoundUniqueInput'] | null; // VoucherIdTagIdCompoundUniqueInput
   }
   VoucherCreateInput: { // input type
     business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
@@ -94,39 +68,6 @@ export interface NexusGenInputs {
     price: number; // Float!
     promotion?: number | null; // Float
     tags?: NexusGenInputs['TagCreateManyWithoutVouchersInput'] | null; // TagCreateManyWithoutVouchersInput
-    tagsOnVoucherses?: NexusGenInputs['TagsOnVouchersCreateManyWithoutVoucherInput'] | null; // TagsOnVouchersCreateManyWithoutVoucherInput
-  }
-  VoucherCreateManyWithoutTagsInput: { // input type
-    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
-    create?: NexusGenInputs['VoucherCreateWithoutTagsInput'][] | null; // [VoucherCreateWithoutTagsInput!]
-  }
-  VoucherCreateOneWithoutTagsOnVouchersesInput: { // input type
-    connect?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-    create?: NexusGenInputs['VoucherCreateWithoutTagsOnVouchersesInput'] | null; // VoucherCreateWithoutTagsOnVouchersesInput
-  }
-  VoucherCreateWithoutTagsInput: { // input type
-    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
-    description: string; // String!
-    expirationDate?: string | null; // String
-    imageUrl: string; // String!
-    name: string; // String!
-    price: number; // Float!
-    promotion?: number | null; // Float
-    tagsOnVoucherses?: NexusGenInputs['TagsOnVouchersCreateManyWithoutVoucherInput'] | null; // TagsOnVouchersCreateManyWithoutVoucherInput
-  }
-  VoucherCreateWithoutTagsOnVouchersesInput: { // input type
-    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
-    description: string; // String!
-    expirationDate?: string | null; // String
-    imageUrl: string; // String!
-    name: string; // String!
-    price: number; // Float!
-    promotion?: number | null; // Float
-    tags?: NexusGenInputs['TagCreateManyWithoutVouchersInput'] | null; // TagCreateManyWithoutVouchersInput
-  }
-  VoucherIdTagIdCompoundUniqueInput: { // input type
-    tagId: number; // Int!
-    voucherId: number; // Int!
   }
   VoucherWhereUniqueInput: { // input type
     id?: number | null; // Int
@@ -159,21 +100,9 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   CategoryCreateWithoutBusinessesInput: NexusGenInputs['CategoryCreateWithoutBusinessesInput'];
   CategoryWhereUniqueInput: NexusGenInputs['CategoryWhereUniqueInput'];
   TagCreateManyWithoutVouchersInput: NexusGenInputs['TagCreateManyWithoutVouchersInput'];
-  TagCreateOneWithoutTagsOnVouchersesInput: NexusGenInputs['TagCreateOneWithoutTagsOnVouchersesInput'];
-  TagCreateWithoutTagsOnVouchersesInput: NexusGenInputs['TagCreateWithoutTagsOnVouchersesInput'];
   TagCreateWithoutVouchersInput: NexusGenInputs['TagCreateWithoutVouchersInput'];
   TagWhereUniqueInput: NexusGenInputs['TagWhereUniqueInput'];
-  TagsOnVouchersCreateManyWithoutTagInput: NexusGenInputs['TagsOnVouchersCreateManyWithoutTagInput'];
-  TagsOnVouchersCreateManyWithoutVoucherInput: NexusGenInputs['TagsOnVouchersCreateManyWithoutVoucherInput'];
-  TagsOnVouchersCreateWithoutTagInput: NexusGenInputs['TagsOnVouchersCreateWithoutTagInput'];
-  TagsOnVouchersCreateWithoutVoucherInput: NexusGenInputs['TagsOnVouchersCreateWithoutVoucherInput'];
-  TagsOnVouchersWhereUniqueInput: NexusGenInputs['TagsOnVouchersWhereUniqueInput'];
   VoucherCreateInput: NexusGenInputs['VoucherCreateInput'];
-  VoucherCreateManyWithoutTagsInput: NexusGenInputs['VoucherCreateManyWithoutTagsInput'];
-  VoucherCreateOneWithoutTagsOnVouchersesInput: NexusGenInputs['VoucherCreateOneWithoutTagsOnVouchersesInput'];
-  VoucherCreateWithoutTagsInput: NexusGenInputs['VoucherCreateWithoutTagsInput'];
-  VoucherCreateWithoutTagsOnVouchersesInput: NexusGenInputs['VoucherCreateWithoutTagsOnVouchersesInput'];
-  VoucherIdTagIdCompoundUniqueInput: NexusGenInputs['VoucherIdTagIdCompoundUniqueInput'];
   VoucherWhereUniqueInput: NexusGenInputs['VoucherWhereUniqueInput'];
 }
 
@@ -236,6 +165,22 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['VoucherCreateInput']; // VoucherCreateInput!
     }
   }
+  Query: {
+    businesses: { // args
+      after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      before?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+    vouchers: { // args
+      after?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
+      before?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
+      first?: number | null; // Int
+      last?: number | null; // Int
+      skip?: number | null; // Int
+    }
+  }
   Tag: {
     vouchers: { // args
       after?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
@@ -263,7 +208,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Business" | "Category" | "Mutation" | "Query" | "Tag" | "Voucher";
 
-export type NexusGenInputNames = "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutVouchersInput" | "BusinessWhereUniqueInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryWhereUniqueInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateOneWithoutTagsOnVouchersesInput" | "TagCreateWithoutTagsOnVouchersesInput" | "TagCreateWithoutVouchersInput" | "TagWhereUniqueInput" | "TagsOnVouchersCreateManyWithoutTagInput" | "TagsOnVouchersCreateManyWithoutVoucherInput" | "TagsOnVouchersCreateWithoutTagInput" | "TagsOnVouchersCreateWithoutVoucherInput" | "TagsOnVouchersWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutTagsInput" | "VoucherCreateOneWithoutTagsOnVouchersesInput" | "VoucherCreateWithoutTagsInput" | "VoucherCreateWithoutTagsOnVouchersesInput" | "VoucherIdTagIdCompoundUniqueInput" | "VoucherWhereUniqueInput";
+export type NexusGenInputNames = "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutVouchersInput" | "BusinessWhereUniqueInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryWhereUniqueInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagWhereUniqueInput" | "VoucherCreateInput" | "VoucherWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 
