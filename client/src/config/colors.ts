@@ -5,6 +5,7 @@ export default {
     70: '#282828',
     60: '#2A2A2C',
     50: '#3B3D46',
+    40: '#565861',
     20: '#7F7F7F',
   },
   secondary: {
@@ -24,5 +25,5 @@ export default {
     100: '#F2F2F2',
     90: '#F5F4F4',
   },
-  yellow: '#EAA718'
-};
+  yellow: '#EAA718',
+}

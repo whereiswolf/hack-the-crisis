@@ -1,12 +1,12 @@
 import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Grid } from '@material-ui/core'
-import { VouchersList } from '../../components'
-import Filtering, { Filters } from '../../components/Filtering'
-import { queries } from './Home.utils'
+import { VouchersList } from 'modules/vouchers/components'
+import Filtering, { Filters } from 'modules/vouchers/components/Filtering'
+import { queries } from './Vouchers.utils'
 import { BusinessType } from 'enums'
 
-interface HomeProps {}
+interface VouchersProps {}
 
 const defaultFilters = {
   type: BusinessType.Local,
@@ -15,7 +15,7 @@ const defaultFilters = {
   location: null,
 }
 
-const Home: React.FC<HomeProps> = () => {
+const Vouchers: React.FC<VouchersProps> = () => {
   const [filters, setFilters] = useState<Filters>(defaultFilters)
   const { data } = useQuery(queries.VOUCHERS, { variables: filters })
 
@@ -31,4 +31,4 @@ const Home: React.FC<HomeProps> = () => {
   )
 }
 
-export default Home
+export default Vouchers

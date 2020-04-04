@@ -1,1 +1,1 @@
-export { getRecommendedBusinesses } from './business.resolver'
+export { searchBusinesses } from './business.resolver'

@@ -12,7 +12,9 @@ type Business {
   id: Int!
   imageUrl: String!
   name: String!
+  ratings(after: RatingWhereUniqueInput, before: RatingWhereUniqueInput, first: Int, last: Int, skip: Int): [Rating!]!
   siteUrl: String
+  type: String!
   vouchers: [Voucher!]!
 }
 
@@ -25,6 +27,7 @@ input BusinessCreateInput {
   history: String
   imageUrl: String!
   name: String!
+  ratings: RatingCreateManyWithoutBusinessesInput
   siteUrl: String
   type: String!
   vouchers: VoucherCreateManyWithoutBusinessInput
@@ -48,6 +51,7 @@ input BusinessCreateWithoutCategoryInput {
   history: String
   imageUrl: String!
   name: String!
+  ratings: RatingCreateManyWithoutBusinessesInput
   siteUrl: String
   type: String!
   vouchers: VoucherCreateManyWithoutBusinessInput
@@ -62,6 +66,7 @@ input BusinessCreateWithoutVouchersInput {
   history: String
   imageUrl: String!
   name: String!
+  ratings: RatingCreateManyWithoutBusinessesInput
   siteUrl: String
   type: String!
 }
@@ -85,6 +90,7 @@ input BusinessScalarWhereInput {
   name: StringFilter
   NOT: [BusinessScalarWhereInput!]
   OR: [BusinessScalarWhereInput!]
+  ratings: RatingFilter
   siteUrl: NullableStringFilter
   type: StringFilter
   vouchers: VoucherFilter
@@ -100,6 +106,7 @@ input BusinessUpdateInput {
   id: Int
   imageUrl: String
   name: String
+  ratings: RatingUpdateManyWithoutBusinessesInput
   siteUrl: String
   type: String
   vouchers: VoucherUpdateManyWithoutBusinessInput
@@ -153,6 +160,7 @@ input BusinessUpdateWithoutCategoryDataInput {
   id: Int
   imageUrl: String
   name: String
+  ratings: RatingUpdateManyWithoutBusinessesInput
   siteUrl: String
   type: String
   vouchers: VoucherUpdateManyWithoutBusinessInput
@@ -168,6 +176,7 @@ input BusinessUpdateWithoutVouchersDataInput {
   id: Int
   imageUrl: String
   name: String
+  ratings: RatingUpdateManyWithoutBusinessesInput
   siteUrl: String
   type: String
 }
@@ -202,6 +211,7 @@ input BusinessWhereInput {
   name: StringFilter
   NOT: [BusinessWhereInput!]
   OR: [BusinessWhereInput!]
+  ratings: RatingFilter
   siteUrl: NullableStringFilter
   type: StringFilter
   vouchers: VoucherFilter
@@ -294,14 +304,17 @@ input IntFilter {
 type Mutation {
   createOneBusiness(data: BusinessCreateInput!): Business!
   createOneCategory(data: CategoryCreateInput!): Category!
+  createOneOrder(data: OrderCreateInput!): Order!
   createOneTag(data: TagCreateInput!): Tag!
   createOneVoucher(data: VoucherCreateInput!): Voucher!
   deleteOneBusiness(where: BusinessWhereUniqueInput!): Business
   deleteOneCategory(where: CategoryWhereUniqueInput!): Category
+  deleteOneOrder(where: OrderWhereUniqueInput!): Order
   deleteOneTag(where: TagWhereUniqueInput!): Tag
   deleteOneVoucher(where: VoucherWhereUniqueInput!): Voucher
   updateOneBusiness(data: BusinessUpdateInput!, where: BusinessWhereUniqueInput!): Business
   updateOneCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
+  updateOneOrder(data: OrderUpdateInput!, where: OrderWhereUniqueInput!): Order
   updateOneTag(data: TagUpdateInput!, where: TagWhereUniqueInput!): Tag
   updateOneVoucher(data: VoucherUpdateInput!, where: VoucherWhereUniqueInput!): Voucher
 }
@@ -342,15 +355,208 @@ input NullableStringFilter {
   startsWith: String
 }
 
+type Order {
+  count: Int!
+  email: String!
+  id: Int!
+  name: String!
+  voucher: Voucher!
+}
+
+input OrderCreateInput {
+  count: Int
+  email: String!
+  name: String!
+  voucher: VoucherCreateOneWithoutOrdersInput!
+}
+
+input OrderCreateManyWithoutVoucherInput {
+  connect: [OrderWhereUniqueInput!]
+  create: [OrderCreateWithoutVoucherInput!]
+}
+
+input OrderCreateWithoutVoucherInput {
+  count: Int
+  email: String!
+  name: String!
+}
+
+input OrderFilter {
+  every: OrderWhereInput
+  none: OrderWhereInput
+  some: OrderWhereInput
+}
+
+input OrderScalarWhereInput {
+  AND: [OrderScalarWhereInput!]
+  count: IntFilter
+  email: StringFilter
+  id: IntFilter
+  name: StringFilter
+  NOT: [OrderScalarWhereInput!]
+  OR: [OrderScalarWhereInput!]
+  voucherId: IntFilter
+}
+
+input OrderUpdateInput {
+  count: Int
+  email: String
+  id: Int
+  name: String
+  voucher: VoucherUpdateOneRequiredWithoutOrdersInput
+}
+
+input OrderUpdateManyDataInput {
+  count: Int
+  email: String
+  id: Int
+  name: String
+}
+
+input OrderUpdateManyWithoutVoucherInput {
+  connect: [OrderWhereUniqueInput!]
+  create: [OrderCreateWithoutVoucherInput!]
+  delete: [OrderWhereUniqueInput!]
+  deleteMany: [OrderScalarWhereInput!]
+  disconnect: [OrderWhereUniqueInput!]
+  set: [OrderWhereUniqueInput!]
+  update: [OrderUpdateWithWhereUniqueWithoutVoucherInput!]
+  updateMany: [OrderUpdateManyWithWhereNestedInput!]
+  upsert: [OrderUpsertWithWhereUniqueWithoutVoucherInput!]
+}
+
+input OrderUpdateManyWithWhereNestedInput {
+  data: OrderUpdateManyDataInput!
+  where: OrderScalarWhereInput!
+}
+
+input OrderUpdateWithoutVoucherDataInput {
+  count: Int
+  email: String
+  id: Int
+  name: String
+}
+
+input OrderUpdateWithWhereUniqueWithoutVoucherInput {
+  data: OrderUpdateWithoutVoucherDataInput!
+  where: OrderWhereUniqueInput!
+}
+
+input OrderUpsertWithWhereUniqueWithoutVoucherInput {
+  create: OrderCreateWithoutVoucherInput!
+  update: OrderUpdateWithoutVoucherDataInput!
+  where: OrderWhereUniqueInput!
+}
+
+input OrderWhereInput {
+  AND: [OrderWhereInput!]
+  count: IntFilter
+  email: StringFilter
+  id: IntFilter
+  name: StringFilter
+  NOT: [OrderWhereInput!]
+  OR: [OrderWhereInput!]
+  voucher: VoucherWhereInput
+  voucherId: IntFilter
+}
+
+input OrderWhereUniqueInput {
+  id: Int
+}
+
 type Query {
   business(where: BusinessWhereUniqueInput!): Business
-  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  businesses(categoryId: Int, name: String): [Business!]!
   categories(after: CategoryWhereUniqueInput, before: CategoryWhereUniqueInput, first: Int, last: Int, skip: Int): [Category!]!
   category(where: CategoryWhereUniqueInput!): Category
+  order(where: OrderWhereUniqueInput!): Order
+  orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
+  recommended: Voucher!
   tag(where: TagWhereUniqueInput!): Tag
   tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
   voucher(where: VoucherWhereUniqueInput!): Voucher
-  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
+  vouchers(businessId: Int, businessType: String, name: String): [Voucher!]!
+}
+
+type Rating {
+  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  id: Int!
+  rate: Int!
+}
+
+input RatingCreateManyWithoutBusinessesInput {
+  connect: [RatingWhereUniqueInput!]
+  create: [RatingCreateWithoutBusinessesInput!]
+}
+
+input RatingCreateWithoutBusinessesInput {
+  rate: Int!
+}
+
+input RatingFilter {
+  every: RatingWhereInput
+  none: RatingWhereInput
+  some: RatingWhereInput
+}
+
+input RatingScalarWhereInput {
+  AND: [RatingScalarWhereInput!]
+  businesses: BusinessFilter
+  id: IntFilter
+  NOT: [RatingScalarWhereInput!]
+  OR: [RatingScalarWhereInput!]
+  rate: IntFilter
+}
+
+input RatingUpdateManyDataInput {
+  id: Int
+  rate: Int
+}
+
+input RatingUpdateManyWithoutBusinessesInput {
+  connect: [RatingWhereUniqueInput!]
+  create: [RatingCreateWithoutBusinessesInput!]
+  delete: [RatingWhereUniqueInput!]
+  deleteMany: [RatingScalarWhereInput!]
+  disconnect: [RatingWhereUniqueInput!]
+  set: [RatingWhereUniqueInput!]
+  update: [RatingUpdateWithWhereUniqueWithoutBusinessesInput!]
+  updateMany: [RatingUpdateManyWithWhereNestedInput!]
+  upsert: [RatingUpsertWithWhereUniqueWithoutBusinessesInput!]
+}
+
+input RatingUpdateManyWithWhereNestedInput {
+  data: RatingUpdateManyDataInput!
+  where: RatingScalarWhereInput!
+}
+
+input RatingUpdateWithoutBusinessesDataInput {
+  id: Int
+  rate: Int
+}
+
+input RatingUpdateWithWhereUniqueWithoutBusinessesInput {
+  data: RatingUpdateWithoutBusinessesDataInput!
+  where: RatingWhereUniqueInput!
+}
+
+input RatingUpsertWithWhereUniqueWithoutBusinessesInput {
+  create: RatingCreateWithoutBusinessesInput!
+  update: RatingUpdateWithoutBusinessesDataInput!
+  where: RatingWhereUniqueInput!
+}
+
+input RatingWhereInput {
+  AND: [RatingWhereInput!]
+  businesses: BusinessFilter
+  id: IntFilter
+  NOT: [RatingWhereInput!]
+  OR: [RatingWhereInput!]
+  rate: IntFilter
+}
+
+input RatingWhereUniqueInput {
+  id: Int
 }
 
 input StringFilter {
@@ -466,6 +672,7 @@ type Voucher {
   id: Int!
   imageUrl: String!
   name: String!
+  orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
   price: Float!
   promotion: Float
   tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
@@ -477,6 +684,7 @@ input VoucherCreateInput {
   expirationDate: String
   imageUrl: String!
   name: String!
+  orders: OrderCreateManyWithoutVoucherInput
   price: Float!
   promotion: Float
   tags: TagCreateManyWithoutVouchersInput
@@ -492,7 +700,24 @@ input VoucherCreateManyWithoutTagsInput {
   create: [VoucherCreateWithoutTagsInput!]
 }
 
+input VoucherCreateOneWithoutOrdersInput {
+  connect: VoucherWhereUniqueInput
+  create: VoucherCreateWithoutOrdersInput
+}
+
 input VoucherCreateWithoutBusinessInput {
+  description: String!
+  expirationDate: String
+  imageUrl: String!
+  name: String!
+  orders: OrderCreateManyWithoutVoucherInput
+  price: Float!
+  promotion: Float
+  tags: TagCreateManyWithoutVouchersInput
+}
+
+input VoucherCreateWithoutOrdersInput {
+  business: BusinessCreateOneWithoutVouchersInput
   description: String!
   expirationDate: String
   imageUrl: String!
@@ -508,6 +733,7 @@ input VoucherCreateWithoutTagsInput {
   expirationDate: String
   imageUrl: String!
   name: String!
+  orders: OrderCreateManyWithoutVoucherInput
   price: Float!
   promotion: Float
 }
@@ -528,6 +754,7 @@ input VoucherScalarWhereInput {
   name: StringFilter
   NOT: [VoucherScalarWhereInput!]
   OR: [VoucherScalarWhereInput!]
+  orders: OrderFilter
   price: FloatFilter
   promotion: NullableFloatFilter
   tags: TagFilter
@@ -540,6 +767,7 @@ input VoucherUpdateInput {
   id: Int
   imageUrl: String
   name: String
+  orders: OrderUpdateManyWithoutVoucherInput
   price: Float
   promotion: Float
   tags: TagUpdateManyWithoutVouchersInput
@@ -584,7 +812,27 @@ input VoucherUpdateManyWithWhereNestedInput {
   where: VoucherScalarWhereInput!
 }
 
+input VoucherUpdateOneRequiredWithoutOrdersInput {
+  connect: VoucherWhereUniqueInput
+  create: VoucherCreateWithoutOrdersInput
+  update: VoucherUpdateWithoutOrdersDataInput
+  upsert: VoucherUpsertWithoutOrdersInput
+}
+
 input VoucherUpdateWithoutBusinessDataInput {
+  description: String
+  expirationDate: String
+  id: Int
+  imageUrl: String
+  name: String
+  orders: OrderUpdateManyWithoutVoucherInput
+  price: Float
+  promotion: Float
+  tags: TagUpdateManyWithoutVouchersInput
+}
+
+input VoucherUpdateWithoutOrdersDataInput {
+  business: BusinessUpdateOneWithoutVouchersInput
   description: String
   expirationDate: String
   id: Int
@@ -602,6 +850,7 @@ input VoucherUpdateWithoutTagsDataInput {
   id: Int
   imageUrl: String
   name: String
+  orders: OrderUpdateManyWithoutVoucherInput
   price: Float
   promotion: Float
 }
@@ -614,6 +863,11 @@ input VoucherUpdateWithWhereUniqueWithoutBusinessInput {
 input VoucherUpdateWithWhereUniqueWithoutTagsInput {
   data: VoucherUpdateWithoutTagsDataInput!
   where: VoucherWhereUniqueInput!
+}
+
+input VoucherUpsertWithoutOrdersInput {
+  create: VoucherCreateWithoutOrdersInput!
+  update: VoucherUpdateWithoutOrdersDataInput!
 }
 
 input VoucherUpsertWithWhereUniqueWithoutBusinessInput {
@@ -639,6 +893,7 @@ input VoucherWhereInput {
   name: StringFilter
   NOT: [VoucherWhereInput!]
   OR: [VoucherWhereInput!]
+  orders: OrderFilter
   price: FloatFilter
   promotion: NullableFloatFilter
   tags: TagFilter

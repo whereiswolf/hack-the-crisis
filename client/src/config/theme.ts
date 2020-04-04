@@ -27,6 +27,10 @@ const theme: ThemeOptions = {
       fontSize: 40,
       fontWeight: 900,
     },
+    h5: {
+      fontSize: 28,
+      fontWeight: 900,
+    },
     body1: {
       fontWeight: 300,
     },

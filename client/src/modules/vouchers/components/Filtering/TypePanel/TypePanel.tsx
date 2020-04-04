@@ -1,8 +1,7 @@
 import React from 'react'
-import { BusinessType } from 'enums'
 import { Grid, Button } from '@material-ui/core'
-import globalStrings from 'strings'
 import { useTranslation } from 'react-i18next'
+import BusinessType, { BusinessTypeTranslation } from 'enums/BusinessType'
 
 interface TypePanelProps {
   type: BusinessType | null
@@ -12,15 +11,15 @@ interface TypePanelProps {
 const types = [
   {
     value: BusinessType.All,
-    label: `${globalStrings.BUSINESS_TYPE}${BusinessType.All}`,
+    label: BusinessTypeTranslation.All,
   },
   {
     value: BusinessType.Local,
-    label: `${globalStrings.BUSINESS_TYPE}${BusinessType.Local}`,
+    label: BusinessTypeTranslation.Local,
   },
   {
     value: BusinessType.Online,
-    label: `${globalStrings.BUSINESS_TYPE}${BusinessType.Online}`,
+    label: BusinessTypeTranslation.Online,
   },
 ]
 

@@ -1,5 +1,18 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
-import { makeSchema, objectType } from 'nexus'
+import { makeSchema, objectType, stringArg, intArg } from 'nexus'
+import { getSpecialForYouVoucher, searchVouchers } from './modules/voucher'
+import { searchBusinesses } from './modules/business'
+
+const Order = objectType({
+  name: 'Order',
+  definition(t) {
+    t.model.id()
+    t.model.email()
+    t.model.name()
+    t.model.count()
+    t.model.voucher()
+  },
+})
 
 const Voucher = objectType({
   name: 'Voucher',
@@ -13,6 +26,7 @@ const Voucher = objectType({
     t.model.imageUrl()
     t.model.business()
     t.model.tags()
+    t.model.orders()
   },
 })
 
@@ -22,6 +36,15 @@ const Tag = objectType({
     t.model.id()
     t.model.name()
     t.model.vouchers()
+  },
+})
+
+const Rating = objectType({
+  name: 'Rating',
+  definition(t) {
+    t.model.id()
+    t.model.rate()
+    t.model.businesses()
   },
 })
 
@@ -47,54 +70,73 @@ const Business = objectType({
     t.model.history()
     t.model.imageUrl()
     t.model.category()
+    t.model.type()
     t.model.vouchers({
       pagination: false,
     })
+    t.model.ratings()
   },
 })
 
 const Query = objectType({
   name: 'Query',
   definition(t) {
-    // Read
+    t.list.field('vouchers', {
+      type: 'Voucher',
+      resolve: searchVouchers,
+      args: {
+        name: stringArg({ nullable: true }),
+        businessId: intArg({ nullable: true }),
+        businessType: stringArg({ nullable: true }),
+      },
+    }),
+    t.list.field('businesses', {
+      type: 'Business',
+      resolve: searchBusinesses,
+      args: {
+        name: stringArg({ nullable: true }),
+        categoryId: intArg({ nullable: true }),
+      },
+    }),
+    t.field('recommended', {
+      type: 'Voucher',
+      resolve: getSpecialForYouVoucher,
+    }),
+
     t.crud.tags(),
-    t.crud.vouchers(),
-    t.crud.businesses(),
     t.crud.categories(),
-    
-    // Read example: { where: { id: 1 } }
+    t.crud.orders()
     t.crud.business(),
     t.crud.category(),
     t.crud.voucher(),
-    t.crud.tag()
+    t.crud.tag(),
+    t.crud.order()
   },
 })
 
 const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
-    // Create example: { data: { name: "Test tag" } }
     t.crud.createOneTag()
     t.crud.createOneCategory()
     t.crud.createOneBusiness()
     t.crud.createOneVoucher()
-
-    // Updates example: { data: { name: "Test tag" }, where: { id: 1 } }
+    t.crud.createOneOrder()
     t.crud.updateOneBusiness()
     t.crud.updateOneCategory()
     t.crud.updateOneVoucher()
     t.crud.updateOneTag()
-
-    // Deletes example: { where: { id: 1 } }
+    t.crud.updateOneOrder()
     t.crud.deleteOneBusiness()
     t.crud.deleteOneVoucher()
     t.crud.deleteOneTag()
     t.crud.deleteOneCategory()
+    t.crud.deleteOneOrder()
   },
 })
 
 export const schema = makeSchema({
-  types: [Query, Mutation, Voucher, Business, Tag, Category],
+  types: [Query, Mutation, Voucher, Business, Tag, Category, Rating, Order],
   plugins: [nexusPrismaPlugin()],
   outputs: {
     schema: __dirname + '/../schema.graphql',

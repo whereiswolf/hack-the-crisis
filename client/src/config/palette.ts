@@ -1,4 +1,4 @@
-import colors from './colors';  
+import colors from './colors'
 
 export const dark = {
   primary: {
@@ -19,6 +19,9 @@ export const dark = {
   text: {
     primary: colors.text[100],
     secondary: colors.text[50],
+  },
+  info: {
+    main: colors.primary[40],
   },
 }
 
@@ -45,4 +48,4 @@ export const light = {
 export default {
   dark,
   light,
-};
+}
