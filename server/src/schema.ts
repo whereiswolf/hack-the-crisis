@@ -56,14 +56,40 @@ const Business = objectType({
 const Query = objectType({
   name: 'Query',
   definition(t) {
-    t.crud.vouchers(), t.crud.businesses()
+    // Read
+    t.crud.tags(),
+    t.crud.vouchers(),
+    t.crud.businesses(),
+    t.crud.categories(),
+    
+    // Read example: { where: { id: 1 } }
+    t.crud.business(),
+    t.crud.category(),
+    t.crud.voucher(),
+    t.crud.tag()
   },
 })
 
 const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
+    // Create example: { data: { name: "Test tag" } }
+    t.crud.createOneTag()
+    t.crud.createOneCategory()
+    t.crud.createOneBusiness()
     t.crud.createOneVoucher()
+
+    // Updates example: { data: { name: "Test tag" }, where: { id: 1 } }
+    t.crud.updateOneBusiness()
+    t.crud.updateOneCategory()
+    t.crud.updateOneVoucher()
+    t.crud.updateOneTag()
+
+    // Deletes example: { where: { id: 1 } }
+    t.crud.deleteOneBusiness()
+    t.crud.deleteOneVoucher()
+    t.crud.deleteOneTag()
+    t.crud.deleteOneCategory()
   },
 })
 
