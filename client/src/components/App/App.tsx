@@ -1,28 +1,32 @@
 import React from 'react'
-import { Provider } from 'react-redux'
-import { configureStore } from '@reduxjs/toolkit'
+import { ApolloProvider } from '@apollo/react-hooks'
+import { ThemeProvider } from '@material-ui/core'
 import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { client, theme } from 'config'
 import { Module } from 'types'
 import NotFoundMessage from '../NotFoundMessage'
+import { getRoutes } from './App.utils'
 
 interface AppProps {
-  modules: Module
+  modules: Module[]
 }
 
-const App: React.FC<AppProps> = ({ modules: { routes, reducers } }) => {
-  const store = configureStore({ reducer: reducers })
+const App: React.FC<AppProps> = ({ modules }) => {
+  const routes = getRoutes(modules)
   return (
-    <Provider store={store}>
-      <Router>
-        <Switch>
-          {routes.map((route) => (
-            // @ts-ignore
-            <Route key={route.path} {...route} />
-          ))}
-          <Route component={NotFoundMessage} />
-        </Switch>
-      </Router>
-    </Provider>
+    <ApolloProvider client={client}>
+      <ThemeProvider theme={theme}>
+        <Router>
+          <Switch>
+            {routes.map((route) => (
+              // @ts-ignore
+              <Route key={route.path} {...route} />
+            ))}
+            <Route component={NotFoundMessage} />
+          </Switch>
+        </Router>
+      </ThemeProvider>
+    </ApolloProvider>
   )
 }
 

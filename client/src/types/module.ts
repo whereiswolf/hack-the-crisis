@@ -1,7 +1,8 @@
 import { RouteProps } from 'react-router-dom'
-import { Reducer } from 'redux'
+import { ResourceLanguage } from 'i18next'
 
 export interface Module {
+  name: string
   routes: RouteProps[]
-  reducers: { [reducer: string]: Reducer }
+  i18n: { [lng: string]: ResourceLanguage }
 }

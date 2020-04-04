@@ -6,13 +6,4 @@ const modules: Module[] = [
   example,
 ]
 
-export default modules.reduce(
-  (acc: Module, moduleConfig: Module): Module => ({
-    routes: [...acc.routes, ...moduleConfig.routes],
-    reducers: { ...acc.reducers, ...moduleConfig.reducers },
-  }),
-  {
-    routes: [],
-    reducers: {},
-  }
-)
+export default modules
