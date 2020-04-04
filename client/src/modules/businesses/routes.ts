@@ -9,7 +9,15 @@ export default addBasePath(MODULE_BASE_PATH, [
     path: '/',
     exact: true,
     component: Loadable({
-      loader: () => import('./containers/Test'),
+      loader: () => import('./containers/BusinessList'),
+      loading: Loader,
+    }),
+  },
+  {
+    path: '/:id',
+    exact: true,
+    component: Loadable({
+      loader: () => import('./containers/BusinessDetails'),
       loading: Loader,
     }),
   },
