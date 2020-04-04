@@ -1,6 +1,6 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
 import { arg, makeSchema, objectType, stringArg, intArg } from 'nexus'
-import { getSpecialForYouVoucher, searchVouchers } from './modules/voucher'
+import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { GraphQLUpload } from 'graphql-upload'
 import { searchBusinesses } from './modules/business'
 import { processUpload } from './utils/files';
@@ -105,26 +105,26 @@ const Query = objectType({
         businessType: stringArg({ nullable: true }),
       },
     }),
-      t.list.field('businesses', {
-        type: 'Business',
-        resolve: searchBusinesses,
-        args: {
-          name: stringArg({ nullable: true }),
-          categoryId: intArg({ nullable: true }),
-        },
-      }),
-      t.field('recommended', {
-        type: 'Voucher',
-        resolve: getSpecialForYouVoucher,
-      }),
-      t.crud.tags(),
-      t.crud.categories(),
-      t.crud.orders()
-      t.crud.business(),
-      t.crud.category(),
-      t.crud.voucher(),
-      t.crud.tag(),
-      t.crud.order()
+    t.list.field('businesses', {
+      type: 'Business',
+      resolve: searchBusinesses,
+      args: {
+        name: stringArg({ nullable: true }),
+        categoryId: intArg({ nullable: true }),
+      },
+    }),
+    t.field('recommended', {
+      type: 'Voucher',
+      resolve: getSpecialForYouVouchers,
+    }),
+    t.crud.tags(),
+    t.crud.categories(),
+    t.crud.orders()
+    t.crud.business(),
+    t.crud.category(),
+    t.crud.voucher(),
+    t.crud.tag(),
+    t.crud.order()
   },
 })
 
