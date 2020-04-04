@@ -1,6 +1,6 @@
 import { Module } from 'types'
 import { RouteProps } from 'react-router'
-import { NavItem } from 'components/Layout'
+import { NavItem } from './Layout'
 
 export const getRoutes = (modules: Module[]) =>
   modules.reduce<RouteProps[]>(

@@ -1,9 +1,19 @@
 import { Module } from 'types'
-import example from './example'
+import home from './home'
+import bestDeals from './best-deals'
+import vouchers from './vouchers'
+import businesses from './businesses'
+import aboutUs from './about-us'
+import contact from './contact'
 
 const modules: Module[] = [
   // Append modules here
-  example,
+  home,
+  bestDeals,
+  vouchers,
+  businesses,
+  aboutUs,
+  contact,
 ]
 
 export default modules

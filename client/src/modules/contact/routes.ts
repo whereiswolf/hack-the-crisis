@@ -2,7 +2,7 @@ import { addBasePath } from 'utils'
 import Loadable from 'react-loadable'
 import { Loader } from 'components'
 
-export const MODULE_BASE_PATH = '/example'
+export const MODULE_BASE_PATH = '/contact'
 
 export default addBasePath(MODULE_BASE_PATH, [
   {

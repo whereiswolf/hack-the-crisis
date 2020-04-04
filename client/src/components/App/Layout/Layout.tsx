@@ -1,8 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { AppBar, Toolbar, Grid, Button, Typography } from '@material-ui/core'
+import { AppBar, Grid, Button, Typography, Toolbar } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import strings from 'strings'
+import { Content } from './Layout.style'
 
 export interface NavItem {
   label: string
@@ -14,7 +15,7 @@ interface LayoutProps {
 }
 
 const Layout: React.FC<LayoutProps> = ({ items, children }) => {
-  const { t } = useTranslation()
+  const { t, i18n } = useTranslation()
   return (
     <>
       <AppBar>
@@ -25,19 +26,19 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
             </Grid>
             <Grid item>
               {items.map(({ label, path }) => (
-                <Button to={path} component={Link}>
+                <Button key={path} to={path} component={Link}>
                   {t(label)}
                 </Button>
               ))}
             </Grid>
             <Grid item>
-              <Button>EN</Button>
+              <Button>{i18n.language}</Button>
               <Button>{t(strings.LOGIN)}</Button>
             </Grid>
           </Grid>
         </Toolbar>
       </AppBar>
-      {children}
+      <Content>{children}</Content>
     </>
   )
 }
