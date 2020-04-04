@@ -1,5 +1,3 @@
-export const getRecommendedVouchers = () => {}
-
 export const getSpecialForYouVouchers = async (_: any, args: any, ctx: any) => {
   const numOfRecords = await ctx.prisma.voucher.count()
   const randomNumber = 1 + Math.floor(numOfRecords * Math.random())
