@@ -1,14 +1,14 @@
-import React, { useState } from 'react'
+import React from 'react'
 import { useQuery } from '@apollo/react-hooks'
 import { Grid } from '@material-ui/core'
-import { VouchersList } from 'modules/vouchers/components'
-import Filtering, { Filters } from 'modules/vouchers/components/Filtering'
-import { queries } from './Vouchers.utils'
 import { BusinessType } from 'enums'
+import VouchersList from './VouchersList'
+import Filtering, { Filters } from './Filtering'
+import { queries } from './Vouchers.utils'
 
 interface VouchersProps {}
 
-const defaultFilters = {
+const defaultFilters: Filters = {
   type: BusinessType.Local,
   category: null,
   distance: null,
@@ -16,13 +16,13 @@ const defaultFilters = {
 }
 
 const Vouchers: React.FC<VouchersProps> = () => {
-  const [filters, setFilters] = useState<Filters>(defaultFilters)
-  const { data } = useQuery(queries.VOUCHERS, { variables: filters })
-
+  const { data, refetch } = useQuery(queries.VOUCHERS, {
+    variables: defaultFilters,
+  })
   return (
     <Grid container>
       <Grid item md={5}>
-        <Filtering filters={filters} onFiltersChange={setFilters} />
+        <Filtering onFind={refetch} />
       </Grid>
       <Grid item md={7}>
         <VouchersList vouchers={data} />
