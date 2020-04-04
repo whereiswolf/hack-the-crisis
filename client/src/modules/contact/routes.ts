@@ -1,7 +1,10 @@
+import { addBasePath } from 'utils'
 import Loadable from 'react-loadable'
 import { Loader } from 'components'
 
-export default [
+export const MODULE_BASE_PATH = '/contact'
+
+export default addBasePath(MODULE_BASE_PATH, [
   {
     path: '/',
     exact: true,
@@ -10,4 +13,4 @@ export default [
       loading: Loader,
     }),
   },
-]
+])
