@@ -1074,6 +1074,9 @@ export interface NexusGenArgTypes {
     vouchers: { // args
       businessId?: number | null; // Int
       businessType?: string | null; // String
+      category?: number | null; // Int
+      city?: string | null; // String
+      distance?: number | null; // Int
       name?: string | null; // String
     }
   }

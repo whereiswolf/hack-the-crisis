@@ -6,13 +6,17 @@ export const getSpecialForYouVouchers = async (_: any, args: any, ctx: any) => {
 }
 
 export const searchVouchers = async (_: any, args: any, ctx: any) => {
-  const { businessId, businessType, name } = args
+  const { businessId, businessType, name, city, category } = args
   return ctx.prisma.voucher.findMany({
     where: {
       name: { equals: name },
       business: {
         id: { equals: businessId },
         type: { equals: businessType },
+        city: { contains: city },
+        category: {
+          id: { equals: category }
+        } 
       },
     },
   })

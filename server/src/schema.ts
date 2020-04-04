@@ -103,6 +103,9 @@ const Query = objectType({
         name: stringArg({ nullable: true }),
         businessId: intArg({ nullable: true }),
         businessType: stringArg({ nullable: true }),
+        city: stringArg({ nullable: true }),
+        distance: intArg({ nullable: true }),
+        category: intArg({ nullable: true })
       },
     }),
     t.list.field('businesses', {
