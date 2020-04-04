@@ -11,8 +11,9 @@ import {
 import { makeStyles, createStyles, Theme } from '@material-ui/core/styles'
 import Grid from '@material-ui/core/Grid'
 import { Button } from 'components'
-import { useId, GET_ORDER } from './Order.utils'
+import { GET_ORDER } from './Order.utils'
 import { VoucherData } from 'types'
+import { useId } from 'utils'
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({

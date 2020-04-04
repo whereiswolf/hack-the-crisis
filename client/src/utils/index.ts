@@ -1,4 +1,5 @@
 import { RouteProps } from 'react-router'
+import useReactRouter from 'use-react-router'
 
 export const getTranslationKeys = <T>(moduleName: string, strings: T) =>
   Object.entries(strings).reduce<T>(
@@ -11,3 +12,12 @@ export const addBasePath = (basePath: string, routes: RouteProps[]) =>
     ...route,
     path: `${basePath}${route.path}`,
   }))
+
+export function useId() {
+  const {
+    match: {
+      params: { id },
+    },
+  } = useReactRouter()
+  return Number(id)
+}
