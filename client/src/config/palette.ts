@@ -20,6 +20,9 @@ export const dark = {
     primary: colors.text[100],
     secondary: colors.text[50],
   },
+  info: {
+    main: colors.primary[40],
+  }
 }
 
 export const light = {
