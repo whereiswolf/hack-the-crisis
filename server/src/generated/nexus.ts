@@ -39,47 +39,13 @@ export interface NexusGenInputs {
     id?: number | null; // Int
   }
   VoucherCreateInput: { // input type
-    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
-    company?: NexusGenInputs['VoucherCreateOneWithoutVouchersInput'] | null; // VoucherCreateOneWithoutVouchersInput
+    company?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
     description: string; // String!
     expirationDate?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
     price: number; // Float!
     promotion?: number | null; // Float
-    vouchers?: NexusGenInputs['VoucherCreateManyWithoutCompanyInput'] | null; // VoucherCreateManyWithoutCompanyInput
-  }
-  VoucherCreateManyWithoutCompanyInput: { // input type
-    connect?: NexusGenInputs['VoucherWhereUniqueInput'][] | null; // [VoucherWhereUniqueInput!]
-    create?: NexusGenInputs['VoucherCreateWithoutCompanyInput'][] | null; // [VoucherCreateWithoutCompanyInput!]
-  }
-  VoucherCreateOneWithoutVouchersInput: { // input type
-    connect?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-    create?: NexusGenInputs['VoucherCreateWithoutVouchersInput'] | null; // VoucherCreateWithoutVouchersInput
-  }
-  VoucherCreateWithoutCompanyInput: { // input type
-    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
-    description: string; // String!
-    expirationDate?: string | null; // String
-    imageUrl: string; // String!
-    name: string; // String!
-    price: number; // Float!
-    promotion?: number | null; // Float
-    vouchers?: NexusGenInputs['VoucherCreateManyWithoutCompanyInput'] | null; // VoucherCreateManyWithoutCompanyInput
-  }
-  VoucherCreateWithoutVouchersInput: { // input type
-    business?: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'] | null; // BusinessCreateOneWithoutVouchersInput
-    company?: NexusGenInputs['VoucherCreateOneWithoutVouchersInput'] | null; // VoucherCreateOneWithoutVouchersInput
-    description: string; // String!
-    expirationDate?: string | null; // String
-    imageUrl: string; // String!
-    name: string; // String!
-    price: number; // Float!
-    promotion?: number | null; // Float
-  }
-  VoucherWhereUniqueInput: { // input type
-    id?: number | null; // Int
-    name?: string | null; // String
   }
 }
 
@@ -103,11 +69,6 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   BusinessCreateWithoutVouchersInput: NexusGenInputs['BusinessCreateWithoutVouchersInput'];
   BusinessWhereUniqueInput: NexusGenInputs['BusinessWhereUniqueInput'];
   VoucherCreateInput: NexusGenInputs['VoucherCreateInput'];
-  VoucherCreateManyWithoutCompanyInput: NexusGenInputs['VoucherCreateManyWithoutCompanyInput'];
-  VoucherCreateOneWithoutVouchersInput: NexusGenInputs['VoucherCreateOneWithoutVouchersInput'];
-  VoucherCreateWithoutCompanyInput: NexusGenInputs['VoucherCreateWithoutCompanyInput'];
-  VoucherCreateWithoutVouchersInput: NexusGenInputs['VoucherCreateWithoutVouchersInput'];
-  VoucherWhereUniqueInput: NexusGenInputs['VoucherWhereUniqueInput'];
 }
 
 export interface NexusGenFieldTypes {
@@ -156,7 +117,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Business" | "Mutation" | "Query" | "Voucher";
 
-export type NexusGenInputNames = "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutVouchersInput" | "BusinessWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutCompanyInput" | "VoucherCreateOneWithoutVouchersInput" | "VoucherCreateWithoutCompanyInput" | "VoucherCreateWithoutVouchersInput" | "VoucherWhereUniqueInput";
+export type NexusGenInputNames = "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutVouchersInput" | "BusinessWhereUniqueInput" | "VoucherCreateInput";
 
 export type NexusGenEnumNames = never;
 

@@ -56,50 +56,11 @@ type Voucher {
 }
 
 input VoucherCreateInput {
-  business: BusinessCreateOneWithoutVouchersInput
-  company: VoucherCreateOneWithoutVouchersInput
+  company: BusinessCreateOneWithoutVouchersInput
   description: String!
   expirationDate: String
   imageUrl: String!
   name: String!
   price: Float!
   promotion: Float
-  vouchers: VoucherCreateManyWithoutCompanyInput
-}
-
-input VoucherCreateManyWithoutCompanyInput {
-  connect: [VoucherWhereUniqueInput!]
-  create: [VoucherCreateWithoutCompanyInput!]
-}
-
-input VoucherCreateOneWithoutVouchersInput {
-  connect: VoucherWhereUniqueInput
-  create: VoucherCreateWithoutVouchersInput
-}
-
-input VoucherCreateWithoutCompanyInput {
-  business: BusinessCreateOneWithoutVouchersInput
-  description: String!
-  expirationDate: String
-  imageUrl: String!
-  name: String!
-  price: Float!
-  promotion: Float
-  vouchers: VoucherCreateManyWithoutCompanyInput
-}
-
-input VoucherCreateWithoutVouchersInput {
-  business: BusinessCreateOneWithoutVouchersInput
-  company: VoucherCreateOneWithoutVouchersInput
-  description: String!
-  expirationDate: String
-  imageUrl: String!
-  name: String!
-  price: Float!
-  promotion: Float
-}
-
-input VoucherWhereUniqueInput {
-  id: Int
-  name: String
 }

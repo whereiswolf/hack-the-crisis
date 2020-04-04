@@ -44,7 +44,7 @@ const Query = objectType({
     t.list.field('businesses', {
       type: 'Business',
       resolve: (_, args, ctx) => {
-        return ctx.prisma.business.findMany()
+        return ctx.prisma.business.findMany();
       },
     })
   },
