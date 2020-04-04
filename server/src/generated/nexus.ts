@@ -871,6 +871,7 @@ export interface NexusGenFieldTypes {
     name: string; // String!
     ratings: NexusGenRootTypes['Rating'][]; // [Rating!]!
     siteUrl: string | null; // String
+    type: string; // String!
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   Category: { // field return type
@@ -909,6 +910,7 @@ export interface NexusGenFieldTypes {
     category: NexusGenRootTypes['Category'] | null; // Category
     order: NexusGenRootTypes['Order'] | null; // Order
     orders: NexusGenRootTypes['Order'][]; // [Order!]!
+    recommended: NexusGenRootTypes['Voucher']; // Voucher!
     tag: NexusGenRootTypes['Tag'] | null; // Tag
     tags: NexusGenRootTypes['Tag'][]; // [Tag!]!
     voucher: NexusGenRootTypes['Voucher'] | null; // Voucher
@@ -943,13 +945,6 @@ export interface NexusGenArgTypes {
     ratings: { // args
       after?: NexusGenInputs['RatingWhereUniqueInput'] | null; // RatingWhereUniqueInput
       before?: NexusGenInputs['RatingWhereUniqueInput'] | null; // RatingWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
-    }
-    vouchers: { // args
-      after?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-      before?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
       first?: number | null; // Int
       last?: number | null; // Int
       skip?: number | null; // Int
@@ -1061,11 +1056,7 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
     }
     vouchers: { // args
-      after?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-      before?: NexusGenInputs['VoucherWhereUniqueInput'] | null; // VoucherWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
+      type?: string | null; // String
     }
   }
   Rating: {

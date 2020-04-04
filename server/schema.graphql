@@ -14,7 +14,8 @@ type Business {
   name: String!
   ratings(after: RatingWhereUniqueInput, before: RatingWhereUniqueInput, first: Int, last: Int, skip: Int): [Rating!]!
   siteUrl: String
-  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
+  type: String!
+  vouchers: [Voucher!]!
 }
 
 input BusinessCreateInput {
@@ -470,10 +471,11 @@ type Query {
   category(where: CategoryWhereUniqueInput!): Category
   order(where: OrderWhereUniqueInput!): Order
   orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
+  recommended: Voucher!
   tag(where: TagWhereUniqueInput!): Tag
   tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
   voucher(where: VoucherWhereUniqueInput!): Voucher
-  vouchers(after: VoucherWhereUniqueInput, before: VoucherWhereUniqueInput, first: Int, last: Int, skip: Int): [Voucher!]!
+  vouchers(type: String): [Voucher!]!
 }
 
 type Rating {
