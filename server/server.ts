@@ -12,7 +12,7 @@ const midlewares = [checkUser]
 
 new ApolloServer({
   schema: applyMiddleware(schema, ...midlewares),
-  context: createContext,
+  context: createContext
 }).listen({ port: 4000 }, () => console.log(`🚀 Unicorns at: 4000`))
 
 app.use('/static', express.static(path.join(__dirname, '../images')))

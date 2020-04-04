@@ -9,12 +9,11 @@ function verify(token: string) {
 
 export const checkUser = async (resolve, _, args, context, info) => {
   try {
-    console.log(SECRET);
-    const { authorization } = context.request.request.headers
-    const token = authorization.replace('Bearer ', '')
-    context.user = verify(token)
+    const { authorization } = context.req.headers;
+    const token = authorization.replace('Bearer ', '');
+    context.user = verify(token);
   } catch (error) {
-    context.user = null
+    context.user = null;
   }
-  return resolve(_, args, context, info)
-}
+  return resolve(_, args, context, info);
+};
