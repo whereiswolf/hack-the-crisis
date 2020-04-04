@@ -1,3 +1,5 @@
 import { createMuiTheme } from '@material-ui/core'
 
-export default createMuiTheme({})
+export const lightTheme = createMuiTheme({})
+
+export const darkTheme = createMuiTheme({})
