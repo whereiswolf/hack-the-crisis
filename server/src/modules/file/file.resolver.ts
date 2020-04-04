@@ -3,7 +3,7 @@ import { resolve } from 'path'
 import { sync } from 'mkdirp'
 import { generate } from 'shortid'
 
-const uploadDir = resolve(__dirname, '../../images')
+const uploadDir = resolve(__dirname, '../../../images')
 sync(uploadDir)
 
 const storeUpload = async ({ stream, filename }: any): Promise<any> => {
