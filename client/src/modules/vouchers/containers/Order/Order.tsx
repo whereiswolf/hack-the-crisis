@@ -1,6 +1,5 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery } from '@apollo/react-hooks'
-
 import {
   Avatar,
   Typography,
@@ -14,6 +13,12 @@ import { Button } from 'components'
 import { GET_ORDER } from './Order.utils'
 import { VoucherData } from 'types'
 import { useId } from 'utils'
+import { colors } from 'config'
+import styled from 'styled-components'
+
+export const GreyText = styled(Typography)`
+  color: ${colors.primary[50]};
+`
 
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
@@ -51,12 +56,16 @@ const useStyles = makeStyles((theme: Theme) =>
 interface OrderProps {}
 
 const Order: React.FC<OrderProps> = () => {
+  const [vouchersNumber] = useState(0)
+  // const addVoucher = () => setVouchersNumber(vouchersNumber + 1)
+  // const removeVoucher = () =>
+  //   vouchersNumber > 0 && setVouchersNumber(vouchersNumber - 1)
   const id = useId()
+
   const { data } = useQuery<VoucherData>(GET_ORDER, {
     variables: { id },
   })
   const classes = useStyles()
-
   return (
     <div className={classes.root}>
       <Grid container spacing={0}>
@@ -92,9 +101,19 @@ const Order: React.FC<OrderProps> = () => {
             <Grid container spacing={0} className={classes.orderBusiness}>
               <Grid item xs={1}></Grid>
               <Grid item xs={11}>
-                <Typography variant="h5" component="h5" color="textPrimary">
-                  Add other Vouchers from BingoBong Sushi
-                </Typography>
+                <Grid item xs={12}>
+                  <GreyText variant="h5" color="textPrimary">
+                    Add other Vouchers from BingoBong Sushi
+                  </GreyText>
+                </Grid>
+                <Grid item xs={12}>
+                  <Typography variant="h5" color="textPrimary">
+                    Back this{' '}
+                    <Typography color="secondary" component="span" variant="h5">
+                      business
+                    </Typography>
+                  </Typography>
+                </Grid>
               </Grid>
             </Grid>
           </Grid>
@@ -124,9 +143,7 @@ const Order: React.FC<OrderProps> = () => {
             </Typography>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h6" color="textPrimary">
-              Fill the fields below
-            </Typography>
+            <GreyText variant="h6">Fill the fields below</GreyText>
           </Grid>
           <Grid item xs={12}>
             <FormControl className={classes.formControl}>
@@ -147,26 +164,22 @@ const Order: React.FC<OrderProps> = () => {
             </FormControl>
           </Grid>
           <Grid item xs={12}>
-            <Typography variant="h5" color="textPrimary">
-              Total Ammount
-            </Typography>
+            <GreyText variant="h5">Total Ammount</GreyText>
           </Grid>
           <Grid item xs={12}>
             <Typography variant="h4" color="textPrimary">
-              € 30.00
+              € {vouchersNumber * (data?.voucher?.price || 0)}
             </Typography>
           </Grid>
           <Grid container xs={12} spacing={0}>
             <Grid item xs={3}>
-              <Button>-</Button>
+              {/* <Button onClick={removeVoucher}>-</Button> */}
             </Grid>
             <Grid item xs={6}>
-              <Typography variant="h6" color="textPrimary">
-                Buy 2 Vouchers
-              </Typography>
+              <GreyText variant="h6">Buy {vouchersNumber} Vouchers</GreyText>
             </Grid>
             <Grid item xs={3}>
-              <Button>+</Button>
+              {/* <Button onClick={addVoucher}>+</Button> */}
             </Grid>
           </Grid>
           <Grid item xs={12}>

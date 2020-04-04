@@ -11,7 +11,33 @@ export interface Voucher {
   description: string
   price: number
   promotion: number
+  expirationDate: string
+  business: Business
   tags: Tag[]
+}
+
+export interface Category {
+  id: number
+  name: string
+}
+
+export interface Rating {
+  id: number
+  rate: number
+}
+export interface Business {
+  id: number
+  name: string
+  city: string
+  address: string
+  siteUrl: String
+  amount: number
+  description: string
+  history: string
+  imageUrl: string
+  category: Category
+  type: string
+  vouchers: Voucher[]
 }
 
 export interface VoucherData {
