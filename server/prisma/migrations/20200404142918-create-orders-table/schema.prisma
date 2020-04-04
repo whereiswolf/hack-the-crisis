@@ -4,14 +4,14 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url = "***"
 }
 
 model Order {
   id Int @default(autoincrement()) @id
   email String
   name String
-  count Int @default(1)
+  count Int? @default(1)
   voucherId Int
   voucher Voucher @relation(fields: [voucherId], references: [id])
 }
