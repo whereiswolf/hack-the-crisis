@@ -1,7 +1,7 @@
 import { ApolloServer } from 'apollo-server'
 import path from 'path'
-import { schema } from './schema'
-import { createContext } from './context'
+import { schema } from './src/schema'
+import { createContext } from './src/context'
 import express from 'express'
 
 const app = express()
