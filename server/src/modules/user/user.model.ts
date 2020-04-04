@@ -7,5 +7,6 @@ export default objectType({
     t.model.email()
     t.model.password()
     t.model.orders()
+    t.model.accountType()
   },
 })

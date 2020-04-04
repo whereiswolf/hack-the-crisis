@@ -318,12 +318,13 @@ type Mutation {
   createOneCategory(data: CategoryCreateInput!): Category!
   createOneOrder(data: OrderCreateInput!): Order!
   createOneTag(data: TagCreateInput!): Tag!
-  createOneUser(email: String, password: String): User!
+  createOneUser(accountType: Int, email: String, password: String): User!
   createOneVoucher(data: VoucherCreateInput!): Voucher!
   deleteOneBusiness(where: BusinessWhereUniqueInput!): Business
   deleteOneCategory(where: CategoryWhereUniqueInput!): Category
   deleteOneOrder(where: OrderWhereUniqueInput!): Order
   deleteOneTag(where: TagWhereUniqueInput!): Tag
+  deleteOneUser(where: UserWhereUniqueInput!): User
   deleteOneVoucher(where: VoucherWhereUniqueInput!): Voucher
   updateOneBusiness(data: BusinessUpdateInput!, where: BusinessWhereUniqueInput!): Business
   updateOneCategory(data: CategoryUpdateInput!, where: CategoryWhereUniqueInput!): Category
@@ -694,6 +695,7 @@ input TagWhereUniqueInput {
 scalar Upload
 
 type User {
+  accountType: Int!
   email: String!
   id: Int!
   orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
@@ -706,6 +708,7 @@ input UserCreateOneWithoutOrdersInput {
 }
 
 input UserCreateWithoutOrdersInput {
+  accountType: Int
   email: String!
   password: String!
 }
@@ -720,6 +723,7 @@ input UserUpdateOneWithoutOrdersInput {
 }
 
 input UserUpdateWithoutOrdersDataInput {
+  accountType: Int
   email: String
   id: Int
   password: String
@@ -731,6 +735,7 @@ input UserUpsertWithoutOrdersInput {
 }
 
 input UserWhereInput {
+  accountType: IntFilter
   AND: [UserWhereInput!]
   email: StringFilter
   id: IntFilter
@@ -741,6 +746,7 @@ input UserWhereInput {
 }
 
 input UserWhereUniqueInput {
+  email: String
   id: Int
 }
 

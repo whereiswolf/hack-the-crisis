@@ -547,6 +547,7 @@ export interface NexusGenInputs {
     create?: NexusGenInputs['UserCreateWithoutOrdersInput'] | null; // UserCreateWithoutOrdersInput
   }
   UserCreateWithoutOrdersInput: { // input type
+    accountType?: number | null; // Int
     email: string; // String!
     password: string; // String!
   }
@@ -559,6 +560,7 @@ export interface NexusGenInputs {
     upsert?: NexusGenInputs['UserUpsertWithoutOrdersInput'] | null; // UserUpsertWithoutOrdersInput
   }
   UserUpdateWithoutOrdersDataInput: { // input type
+    accountType?: number | null; // Int
     email?: string | null; // String
     id?: number | null; // Int
     password?: string | null; // String
@@ -568,6 +570,7 @@ export interface NexusGenInputs {
     update: NexusGenInputs['UserUpdateWithoutOrdersDataInput']; // UserUpdateWithoutOrdersDataInput!
   }
   UserWhereInput: { // input type
+    accountType?: NexusGenInputs['IntFilter'] | null; // IntFilter
     AND?: NexusGenInputs['UserWhereInput'][] | null; // [UserWhereInput!]
     email?: NexusGenInputs['StringFilter'] | null; // StringFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
@@ -577,6 +580,7 @@ export interface NexusGenInputs {
     password?: NexusGenInputs['StringFilter'] | null; // StringFilter
   }
   UserWhereUniqueInput: { // input type
+    email?: string | null; // String
     id?: number | null; // Int
   }
   VoucherCreateInput: { // input type
@@ -963,6 +967,7 @@ export interface NexusGenFieldTypes {
     deleteOneCategory: NexusGenRootTypes['Category'] | null; // Category
     deleteOneOrder: NexusGenRootTypes['Order'] | null; // Order
     deleteOneTag: NexusGenRootTypes['Tag'] | null; // Tag
+    deleteOneUser: NexusGenRootTypes['User'] | null; // User
     deleteOneVoucher: NexusGenRootTypes['Voucher'] | null; // Voucher
     updateOneBusiness: NexusGenRootTypes['Business'] | null; // Business
     updateOneCategory: NexusGenRootTypes['Category'] | null; // Category
@@ -1006,6 +1011,7 @@ export interface NexusGenFieldTypes {
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   User: { // field return type
+    accountType: number; // Int!
     email: string; // String!
     id: number; // Int!
     orders: NexusGenRootTypes['Order'][]; // [Order!]!
@@ -1058,6 +1064,7 @@ export interface NexusGenArgTypes {
       data: NexusGenInputs['TagCreateInput']; // TagCreateInput!
     }
     createOneUser: { // args
+      accountType?: number | null; // Int
       email?: string | null; // String
       password?: string | null; // String
     }
@@ -1075,6 +1082,9 @@ export interface NexusGenArgTypes {
     }
     deleteOneTag: { // args
       where: NexusGenInputs['TagWhereUniqueInput']; // TagWhereUniqueInput!
+    }
+    deleteOneUser: { // args
+      where: NexusGenInputs['UserWhereUniqueInput']; // UserWhereUniqueInput!
     }
     deleteOneVoucher: { // args
       where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!

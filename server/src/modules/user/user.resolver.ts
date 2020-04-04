@@ -8,12 +8,12 @@ export const createOneUser = async (
   ctx: any,
 ): Promise<any> => {
   return new Promise((resolve, reject) => {
-    const { email, password } = args
+    const { email, password, accountType } = args
     hash(password, saltRounds, (err, hash) => {
       if (!err) {
         resolve(
           ctx.prisma.user.create({
-            data: { email, password: hash },
+            data: { email, password: hash, accountType },
           }),
         )
       }

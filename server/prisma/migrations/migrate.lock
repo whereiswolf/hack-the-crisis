@@ -16,3 +16,6 @@
 20200404142918-create-orders-table
 20200404170453
 20200404183421-add-users-table
+20200404194709-add-account-type-column-to-users-table
+20200404194957-make-email-column-unique-in-users-table
+20200404195400-making-users-email-column-unique
