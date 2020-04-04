@@ -8,5 +8,6 @@ export default objectType({
     t.model.name()
     t.model.count()
     t.model.voucher()
+    t.model.user()
   },
 })

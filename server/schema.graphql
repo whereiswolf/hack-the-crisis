@@ -2,6 +2,10 @@
 ### Do not make changes to this file directly
 
 
+type Auth {
+  token: String!
+}
+
 type Business {
   address: String!
   amount: Float!
@@ -370,6 +374,7 @@ type Order {
   email: String!
   id: Int!
   name: String!
+  user: User
   voucher: Voucher!
 }
 
@@ -486,6 +491,7 @@ type Query {
   businesses(categoryId: Int, name: String): [Business!]!
   categories(after: CategoryWhereUniqueInput, before: CategoryWhereUniqueInput, first: Int, last: Int, skip: Int): [Category!]!
   category(where: CategoryWhereUniqueInput!): Category
+  login(email: String, password: String): Auth!
   order(where: OrderWhereUniqueInput!): Order
   orders(after: OrderWhereUniqueInput, before: OrderWhereUniqueInput, first: Int, last: Int, skip: Int): [Order!]!
   recommended: Voucher!

@@ -6,6 +6,7 @@ import { getSpecialForYouVouchers, searchVouchers } from './modules/voucher'
 import { searchBusinesses } from './modules/business'
 import { processUpload } from './modules/file'
 import { createOneUser } from './modules/user'
+import { loginUser } from './modules/auth'
 
 import Voucher from './modules/voucher/voucher.model'
 import Category from './modules/category/category.model'
@@ -15,12 +16,21 @@ import Tag from './modules/tag/tag.model'
 import Rating from './modules/rating/rating.model'
 import File from './modules/file/file.model'
 import User from './modules/user/user.model'
+import Auth from './modules/auth/auth.model'
 
 const Upload = GraphQLUpload
 
 const Query = objectType({
   name: 'Query',
   definition(t) {
+    t.field('login', {
+      type: 'Auth',
+      resolve: loginUser,
+      args: {
+        email: stringArg(),
+        password: stringArg(),
+      }
+    })
     t.list.field('vouchers', {
       type: 'Voucher',
       resolve: searchVouchers,
@@ -72,9 +82,9 @@ const Mutation = objectType({
       type: 'User',
       args: {
         email: stringArg(),
-        password: stringArg()
+        password: stringArg(),
       },
-      resolve: createOneUser
+      resolve: createOneUser,
     })
     t.crud.createOneTag()
     t.crud.createOneCategory()
@@ -107,6 +117,7 @@ export const schema = makeSchema({
     Rating,
     Order,
     User,
+    Auth,
   ],
   plugins: [nexusPrismaPlugin()],
   outputs: {
