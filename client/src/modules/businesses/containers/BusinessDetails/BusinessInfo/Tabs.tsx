@@ -1,6 +1,3 @@
-import React from 'react'
-import { Typography } from '@material-ui/core'
-
 export interface Tab {
   name: string
   content: string

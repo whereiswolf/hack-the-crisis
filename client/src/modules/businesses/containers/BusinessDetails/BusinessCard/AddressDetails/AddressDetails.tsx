@@ -1,6 +1,4 @@
 import React from 'react'
-import { useQuery } from '@apollo/react-hooks'
-import { Grid } from '@material-ui/core'
 import PinIcon from '../images/pin.svg'
 import { Icon, IconContainer, Wrapper, Title } from './AddressDetails.style'
 
