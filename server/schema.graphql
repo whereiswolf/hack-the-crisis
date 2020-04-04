@@ -466,7 +466,7 @@ input OrderWhereUniqueInput {
 
 type Query {
   business(where: BusinessWhereUniqueInput!): Business
-  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  businesses(categoryId: Int, name: String): [Business!]!
   categories(after: CategoryWhereUniqueInput, before: CategoryWhereUniqueInput, first: Int, last: Int, skip: Int): [Category!]!
   category(where: CategoryWhereUniqueInput!): Category
   order(where: OrderWhereUniqueInput!): Order
@@ -475,7 +475,7 @@ type Query {
   tag(where: TagWhereUniqueInput!): Tag
   tags(after: TagWhereUniqueInput, before: TagWhereUniqueInput, first: Int, last: Int, skip: Int): [Tag!]!
   voucher(where: VoucherWhereUniqueInput!): Voucher
-  vouchers(type: String): [Voucher!]!
+  vouchers(businessId: Int, businessType: String, name: String): [Voucher!]!
 }
 
 type Rating {

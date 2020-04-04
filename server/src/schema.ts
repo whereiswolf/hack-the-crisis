@@ -1,6 +1,7 @@
 import { nexusPrismaPlugin } from 'nexus-prisma'
-import { makeSchema, objectType, stringArg } from 'nexus'
+import { makeSchema, objectType, stringArg, intArg } from 'nexus'
 import { getSpecialForYouVoucher, searchVouchers } from './modules/voucher'
+import { searchBusinesses } from './modules/business'
 
 const Order = objectType({
   name: 'Order',
@@ -84,20 +85,27 @@ const Query = objectType({
       type: 'Voucher',
       resolve: searchVouchers,
       args: {
-        type: stringArg({ nullable: true }),
+        name: stringArg({ nullable: true }),
+        businessId: intArg({ nullable: true }),
+        businessType: stringArg({ nullable: true }),
+      },
+    }),
+    t.list.field('businesses', {
+      type: 'Business',
+      resolve: searchBusinesses,
+      args: {
+        name: stringArg({ nullable: true }),
+        categoryId: intArg({ nullable: true }),
       },
     }),
     t.field('recommended', {
       type: 'Voucher',
       resolve: getSpecialForYouVoucher,
     }),
-      // Read
+
     t.crud.tags(),
-    t.crud.businesses(),
     t.crud.categories(),
     t.crud.orders()
-
-    // Read example: { where: { id: 1 } }
     t.crud.business(),
     t.crud.category(),
     t.crud.voucher(),
@@ -109,21 +117,16 @@ const Query = objectType({
 const Mutation = objectType({
   name: 'Mutation',
   definition(t) {
-    // Create example: { data: { name: "Test tag" } }
     t.crud.createOneTag()
     t.crud.createOneCategory()
     t.crud.createOneBusiness()
     t.crud.createOneVoucher()
     t.crud.createOneOrder()
-
-    // Updates example: { data: { name: "Test tag" }, where: { id: 1 } }
     t.crud.updateOneBusiness()
     t.crud.updateOneCategory()
     t.crud.updateOneVoucher()
     t.crud.updateOneTag()
     t.crud.updateOneOrder()
-
-    // Deletes example: { where: { id: 1 } }
     t.crud.deleteOneBusiness()
     t.crud.deleteOneVoucher()
     t.crud.deleteOneTag()

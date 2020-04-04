@@ -1016,11 +1016,8 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['BusinessWhereUniqueInput']; // BusinessWhereUniqueInput!
     }
     businesses: { // args
-      after?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
-      before?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
-      first?: number | null; // Int
-      last?: number | null; // Int
-      skip?: number | null; // Int
+      categoryId?: number | null; // Int
+      name?: string | null; // String
     }
     categories: { // args
       after?: NexusGenInputs['CategoryWhereUniqueInput'] | null; // CategoryWhereUniqueInput
@@ -1056,7 +1053,9 @@ export interface NexusGenArgTypes {
       where: NexusGenInputs['VoucherWhereUniqueInput']; // VoucherWhereUniqueInput!
     }
     vouchers: { // args
-      type?: string | null; // String
+      businessId?: number | null; // Int
+      businessType?: string | null; // String
+      name?: string | null; // String
     }
   }
   Rating: {
