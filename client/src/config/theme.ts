@@ -1,9 +1,8 @@
-import { createMuiTheme } from '@material-ui/core/styles';
-import { dark, light } from './palette';
+import { createMuiTheme, ThemeOptions } from '@material-ui/core/styles'
+import { dark, light } from './palette'
 
-const theme = {
+const theme: ThemeOptions = {
   typography: {
-    useNextVariants: true,
     fontFamily: [
       'Muli',
       '-apple-system',
@@ -17,6 +16,9 @@ const theme = {
       '"Segoe UI Emoji"',
       '"Segoe UI Symbol"',
     ].join(','),
+    button: {
+      textTransform: 'none',
+    },
   },
 }
 
