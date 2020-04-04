@@ -1,24 +1,27 @@
 import React, { ReactNode } from 'react'
-import ButtonBase from '@material-ui/core/Button';
-import { withStyles, WithStyles } from '@material-ui/styles';
-import styles from './Button.style';
+import ButtonBase, {
+  ButtonProps as ButtonBaseProps,
+} from '@material-ui/core/Button'
+import { makeStyles } from '@material-ui/core'
+import styles from './Button.style'
 
-interface ButtonProps extends WithStyles<typeof styles> {
-  variant?: 'outlined' | 'contained';
-  color?: 'primary' | 'secondary';
-  children?: ReactNode | string;
+interface ButtonProps extends ButtonBaseProps {
+  variant?: 'outlined' | 'contained'
+  color?: 'primary' | 'secondary'
+  children?: ReactNode | string
+  fullWidth?: boolean
 }
+
+const useStyles = makeStyles(styles)
 
 const Button: React.FC<ButtonProps> = ({
   variant = 'outlined',
   color = 'secondary',
   children,
-  classes,
   ...props
 }) => {
-  const label = variant === 'outlined'
-    ? classes.labelOutlined
-    : classes.label;
+  const classes = useStyles()
+  const label = variant === 'outlined' ? classes.labelOutlined : classes.label
   return (
     <ButtonBase
       color={color}
@@ -35,4 +38,4 @@ const Button: React.FC<ButtonProps> = ({
   )
 }
 
-export default withStyles(styles)(Button);
+export default Button

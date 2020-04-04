@@ -1,34 +1,32 @@
 import React, { useState } from 'react'
-import { TextField } from '@material-ui/core';
-import { withStyles, WithStyles } from '@material-ui/styles';
-import styles from './TextInput.style';
+import { TextField, makeStyles, TextFieldProps } from '@material-ui/core'
+import styles from './TextInput.style'
 
-interface TextInputProps extends WithStyles<typeof styles> {
-  onChange?: (value: string | number) => void;
-  placeholder?: string;
-  name?: string;
-  value?: string;
-  onClick?: () => void;
+interface TextInputProps extends Omit<TextFieldProps, 'onChange'> {
+  onChange?: (value: string | number) => void
+  placeholder?: string
+  name?: string
+  value?: string
+  onClick?: () => void
 }
 
+const useStyles = makeStyles(styles)
 
 const TextInput: React.FC<TextInputProps> = ({
   children,
-  classes,
   onChange,
   placeholder = '',
   name = '',
   value,
   ...props
 }) => {
-  const [inputValue, setValue] = useState('');
+  const classes = useStyles()
+  const [inputValue, setValue] = useState('')
   const onTextInput = (e: any) => {
-    setValue(e.currentTarget.value);
-    if (onChange) onChange(e.currentTarget.value);
+    setValue(e.currentTarget.value)
+    if (onChange) onChange(e.currentTarget.value)
   }
-  const focused = inputValue
-    ? classes.focusedWithValue
-    : classes.focused;
+  const focused = inputValue ? classes.focusedWithValue : classes.focused
   return (
     <TextField
       value={value || inputValue}
@@ -44,11 +42,11 @@ const TextInput: React.FC<TextInputProps> = ({
           input: classes.input,
           root: classes.inputRoot,
           error: classes.error,
-        }
+        },
       }}
       {...props}
     />
   )
 }
 
-export default withStyles(styles)(TextInput);
+export default TextInput
