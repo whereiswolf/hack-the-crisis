@@ -1,6 +1,5 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createStyles } from '@material-ui/core'
-import { colors } from 'config'
 
 const IMAGE_HEIGHT = 180
 const WRAPPER_WIDTH = 250
