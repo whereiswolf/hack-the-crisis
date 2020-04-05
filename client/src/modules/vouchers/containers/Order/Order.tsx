@@ -29,6 +29,7 @@ import {
   useStyles,
   MarginBottomContainer,
   FullHeightContainer,
+  BuyVouchersContainer,
 } from './Order.styles'
 import OrderCompleteModal from './components/OrderCompleteModal'
 import { useHistory } from 'react-router'
@@ -168,11 +169,11 @@ const Order: React.FC<OrderProps> = () => {
                   -
                 </SquareButton>
               </RemoveButtonContainer>
-              <Grid item xs={8}>
+              <BuyVouchersContainer item xs={8}>
                 <Typography variant="h6" color="textPrimary">
                   Buy {vouchersNumber} Vouchers
                 </Typography>
-              </Grid>
+              </BuyVouchersContainer>
               <Grid item xs={2}>
                 <SquareButton onClick={addVoucher} color="secondary">
                   +

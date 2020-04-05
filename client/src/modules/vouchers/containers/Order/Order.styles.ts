@@ -76,6 +76,12 @@ export const FullHeightContainer = styled(Grid)`
   height: 100%;
 `
 
+export const BuyVouchersContainer = styled(Grid)`
+  h6 {
+    margin-top: 5px !important;
+  }
+`
+
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {

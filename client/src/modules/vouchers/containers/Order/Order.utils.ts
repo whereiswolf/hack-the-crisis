@@ -8,6 +8,7 @@ export const GET_ORDER = gql`
       name
       imageUrl
       description
+      expirationDate
       price
       promotion
       tags {
