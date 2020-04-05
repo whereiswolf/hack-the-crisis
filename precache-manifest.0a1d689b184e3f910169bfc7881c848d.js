@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "67574753b00b8290a80866a653195c71",
+    "revision": "d11e2e91a5f432b13fb2fc141e971706",
     "url": "/hack-the-crisis/index.html"
   },
   {
@@ -24,12 +24,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hack-the-crisis/static/js/13.bd3f9096.chunk.js"
   },
   {
-    "revision": "2f3bdb0598c8608054aa",
-    "url": "/hack-the-crisis/static/js/3.fc958e88.chunk.js"
+    "revision": "52e0e5c92fce5edd51c1",
+    "url": "/hack-the-crisis/static/js/3.49a832e0.chunk.js"
   },
   {
     "revision": "729937898630e839994162d5d9f8ce89",
-    "url": "/hack-the-crisis/static/js/3.fc958e88.chunk.js.LICENSE.txt"
+    "url": "/hack-the-crisis/static/js/3.49a832e0.chunk.js.LICENSE.txt"
   },
   {
     "revision": "97a0c0e831f6f17d29e8",
@@ -60,8 +60,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hack-the-crisis/static/js/9.bdb9534c.chunk.js"
   },
   {
-    "revision": "a8cfef7e9fc02e110042",
-    "url": "/hack-the-crisis/static/js/main.b0439a91.chunk.js"
+    "revision": "4869b40aff7fa91ebbe7",
+    "url": "/hack-the-crisis/static/js/main.3d770b9c.chunk.js"
   },
   {
     "revision": "7c486eaa66ade5f21ea1",
