@@ -9,4 +9,6 @@ export const Title = styled(Typography)`
     font-style: normal;
     color: ${(p) => p.theme.palette.secondary.main};
   }
+  padding-top: 70px;
+  padding-bottom: 70px;
 `

@@ -27,7 +27,7 @@ interface VoucherProps {
   data: Business
 }
 
-const Component: React.FC<VoucherProps> = ({ data: { name } }) => {
+const Component: React.FC<VoucherProps> = ({ data: { name, avgRating } }) => {
   const classes = useStyles()
   return (
     <Grid
@@ -37,7 +37,7 @@ const Component: React.FC<VoucherProps> = ({ data: { name } }) => {
       className={classes.wrapper}
     >
       <Typography className={classes.title}>{name}</Typography>
-      <Rating value={3.5} />
+      <Rating value={avgRating || 0} />
     </Grid>
   )
 }

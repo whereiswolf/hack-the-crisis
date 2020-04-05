@@ -22,7 +22,14 @@ const BestDeals: React.FC<BusinessDetailsProps> = () => {
       </Grid>
       {vouchersForYou?.map((item, index) => (
         <Grid item xs={4} key={`best-deal-${index}`}>
-          <BusinessBestDeal category={item.business.category} voucher={item} />
+          <BusinessBestDeal
+            category={
+              item.business && item.business.category
+                ? item.business.category
+                : { name: '' }
+            }
+            voucher={item}
+          />
         </Grid>
       ))}
     </Wrapper>

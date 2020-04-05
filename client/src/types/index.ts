@@ -37,6 +37,7 @@ export interface Business {
   description: string
   history?: string
   imageUrl: string
+  avgRating?: number
   category: Category
   type: string
   vouchers: Voucher[]

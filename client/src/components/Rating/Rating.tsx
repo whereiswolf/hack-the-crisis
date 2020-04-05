@@ -11,7 +11,7 @@ const starPath =
 
 const Rating: React.FC<RatingProps> = ({ value }) => (
   <StarRatings
-    rating={3.5}
+    rating={value}
     numberOfStars={5}
     starEmptyColor={colors.text[100]}
     svgIconPath={starPath}

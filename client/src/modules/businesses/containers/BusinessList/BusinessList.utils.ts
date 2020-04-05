@@ -7,6 +7,7 @@ const BUSINESSES = gql`
       name
       imageUrl
       amount
+      avgRating
     }
   }
 `
