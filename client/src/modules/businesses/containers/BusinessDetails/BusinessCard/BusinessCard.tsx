@@ -4,7 +4,6 @@ import Avatar from './Avatar'
 import AddressDetails from './AddressDetails'
 import RestaurantIcon from './images/restaurantIcon.svg'
 import { Rating } from 'components'
-import { Business } from 'types'
 import {
   BusinessImage,
   UpperWrapper,
