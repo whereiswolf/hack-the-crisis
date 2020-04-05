@@ -18,11 +18,16 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
   const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
 
+  const isSamePath = (path: string) => {
+    const name = path.substr(1)
+    return path === pathname || (name && pathname.substr(1).startsWith(name))
+  }
+
   return (
     <>
       <AppBar>
         <Toolbar>
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <Typography>Place for Logo</Typography>
             </Grid>
@@ -31,11 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
                 <Button key={path} to={path} component={Link}>
                   <Typography
                     variant="button"
-                    color={
-                      path && pathname.startsWith(path)
-                        ? 'secondary'
-                        : 'inherit'
-                    }
+                    color={isSamePath(path) ? 'secondary' : 'inherit'}
                   >
                     {t(label)}
                   </Typography>
@@ -43,8 +44,10 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
               ))}
             </Grid>
             <Grid item>
-              <Button>{i18n.language}</Button>
-              <Button>{t(strings.LOGIN)}</Button>
+              <Button>{i18n.language.toUpperCase()}</Button>
+              <Button to={'/login'} component={Link}>
+                {t(strings.LOGIN)}
+              </Button>
             </Grid>
           </Grid>
         </Toolbar>

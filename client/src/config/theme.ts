@@ -18,25 +18,37 @@ const theme: ThemeOptions = {
     ].join(','),
     button: {
       textTransform: 'none',
+      fontSize: 17,
+      fontWeight: 500,
     },
     h2: {
+      fontFamily: 'Exo',
       fontSize: 68,
       fontWeight: 900,
     },
     h4: {
+      fontFamily: 'Exo',
       fontSize: 40,
       fontWeight: 900,
     },
     h5: {
+      fontFamily: 'Exo',
       fontSize: 28,
       fontWeight: 900,
     },
     h6: {
+      fontFamily: 'Exo',
       fontSize: 18,
       fontWeight: 'bold',
     },
     body1: {
+      fontFamily: 'Muli',
       fontWeight: 300,
+    },
+    body2: {
+      fontFamily: 'Muli',
+      fontWeight: 300,
+      fontSize: 15,
     },
   },
 }

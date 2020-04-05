@@ -29,7 +29,7 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
     image: {
       width: '100%',
       height: IMAGE_HEIGHT,
-      backgroundColor: 'red',
+      backgroundColor: palette.primary.light,
     },
     content: {
       display: 'flex',

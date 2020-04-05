@@ -29,7 +29,7 @@ const TextInput: React.FC<TextInputProps> = ({
   const focused = inputValue ? classes.focusedWithValue : classes.focused
   return (
     <TextField
-      value={value || inputValue}
+      value={value !== undefined ? value : inputValue}
       onChange={onTextInput}
       variant="outlined"
       classes={{

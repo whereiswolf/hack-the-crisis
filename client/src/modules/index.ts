@@ -5,6 +5,7 @@ import vouchers from './vouchers'
 import businesses from './businesses'
 import aboutUs from './about-us'
 import contact from './contact'
+import login from './login'
 
 const modules: Module[] = [
   // Append modules here
@@ -14,6 +15,7 @@ const modules: Module[] = [
   businesses,
   aboutUs,
   contact,
+  login,
 ]
 
 export default modules
