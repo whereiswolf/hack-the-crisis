@@ -2,11 +2,13 @@ import React, { useState } from 'react'
 import { Grid, Typography } from '@material-ui/core'
 import { Select, TextInput, Button } from 'components'
 import { useCategories, types } from './FiltersPanel.utils'
+import SupportLevelPanel from '../SupportLevelPanel'
 
 interface Filters {
   category: string | null
   type: string | null
   name: string | null
+  supportLevel: number | null
 }
 
 interface FiltersPanelProps {
@@ -18,8 +20,9 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({ onFind }) => {
   const [category, setCategory] = useState<string>('')
   const [type, setType] = useState<string>('')
   const [name, setName] = useState<string>('')
+  const [supportLevel, setSupportLevel] = useState<number>(0)
 
-  const find = (): Filters => onFind({ category, type, name })
+  const find = (): Filters => onFind({ category, type, name, supportLevel })
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -57,6 +60,14 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({ onFind }) => {
           <Button fullWidth onClick={find}>
             Find
           </Button>
+        </Grid>
+        <Grid item container direction="column">
+          <br />
+          <Typography variant="h6" color="textPrimary">
+            Find by support level
+          </Typography>
+          <br />
+          <SupportLevelPanel level={supportLevel} onChange={setSupportLevel} />
         </Grid>
       </Grid>
     </Grid>

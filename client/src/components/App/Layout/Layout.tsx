@@ -27,25 +27,29 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
     <>
       <AppBar>
         <Toolbar>
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <Typography>Place for Logo</Typography>
             </Grid>
             <Grid item>
-              {items.map(({ label, path }) => (
-                <Button key={path} to={path} component={Link}>
-                  <Typography
-                    variant="button"
-                    color={isSamePath(path) ? 'secondary' : 'inherit'}
-                  >
-                    {t(label)}
-                  </Typography>
-                </Button>
-              ))}
+              {items
+                .filter(({ path }) => path !== '/login')
+                .map(({ label, path }) => (
+                  <Button key={path} to={path} component={Link}>
+                    <Typography
+                      variant="button"
+                      color={isSamePath(path) ? 'secondary' : 'inherit'}
+                    >
+                      {t(label)}
+                    </Typography>
+                  </Button>
+                ))}
             </Grid>
             <Grid item>
-              <Button>{i18n.language}</Button>
-              <Button>{t(strings.LOGIN)}</Button>
+              <Button>{i18n.language.toUpperCase()}</Button>
+              <Button to={'/login'} component={Link}>
+                {t(strings.LOGIN)}
+              </Button>
             </Grid>
           </Grid>
         </Toolbar>

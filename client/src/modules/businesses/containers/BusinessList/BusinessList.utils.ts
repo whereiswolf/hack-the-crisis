@@ -5,6 +5,7 @@ const BUSINESSES = gql`
     businesses {
       id
       name
+      imageUrl
     }
   }
 `

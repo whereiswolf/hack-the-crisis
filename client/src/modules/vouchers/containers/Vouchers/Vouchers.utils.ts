@@ -6,6 +6,7 @@ const VOUCHERS = gql`
       id
       name
       price
+      imageUrl
     }
   }
 `
