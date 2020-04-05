@@ -4,7 +4,7 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url = "***"
 }
 
 model User {
@@ -51,7 +51,7 @@ model Category {
   id Int @default(autoincrement()) @id
   name String
   businesses Business[]
-} 
+}
 
 model Business {
   id Int @default(autoincrement()) @id

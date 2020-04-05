@@ -5,6 +5,6 @@ export default objectType({
   definition(t) {
     t.model.id()
     t.model.rate()
-    t.model.businesses()
+    t.model.business()
   },
 })
