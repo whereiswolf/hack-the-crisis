@@ -4,7 +4,7 @@ import { NewPrice, OldPrice } from './Discount.style'
 
 interface DiscountProps extends GridProps {
   oldPrice: number
-  newPrice: number
+  newPrice: number | null
 }
 
 const Discount: React.FC<DiscountProps> = ({
@@ -19,13 +19,13 @@ const Discount: React.FC<DiscountProps> = ({
     alignItems="center"
     {...props}
   >
-    {Boolean(oldPrice) && (
+    {Boolean(newPrice) && (
       <OldPrice color="error" variant="h5">
         € {oldPrice.toFixed(2)}
       </OldPrice>
     )}
     <NewPrice color="textPrimary" variant="h4">
-      € {newPrice.toFixed(2)}
+      € {newPrice ? newPrice.toFixed(2) : oldPrice.toFixed(2)}
     </NewPrice>
   </Grid>
 )
