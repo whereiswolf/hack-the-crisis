@@ -32,16 +32,18 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
               <Typography>Place for Logo</Typography>
             </Grid>
             <Grid item>
-              {items.map(({ label, path }) => (
-                <Button key={path} to={path} component={Link}>
-                  <Typography
-                    variant="button"
-                    color={isSamePath(path) ? 'secondary' : 'inherit'}
-                  >
-                    {t(label)}
-                  </Typography>
-                </Button>
-              ))}
+              {items
+                .filter(({ path }) => path !== '/login')
+                .map(({ label, path }) => (
+                  <Button key={path} to={path} component={Link}>
+                    <Typography
+                      variant="button"
+                      color={isSamePath(path) ? 'secondary' : 'inherit'}
+                    >
+                      {t(label)}
+                    </Typography>
+                  </Button>
+                ))}
             </Grid>
             <Grid item>
               <Button>{i18n.language.toUpperCase()}</Button>
