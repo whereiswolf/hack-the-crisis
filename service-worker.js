@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/hack-the-crisis/precache-manifest.8ac8538bee5eba836691617808bf4e1c.js"
+  "/hack-the-crisis/precache-manifest.679991ebd37876ae13f595bc6d7feffe.js"
 );
 
 self.addEventListener('message', (event) => {
