@@ -42,6 +42,7 @@ const BusinessList: React.FC<BusinessListProps> = () => {
         {listType === 'list' ? (
           <CardListWrapper>
             <CardList
+              type="business"
               items={businesses}
               onClick={({ id }) => history.push(`/businesses/${id}`)}
             />
