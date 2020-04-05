@@ -2,14 +2,14 @@
   "files": {
     "static/js/0.7dc3cb7f.chunk.js": "/hack-the-crisis/static/js/0.7dc3cb7f.chunk.js",
     "static/js/0.7dc3cb7f.chunk.js.map": "/hack-the-crisis/static/js/0.7dc3cb7f.chunk.js.map",
-    "main.js": "/hack-the-crisis/static/js/main.a2164984.chunk.js",
-    "main.js.map": "/hack-the-crisis/static/js/main.a2164984.chunk.js.map",
-    "runtime-main.js": "/hack-the-crisis/static/js/runtime-main.e904d29d.js",
-    "runtime-main.js.map": "/hack-the-crisis/static/js/runtime-main.e904d29d.js.map",
-    "static/js/3.bbcfce1e.chunk.js": "/hack-the-crisis/static/js/3.bbcfce1e.chunk.js",
-    "static/js/3.bbcfce1e.chunk.js.map": "/hack-the-crisis/static/js/3.bbcfce1e.chunk.js.map",
-    "static/js/4.21af9cd9.chunk.js": "/hack-the-crisis/static/js/4.21af9cd9.chunk.js",
-    "static/js/4.21af9cd9.chunk.js.map": "/hack-the-crisis/static/js/4.21af9cd9.chunk.js.map",
+    "main.js": "/hack-the-crisis/static/js/main.a8da7559.chunk.js",
+    "main.js.map": "/hack-the-crisis/static/js/main.a8da7559.chunk.js.map",
+    "runtime-main.js": "/hack-the-crisis/static/js/runtime-main.1b1c36ef.js",
+    "runtime-main.js.map": "/hack-the-crisis/static/js/runtime-main.1b1c36ef.js.map",
+    "static/js/3.b0c8ecc0.chunk.js": "/hack-the-crisis/static/js/3.b0c8ecc0.chunk.js",
+    "static/js/3.b0c8ecc0.chunk.js.map": "/hack-the-crisis/static/js/3.b0c8ecc0.chunk.js.map",
+    "static/js/4.97b1a900.chunk.js": "/hack-the-crisis/static/js/4.97b1a900.chunk.js",
+    "static/js/4.97b1a900.chunk.js.map": "/hack-the-crisis/static/js/4.97b1a900.chunk.js.map",
     "static/js/5.f742b65c.chunk.js": "/hack-the-crisis/static/js/5.f742b65c.chunk.js",
     "static/js/5.f742b65c.chunk.js.map": "/hack-the-crisis/static/js/5.f742b65c.chunk.js.map",
     "static/js/6.a6050c8c.chunk.js": "/hack-the-crisis/static/js/6.a6050c8c.chunk.js",
@@ -27,16 +27,16 @@
     "static/js/12.86f254e2.chunk.js": "/hack-the-crisis/static/js/12.86f254e2.chunk.js",
     "static/js/12.86f254e2.chunk.js.map": "/hack-the-crisis/static/js/12.86f254e2.chunk.js.map",
     "index.html": "/hack-the-crisis/index.html",
-    "precache-manifest.948bdf9b4279ff05cfafaf171adb219a.js": "/hack-the-crisis/precache-manifest.948bdf9b4279ff05cfafaf171adb219a.js",
+    "precache-manifest.69434504a0ec43536147e9caccdcf174.js": "/hack-the-crisis/precache-manifest.69434504a0ec43536147e9caccdcf174.js",
     "service-worker.js": "/hack-the-crisis/service-worker.js",
-    "static/js/3.bbcfce1e.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/3.bbcfce1e.chunk.js.LICENSE.txt",
+    "static/js/3.b0c8ecc0.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/3.b0c8ecc0.chunk.js.LICENSE.txt",
     "static/media/dropdown.svg": "/hack-the-crisis/static/media/dropdown.4826d6b0.svg",
     "static/media/pin.svg": "/hack-the-crisis/static/media/pin.1a17e3f4.svg",
     "static/media/restaurantIcon.svg": "/hack-the-crisis/static/media/restaurantIcon.9c4c546f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.e904d29d.js",
-    "static/js/3.bbcfce1e.chunk.js",
-    "static/js/main.a2164984.chunk.js"
+    "static/js/runtime-main.1b1c36ef.js",
+    "static/js/3.b0c8ecc0.chunk.js",
+    "static/js/main.a8da7559.chunk.js"
   ]
 }
