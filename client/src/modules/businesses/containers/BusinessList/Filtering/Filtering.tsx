@@ -7,7 +7,7 @@ import { Wrapper } from './Filtering.style'
 import { ListType } from 'types'
 
 export interface Filters {
-  type: string | null
+  businessType: string | null
   category: string | null
   name: string | null
 }
@@ -18,12 +18,18 @@ interface FilteringProps {
   listType: ListType
 }
 
+const orNull = ({ category, businessType, name }: Filters) => ({
+  category: category || null,
+  businessType: businessType || null,
+  name: name || null,
+})
+
 const Filtering: React.FC<FilteringProps> = ({
   onFind,
   onListTypeChange,
   listType,
 }) => {
-  const find = (filters: Filters) => onFind(filters)
+  const find = (filters: Filters) => onFind(orNull(filters))
 
   return (
     <Wrapper>

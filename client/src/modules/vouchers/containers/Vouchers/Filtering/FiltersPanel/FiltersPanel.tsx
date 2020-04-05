@@ -8,7 +8,7 @@ import { useCategories, distances } from './FiltersPanel.utils'
 interface Filters {
   category: string | null
   distance: number | null
-  location: string | null
+  city: string | null
 }
 
 interface FiltersPanelProps {
@@ -20,9 +20,9 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({ onFind }) => {
   const categories = useCategories()
   const [category, setCategory] = useState<string>('')
   const [distance, setDistance] = useState<number>(0)
-  const [location, setLocation] = useState<string>('')
+  const [city, setCity] = useState<string>('')
 
-  const find = (): Filters => onFind({ category, distance, location })
+  const find = (): Filters => onFind({ category, distance, city })
 
   return (
     <Grid container direction="column" spacing={2}>
@@ -52,8 +52,8 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({ onFind }) => {
           <TextInput
             name="location"
             placeholder="Location"
-            value={location}
-            onChange={setLocation as (l: React.ReactText) => any}
+            value={city}
+            onChange={setCity as (l: React.ReactText) => any}
           />
         </Grid>
         <Grid item container md={3} justify="flex-end">

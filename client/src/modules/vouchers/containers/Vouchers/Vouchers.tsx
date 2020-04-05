@@ -11,10 +11,10 @@ import { CardListWrapper } from './Vouchers.style'
 interface VouchersProps {}
 
 const defaultFilters: Filters = {
-  type: BusinessType.Local,
+  businessType: BusinessType.Local,
   category: null,
   distance: null,
-  location: null,
+  city: null,
 }
 
 const Vouchers: React.FC<VouchersProps> = () => {

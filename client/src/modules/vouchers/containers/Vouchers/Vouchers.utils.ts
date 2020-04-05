@@ -1,8 +1,8 @@
 import { gql } from 'apollo-boost'
 
 const VOUCHERS = gql`
-  query {
-    vouchers {
+  query Vouchers($category: Int, $city: String) {
+    vouchers(category: $category, city: $city) {
       id
       name
       price

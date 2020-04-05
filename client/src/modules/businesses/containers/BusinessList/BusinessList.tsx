@@ -13,7 +13,7 @@ interface BusinessListProps {}
 
 const defaultFilters: Filters = {
   category: null,
-  type: null,
+  businessType: null,
   name: null,
 }
 

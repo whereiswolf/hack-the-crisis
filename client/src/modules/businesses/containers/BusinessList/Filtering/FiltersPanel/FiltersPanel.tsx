@@ -6,7 +6,7 @@ import SupportLevelPanel from '../SupportLevelPanel'
 
 interface Filters {
   category: string | null
-  type: string | null
+  businessType: string | null
   name: string | null
   supportLevel: number | null
 }
@@ -22,7 +22,8 @@ const FiltersPanel: React.FC<FiltersPanelProps> = ({ onFind }) => {
   const [name, setName] = useState<string>('')
   const [supportLevel, setSupportLevel] = useState<number>(0)
 
-  const find = (): Filters => onFind({ category, type, name, supportLevel })
+  const find = (): Filters =>
+    onFind({ category, businessType: type, name, supportLevel })
 
   return (
     <Grid container direction="column" spacing={2}>

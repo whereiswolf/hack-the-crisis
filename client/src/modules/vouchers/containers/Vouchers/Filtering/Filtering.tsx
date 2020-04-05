@@ -7,20 +7,28 @@ import FiltersPanel from './FiltersPanel'
 import { Wrapper } from './Filtering.style'
 
 export interface Filters {
-  type: string | null
+  businessType: string | null
   category: string | null
   distance: number | null
-  location: string | null
+  city: string | null
 }
 
 interface FilteringProps {
   onFind: (filters: Filters) => any
 }
 
+const orNull = ({ category, businessType, city, distance }: Filters) => ({
+  category: category || null,
+  businessType: businessType || null,
+  distance: distance || null,
+  city: city || null,
+})
+
 const Filtering: React.FC<FilteringProps> = ({ onFind }) => {
   const [type, setType] = useState<string | null>(BusinessType.Local)
 
-  const find = (filters: Omit<Filters, 'type'>) => onFind({ ...filters, type })
+  const find = (filters: Omit<Filters, 'businessType'>) =>
+    onFind(orNull({ ...filters, businessType: type }))
 
   return (
     <Wrapper>
