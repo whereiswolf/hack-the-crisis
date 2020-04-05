@@ -18,6 +18,11 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
   const { t, i18n } = useTranslation()
   const { pathname } = useLocation()
 
+  const isSamePath = (path: string) => {
+    const name = path.substr(1)
+    return path === pathname || (name && pathname.substr(1).startsWith(name))
+  }
+
   return (
     <>
       <AppBar>
@@ -31,11 +36,7 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
                 <Button key={path} to={path} component={Link}>
                   <Typography
                     variant="button"
-                    color={
-                      path && pathname.startsWith(path)
-                        ? 'secondary'
-                        : 'inherit'
-                    }
+                    color={isSamePath(path) ? 'secondary' : 'inherit'}
                   >
                     {t(label)}
                   </Typography>
