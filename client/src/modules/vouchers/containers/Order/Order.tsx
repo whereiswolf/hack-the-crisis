@@ -207,6 +207,7 @@ const Order: React.FC<OrderProps> = () => {
                       email: emailProps.value,
                       name: nameProps.value,
                       count: vouchersNumber,
+                      price: Number.parseFloat(vouchersPrice),
                       voucherId: id,
                     },
                   })

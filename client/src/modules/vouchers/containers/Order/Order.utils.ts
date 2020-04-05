@@ -39,12 +39,14 @@ export const CREATE_ORDER = gql`
     $name: String!
     $count: Int
     $voucherId: Int
+    $price: Float
   ) {
     createOneOrder(
       data: {
         email: $email
         name: $name
         count: $count
+        price: $price
         voucher: { connect: { id: $voucherId } }
       }
     ) {
