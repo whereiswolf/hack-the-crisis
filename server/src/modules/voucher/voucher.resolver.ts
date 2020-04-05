@@ -28,9 +28,9 @@ export const getSpecialVouchers = async (_: any, args: any, ctx: any) => {
   const randomVouchers = []
   const usedNumbers: any = {}
   while (randomVouchers.length < 3) {
-    const randomNumber = 1 + Math.floor(numOfRecords * Math.random())
-    if (!usedNumbers[randomNumber - 1]) {
-      randomVouchers.push(records[randomNumber - 1])
+    const randomNumber = Math.floor(numOfRecords * Math.random())
+    if (!usedNumbers[randomNumber]) {
+      randomVouchers.push(records[randomNumber])
       usedNumbers[randomNumber] = true
     }
   }

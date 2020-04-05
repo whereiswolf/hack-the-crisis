@@ -29,7 +29,7 @@ export interface NexusGenInputs {
     history?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
-    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessInput'] | null; // RatingCreateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type: string; // String!
     vouchers?: NexusGenInputs['VoucherCreateManyWithoutBusinessInput'] | null; // VoucherCreateManyWithoutBusinessInput
@@ -38,9 +38,9 @@ export interface NexusGenInputs {
     connect?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
     create?: NexusGenInputs['BusinessCreateWithoutCategoryInput'][] | null; // [BusinessCreateWithoutCategoryInput!]
   }
-  BusinessCreateManyWithoutRatingsInput: { // input type
-    connect?: NexusGenInputs['BusinessWhereUniqueInput'][] | null; // [BusinessWhereUniqueInput!]
-    create?: NexusGenInputs['BusinessCreateWithoutRatingsInput'][] | null; // [BusinessCreateWithoutRatingsInput!]
+  BusinessCreateOneWithoutRatingsInput: { // input type
+    connect?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
+    create?: NexusGenInputs['BusinessCreateWithoutRatingsInput'] | null; // BusinessCreateWithoutRatingsInput
   }
   BusinessCreateOneWithoutVouchersInput: { // input type
     connect?: NexusGenInputs['BusinessWhereUniqueInput'] | null; // BusinessWhereUniqueInput
@@ -54,7 +54,7 @@ export interface NexusGenInputs {
     history?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
-    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessInput'] | null; // RatingCreateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type: string; // String!
     vouchers?: NexusGenInputs['VoucherCreateManyWithoutBusinessInput'] | null; // VoucherCreateManyWithoutBusinessInput
@@ -81,7 +81,7 @@ export interface NexusGenInputs {
     history?: string | null; // String
     imageUrl: string; // String!
     name: string; // String!
-    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'] | null; // RatingCreateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingCreateManyWithoutBusinessInput'] | null; // RatingCreateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type: string; // String!
   }
@@ -118,7 +118,7 @@ export interface NexusGenInputs {
     id?: number | null; // Int
     imageUrl?: string | null; // String
     name?: string | null; // String
-    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessInput'] | null; // RatingUpdateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type?: string | null; // String
     vouchers?: NexusGenInputs['VoucherUpdateManyWithoutBusinessInput'] | null; // VoucherUpdateManyWithoutBusinessInput
@@ -171,7 +171,7 @@ export interface NexusGenInputs {
     id?: number | null; // Int
     imageUrl?: string | null; // String
     name?: string | null; // String
-    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessInput'] | null; // RatingUpdateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type?: string | null; // String
     vouchers?: NexusGenInputs['VoucherUpdateManyWithoutBusinessInput'] | null; // VoucherUpdateManyWithoutBusinessInput
@@ -186,7 +186,7 @@ export interface NexusGenInputs {
     id?: number | null; // Int
     imageUrl?: string | null; // String
     name?: string | null; // String
-    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'] | null; // RatingUpdateManyWithoutBusinessesInput
+    ratings?: NexusGenInputs['RatingUpdateManyWithoutBusinessInput'] | null; // RatingUpdateManyWithoutBusinessInput
     siteUrl?: string | null; // String
     type?: string | null; // String
   }
@@ -321,6 +321,7 @@ export interface NexusGenInputs {
     count?: number | null; // Int
     email: string; // String!
     name: string; // String!
+    price?: number | null; // Float
     user?: NexusGenInputs['UserCreateOneWithoutOrdersInput'] | null; // UserCreateOneWithoutOrdersInput
     voucher: NexusGenInputs['VoucherCreateOneWithoutOrdersInput']; // VoucherCreateOneWithoutOrdersInput!
   }
@@ -332,6 +333,7 @@ export interface NexusGenInputs {
     count?: number | null; // Int
     email: string; // String!
     name: string; // String!
+    price?: number | null; // Float
     user?: NexusGenInputs['UserCreateOneWithoutOrdersInput'] | null; // UserCreateOneWithoutOrdersInput
   }
   OrderFilter: { // input type
@@ -347,6 +349,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
     OR?: NexusGenInputs['OrderScalarWhereInput'][] | null; // [OrderScalarWhereInput!]
+    price?: NexusGenInputs['NullableFloatFilter'] | null; // NullableFloatFilter
     userId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     voucherId?: NexusGenInputs['IntFilter'] | null; // IntFilter
   }
@@ -355,6 +358,7 @@ export interface NexusGenInputs {
     email?: string | null; // String
     id?: number | null; // Int
     name?: string | null; // String
+    price?: number | null; // Float
     user?: NexusGenInputs['UserUpdateOneWithoutOrdersInput'] | null; // UserUpdateOneWithoutOrdersInput
     voucher?: NexusGenInputs['VoucherUpdateOneRequiredWithoutOrdersInput'] | null; // VoucherUpdateOneRequiredWithoutOrdersInput
   }
@@ -363,6 +367,7 @@ export interface NexusGenInputs {
     email?: string | null; // String
     id?: number | null; // Int
     name?: string | null; // String
+    price?: number | null; // Float
   }
   OrderUpdateManyWithWhereNestedInput: { // input type
     data: NexusGenInputs['OrderUpdateManyDataInput']; // OrderUpdateManyDataInput!
@@ -388,6 +393,7 @@ export interface NexusGenInputs {
     email?: string | null; // String
     id?: number | null; // Int
     name?: string | null; // String
+    price?: number | null; // Float
     user?: NexusGenInputs['UserUpdateOneWithoutOrdersInput'] | null; // UserUpdateOneWithoutOrdersInput
   }
   OrderUpsertWithWhereUniqueWithoutVoucherInput: { // input type
@@ -403,6 +409,7 @@ export interface NexusGenInputs {
     name?: NexusGenInputs['StringFilter'] | null; // StringFilter
     NOT?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
     OR?: NexusGenInputs['OrderWhereInput'][] | null; // [OrderWhereInput!]
+    price?: NexusGenInputs['NullableFloatFilter'] | null; // NullableFloatFilter
     user?: NexusGenInputs['UserWhereInput'] | null; // UserWhereInput
     userId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     voucher?: NexusGenInputs['VoucherWhereInput'] | null; // VoucherWhereInput
@@ -412,14 +419,14 @@ export interface NexusGenInputs {
     id?: number | null; // Int
   }
   RatingCreateInput: { // input type
-    businesses?: NexusGenInputs['BusinessCreateManyWithoutRatingsInput'] | null; // BusinessCreateManyWithoutRatingsInput
+    business?: NexusGenInputs['BusinessCreateOneWithoutRatingsInput'] | null; // BusinessCreateOneWithoutRatingsInput
     rate: number; // Int!
   }
-  RatingCreateManyWithoutBusinessesInput: { // input type
+  RatingCreateManyWithoutBusinessInput: { // input type
     connect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
-    create?: NexusGenInputs['RatingCreateWithoutBusinessesInput'][] | null; // [RatingCreateWithoutBusinessesInput!]
+    create?: NexusGenInputs['RatingCreateWithoutBusinessInput'][] | null; // [RatingCreateWithoutBusinessInput!]
   }
-  RatingCreateWithoutBusinessesInput: { // input type
+  RatingCreateWithoutBusinessInput: { // input type
     rate: number; // Int!
   }
   RatingFilter: { // input type
@@ -429,7 +436,7 @@ export interface NexusGenInputs {
   }
   RatingScalarWhereInput: { // input type
     AND?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
-    businesses?: NexusGenInputs['BusinessFilter'] | null; // BusinessFilter
+    businessId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     NOT?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
     OR?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
@@ -443,33 +450,34 @@ export interface NexusGenInputs {
     data: NexusGenInputs['RatingUpdateManyDataInput']; // RatingUpdateManyDataInput!
     where: NexusGenInputs['RatingScalarWhereInput']; // RatingScalarWhereInput!
   }
-  RatingUpdateManyWithoutBusinessesInput: { // input type
+  RatingUpdateManyWithoutBusinessInput: { // input type
     connect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
-    create?: NexusGenInputs['RatingCreateWithoutBusinessesInput'][] | null; // [RatingCreateWithoutBusinessesInput!]
+    create?: NexusGenInputs['RatingCreateWithoutBusinessInput'][] | null; // [RatingCreateWithoutBusinessInput!]
     delete?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
     deleteMany?: NexusGenInputs['RatingScalarWhereInput'][] | null; // [RatingScalarWhereInput!]
     disconnect?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
     set?: NexusGenInputs['RatingWhereUniqueInput'][] | null; // [RatingWhereUniqueInput!]
-    update?: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessesInput'][] | null; // [RatingUpdateWithWhereUniqueWithoutBusinessesInput!]
+    update?: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessInput'][] | null; // [RatingUpdateWithWhereUniqueWithoutBusinessInput!]
     updateMany?: NexusGenInputs['RatingUpdateManyWithWhereNestedInput'][] | null; // [RatingUpdateManyWithWhereNestedInput!]
-    upsert?: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessesInput'][] | null; // [RatingUpsertWithWhereUniqueWithoutBusinessesInput!]
+    upsert?: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessInput'][] | null; // [RatingUpsertWithWhereUniqueWithoutBusinessInput!]
   }
-  RatingUpdateWithWhereUniqueWithoutBusinessesInput: { // input type
-    data: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput']; // RatingUpdateWithoutBusinessesDataInput!
+  RatingUpdateWithWhereUniqueWithoutBusinessInput: { // input type
+    data: NexusGenInputs['RatingUpdateWithoutBusinessDataInput']; // RatingUpdateWithoutBusinessDataInput!
     where: NexusGenInputs['RatingWhereUniqueInput']; // RatingWhereUniqueInput!
   }
-  RatingUpdateWithoutBusinessesDataInput: { // input type
+  RatingUpdateWithoutBusinessDataInput: { // input type
     id?: number | null; // Int
     rate?: number | null; // Int
   }
-  RatingUpsertWithWhereUniqueWithoutBusinessesInput: { // input type
-    create: NexusGenInputs['RatingCreateWithoutBusinessesInput']; // RatingCreateWithoutBusinessesInput!
-    update: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput']; // RatingUpdateWithoutBusinessesDataInput!
+  RatingUpsertWithWhereUniqueWithoutBusinessInput: { // input type
+    create: NexusGenInputs['RatingCreateWithoutBusinessInput']; // RatingCreateWithoutBusinessInput!
+    update: NexusGenInputs['RatingUpdateWithoutBusinessDataInput']; // RatingUpdateWithoutBusinessDataInput!
     where: NexusGenInputs['RatingWhereUniqueInput']; // RatingWhereUniqueInput!
   }
   RatingWhereInput: { // input type
     AND?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
-    businesses?: NexusGenInputs['BusinessFilter'] | null; // BusinessFilter
+    business?: NexusGenInputs['BusinessWhereInput'] | null; // BusinessWhereInput
+    businessId?: NexusGenInputs['NullableIntFilter'] | null; // NullableIntFilter
     id?: NexusGenInputs['IntFilter'] | null; // IntFilter
     NOT?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
     OR?: NexusGenInputs['RatingWhereInput'][] | null; // [RatingWhereInput!]
@@ -841,7 +849,7 @@ export interface NexusGenRootTypes {
 export interface NexusGenAllTypes extends NexusGenRootTypes {
   BusinessCreateInput: NexusGenInputs['BusinessCreateInput'];
   BusinessCreateManyWithoutCategoryInput: NexusGenInputs['BusinessCreateManyWithoutCategoryInput'];
-  BusinessCreateManyWithoutRatingsInput: NexusGenInputs['BusinessCreateManyWithoutRatingsInput'];
+  BusinessCreateOneWithoutRatingsInput: NexusGenInputs['BusinessCreateOneWithoutRatingsInput'];
   BusinessCreateOneWithoutVouchersInput: NexusGenInputs['BusinessCreateOneWithoutVouchersInput'];
   BusinessCreateWithoutCategoryInput: NexusGenInputs['BusinessCreateWithoutCategoryInput'];
   BusinessCreateWithoutRatingsInput: NexusGenInputs['BusinessCreateWithoutRatingsInput'];
@@ -889,16 +897,16 @@ export interface NexusGenAllTypes extends NexusGenRootTypes {
   OrderWhereInput: NexusGenInputs['OrderWhereInput'];
   OrderWhereUniqueInput: NexusGenInputs['OrderWhereUniqueInput'];
   RatingCreateInput: NexusGenInputs['RatingCreateInput'];
-  RatingCreateManyWithoutBusinessesInput: NexusGenInputs['RatingCreateManyWithoutBusinessesInput'];
-  RatingCreateWithoutBusinessesInput: NexusGenInputs['RatingCreateWithoutBusinessesInput'];
+  RatingCreateManyWithoutBusinessInput: NexusGenInputs['RatingCreateManyWithoutBusinessInput'];
+  RatingCreateWithoutBusinessInput: NexusGenInputs['RatingCreateWithoutBusinessInput'];
   RatingFilter: NexusGenInputs['RatingFilter'];
   RatingScalarWhereInput: NexusGenInputs['RatingScalarWhereInput'];
   RatingUpdateManyDataInput: NexusGenInputs['RatingUpdateManyDataInput'];
   RatingUpdateManyWithWhereNestedInput: NexusGenInputs['RatingUpdateManyWithWhereNestedInput'];
-  RatingUpdateManyWithoutBusinessesInput: NexusGenInputs['RatingUpdateManyWithoutBusinessesInput'];
-  RatingUpdateWithWhereUniqueWithoutBusinessesInput: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessesInput'];
-  RatingUpdateWithoutBusinessesDataInput: NexusGenInputs['RatingUpdateWithoutBusinessesDataInput'];
-  RatingUpsertWithWhereUniqueWithoutBusinessesInput: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessesInput'];
+  RatingUpdateManyWithoutBusinessInput: NexusGenInputs['RatingUpdateManyWithoutBusinessInput'];
+  RatingUpdateWithWhereUniqueWithoutBusinessInput: NexusGenInputs['RatingUpdateWithWhereUniqueWithoutBusinessInput'];
+  RatingUpdateWithoutBusinessDataInput: NexusGenInputs['RatingUpdateWithoutBusinessDataInput'];
+  RatingUpsertWithWhereUniqueWithoutBusinessInput: NexusGenInputs['RatingUpsertWithWhereUniqueWithoutBusinessInput'];
   RatingWhereInput: NexusGenInputs['RatingWhereInput'];
   RatingWhereUniqueInput: NexusGenInputs['RatingWhereUniqueInput'];
   StringFilter: NexusGenInputs['StringFilter'];
@@ -1030,6 +1038,7 @@ export interface NexusGenFieldTypes {
     vouchersForYou: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   Rating: { // field return type
+    business: NexusGenRootTypes['Business'] | null; // Business
     id: number; // Int!
     rate: number; // Int!
   }
@@ -1254,7 +1263,7 @@ export interface NexusGenInheritedFields {}
 
 export type NexusGenObjectNames = "Auth" | "Business" | "Category" | "File" | "Mutation" | "Order" | "Query" | "Rating" | "Tag" | "User" | "Voucher";
 
-export type NexusGenInputNames = "BusinessCreateInput" | "BusinessCreateManyWithoutCategoryInput" | "BusinessCreateManyWithoutRatingsInput" | "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutCategoryInput" | "BusinessCreateWithoutRatingsInput" | "BusinessCreateWithoutVouchersInput" | "BusinessFilter" | "BusinessScalarWhereInput" | "BusinessUpdateInput" | "BusinessUpdateManyDataInput" | "BusinessUpdateManyWithWhereNestedInput" | "BusinessUpdateManyWithoutCategoryInput" | "BusinessUpdateOneWithoutVouchersInput" | "BusinessUpdateWithWhereUniqueWithoutCategoryInput" | "BusinessUpdateWithoutCategoryDataInput" | "BusinessUpdateWithoutVouchersDataInput" | "BusinessUpsertWithWhereUniqueWithoutCategoryInput" | "BusinessUpsertWithoutVouchersInput" | "BusinessWhereInput" | "BusinessWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryUpdateInput" | "CategoryUpdateOneWithoutBusinessesInput" | "CategoryUpdateWithoutBusinessesDataInput" | "CategoryUpsertWithoutBusinessesInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "FloatFilter" | "IntFilter" | "NullableFloatFilter" | "NullableIntFilter" | "NullableStringFilter" | "OrderCreateInput" | "OrderCreateManyWithoutVoucherInput" | "OrderCreateWithoutVoucherInput" | "OrderFilter" | "OrderScalarWhereInput" | "OrderUpdateInput" | "OrderUpdateManyDataInput" | "OrderUpdateManyWithWhereNestedInput" | "OrderUpdateManyWithoutVoucherInput" | "OrderUpdateWithWhereUniqueWithoutVoucherInput" | "OrderUpdateWithoutVoucherDataInput" | "OrderUpsertWithWhereUniqueWithoutVoucherInput" | "OrderWhereInput" | "OrderWhereUniqueInput" | "RatingCreateInput" | "RatingCreateManyWithoutBusinessesInput" | "RatingCreateWithoutBusinessesInput" | "RatingFilter" | "RatingScalarWhereInput" | "RatingUpdateManyDataInput" | "RatingUpdateManyWithWhereNestedInput" | "RatingUpdateManyWithoutBusinessesInput" | "RatingUpdateWithWhereUniqueWithoutBusinessesInput" | "RatingUpdateWithoutBusinessesDataInput" | "RatingUpsertWithWhereUniqueWithoutBusinessesInput" | "RatingWhereInput" | "RatingWhereUniqueInput" | "StringFilter" | "TagCreateInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagFilter" | "TagScalarWhereInput" | "TagUpdateInput" | "TagUpdateManyDataInput" | "TagUpdateManyWithWhereNestedInput" | "TagUpdateManyWithoutVouchersInput" | "TagUpdateWithWhereUniqueWithoutVouchersInput" | "TagUpdateWithoutVouchersDataInput" | "TagUpsertWithWhereUniqueWithoutVouchersInput" | "TagWhereInput" | "TagWhereUniqueInput" | "UserCreateOneWithoutOrdersInput" | "UserCreateWithoutOrdersInput" | "UserUpdateOneWithoutOrdersInput" | "UserUpdateWithoutOrdersDataInput" | "UserUpsertWithoutOrdersInput" | "UserWhereInput" | "UserWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutBusinessInput" | "VoucherCreateManyWithoutTagsInput" | "VoucherCreateOneWithoutOrdersInput" | "VoucherCreateWithoutBusinessInput" | "VoucherCreateWithoutOrdersInput" | "VoucherCreateWithoutTagsInput" | "VoucherFilter" | "VoucherScalarWhereInput" | "VoucherUpdateInput" | "VoucherUpdateManyDataInput" | "VoucherUpdateManyWithWhereNestedInput" | "VoucherUpdateManyWithoutBusinessInput" | "VoucherUpdateManyWithoutTagsInput" | "VoucherUpdateOneRequiredWithoutOrdersInput" | "VoucherUpdateWithWhereUniqueWithoutBusinessInput" | "VoucherUpdateWithWhereUniqueWithoutTagsInput" | "VoucherUpdateWithoutBusinessDataInput" | "VoucherUpdateWithoutOrdersDataInput" | "VoucherUpdateWithoutTagsDataInput" | "VoucherUpsertWithWhereUniqueWithoutBusinessInput" | "VoucherUpsertWithWhereUniqueWithoutTagsInput" | "VoucherUpsertWithoutOrdersInput" | "VoucherWhereInput" | "VoucherWhereUniqueInput";
+export type NexusGenInputNames = "BusinessCreateInput" | "BusinessCreateManyWithoutCategoryInput" | "BusinessCreateOneWithoutRatingsInput" | "BusinessCreateOneWithoutVouchersInput" | "BusinessCreateWithoutCategoryInput" | "BusinessCreateWithoutRatingsInput" | "BusinessCreateWithoutVouchersInput" | "BusinessFilter" | "BusinessScalarWhereInput" | "BusinessUpdateInput" | "BusinessUpdateManyDataInput" | "BusinessUpdateManyWithWhereNestedInput" | "BusinessUpdateManyWithoutCategoryInput" | "BusinessUpdateOneWithoutVouchersInput" | "BusinessUpdateWithWhereUniqueWithoutCategoryInput" | "BusinessUpdateWithoutCategoryDataInput" | "BusinessUpdateWithoutVouchersDataInput" | "BusinessUpsertWithWhereUniqueWithoutCategoryInput" | "BusinessUpsertWithoutVouchersInput" | "BusinessWhereInput" | "BusinessWhereUniqueInput" | "CategoryCreateInput" | "CategoryCreateOneWithoutBusinessesInput" | "CategoryCreateWithoutBusinessesInput" | "CategoryUpdateInput" | "CategoryUpdateOneWithoutBusinessesInput" | "CategoryUpdateWithoutBusinessesDataInput" | "CategoryUpsertWithoutBusinessesInput" | "CategoryWhereInput" | "CategoryWhereUniqueInput" | "FloatFilter" | "IntFilter" | "NullableFloatFilter" | "NullableIntFilter" | "NullableStringFilter" | "OrderCreateInput" | "OrderCreateManyWithoutVoucherInput" | "OrderCreateWithoutVoucherInput" | "OrderFilter" | "OrderScalarWhereInput" | "OrderUpdateInput" | "OrderUpdateManyDataInput" | "OrderUpdateManyWithWhereNestedInput" | "OrderUpdateManyWithoutVoucherInput" | "OrderUpdateWithWhereUniqueWithoutVoucherInput" | "OrderUpdateWithoutVoucherDataInput" | "OrderUpsertWithWhereUniqueWithoutVoucherInput" | "OrderWhereInput" | "OrderWhereUniqueInput" | "RatingCreateInput" | "RatingCreateManyWithoutBusinessInput" | "RatingCreateWithoutBusinessInput" | "RatingFilter" | "RatingScalarWhereInput" | "RatingUpdateManyDataInput" | "RatingUpdateManyWithWhereNestedInput" | "RatingUpdateManyWithoutBusinessInput" | "RatingUpdateWithWhereUniqueWithoutBusinessInput" | "RatingUpdateWithoutBusinessDataInput" | "RatingUpsertWithWhereUniqueWithoutBusinessInput" | "RatingWhereInput" | "RatingWhereUniqueInput" | "StringFilter" | "TagCreateInput" | "TagCreateManyWithoutVouchersInput" | "TagCreateWithoutVouchersInput" | "TagFilter" | "TagScalarWhereInput" | "TagUpdateInput" | "TagUpdateManyDataInput" | "TagUpdateManyWithWhereNestedInput" | "TagUpdateManyWithoutVouchersInput" | "TagUpdateWithWhereUniqueWithoutVouchersInput" | "TagUpdateWithoutVouchersDataInput" | "TagUpsertWithWhereUniqueWithoutVouchersInput" | "TagWhereInput" | "TagWhereUniqueInput" | "UserCreateOneWithoutOrdersInput" | "UserCreateWithoutOrdersInput" | "UserUpdateOneWithoutOrdersInput" | "UserUpdateWithoutOrdersDataInput" | "UserUpsertWithoutOrdersInput" | "UserWhereInput" | "UserWhereUniqueInput" | "VoucherCreateInput" | "VoucherCreateManyWithoutBusinessInput" | "VoucherCreateManyWithoutTagsInput" | "VoucherCreateOneWithoutOrdersInput" | "VoucherCreateWithoutBusinessInput" | "VoucherCreateWithoutOrdersInput" | "VoucherCreateWithoutTagsInput" | "VoucherFilter" | "VoucherScalarWhereInput" | "VoucherUpdateInput" | "VoucherUpdateManyDataInput" | "VoucherUpdateManyWithWhereNestedInput" | "VoucherUpdateManyWithoutBusinessInput" | "VoucherUpdateManyWithoutTagsInput" | "VoucherUpdateOneRequiredWithoutOrdersInput" | "VoucherUpdateWithWhereUniqueWithoutBusinessInput" | "VoucherUpdateWithWhereUniqueWithoutTagsInput" | "VoucherUpdateWithoutBusinessDataInput" | "VoucherUpdateWithoutOrdersDataInput" | "VoucherUpdateWithoutTagsDataInput" | "VoucherUpsertWithWhereUniqueWithoutBusinessInput" | "VoucherUpsertWithWhereUniqueWithoutTagsInput" | "VoucherUpsertWithoutOrdersInput" | "VoucherWhereInput" | "VoucherWhereUniqueInput";
 
 export type NexusGenEnumNames = never;
 
