@@ -5,9 +5,9 @@ export const searchBusinesses = async (_: any, args: any, ctx: Context) => {
   const { name, categoryId } = args
   const businesses = await ctx.prisma.business.findMany({
     where: {
-      name: { equals: name },
+      name: name? { contains: name } : { contains: ''} ,
       category: {
-        id: { equals: categoryId },
+        id: categoryId ? { equals: categoryId } : {},
       },
     },
     include: { ratings: true },
