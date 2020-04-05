@@ -1,4 +1,4 @@
 export default {
   API_URL: process.env.REACT_APP_API_URL,
-  BASE_NAME: process.env.REACT_APP_BASE_NAME || '/hack-the-crisis',
+  MAPS_KEY: process.env.REACT_APP_MAPS_KEY || '',
 }

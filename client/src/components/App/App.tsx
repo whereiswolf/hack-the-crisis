@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import { ApolloProvider } from '@apollo/react-hooks'
 import { ThemeProvider } from '@material-ui/core'
 import { ThemeProvider as StyledThemeProvider } from 'styled-components'
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
-import config, { client, lightTheme, darkTheme } from 'config'
+import { HashRouter as Router, Route, Switch } from 'react-router-dom'
+import { client, lightTheme, darkTheme } from 'config'
 import { Module } from 'types'
 import Layout from './Layout'
 import NotFoundMessage from './NotFoundMessage'
@@ -24,7 +24,7 @@ const App: React.FC<AppProps> = ({ modules }) => {
       <ThemeProvider theme={theme}>
         <StyledThemeProvider theme={theme}>
           <GlobalStyle />
-          <Router basename={config.BASE_NAME}>
+          <Router>
             <Layout items={navItems}>
               <Switch>
                 {routes.map((route) => (
