@@ -5,6 +5,7 @@ import { Button } from 'components'
 import { colors } from 'config'
 import styled from 'styled-components'
 import TextInput from 'components/TextInput'
+import BackBusiness from './components/BackBusiness'
 
 export const GreyText = styled(Typography)`
   color: ${colors.primary[50]};
@@ -53,12 +54,19 @@ export const BonusInput = styled(TextInput)`
     background: ${colors.text[50]};
   }
   input {
-    padding: 14px !important;
+    padding: 12px !important;
   }
 `
 
 export const RestrictedButton = styled(Button)`
   max-height: 50px;
+`
+
+export const StyledBackBusiness = styled(BackBusiness)`
+  margin-top: 30px !important;
+`
+export const OtherBusinessContainer = styled(Grid)`
+  margin-top: 10px !important;
 `
 
 export const useStyles = makeStyles((theme: Theme) =>
