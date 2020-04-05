@@ -4,12 +4,12 @@ generator client {
 
 datasource db {
   provider = "sqlite"
-  url = "file:./dev.db"
+  url = "***"
 }
 
 model User {
   id Int @default(autoincrement()) @id
-  email String @unique
+  email String
   password String
   orders Order[]
   accountType Int @default(1)

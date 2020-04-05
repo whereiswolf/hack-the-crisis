@@ -83,6 +83,7 @@ const Mutation = objectType({
       args: {
         email: stringArg(),
         password: stringArg(),
+        accountType: intArg({nullable: true})
       },
       resolve: createOneUser,
     })
@@ -101,6 +102,7 @@ const Mutation = objectType({
     t.crud.deleteOneTag()
     t.crud.deleteOneCategory()
     t.crud.deleteOneOrder()
+    t.crud.deleteOneUser()
   },
 })
 
