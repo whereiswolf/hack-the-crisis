@@ -11,7 +11,7 @@ interface CardProps {
 }
 
 const Card: React.FC<CardProps> = ({
-  data: { price, imageUrl, name },
+  data: { price = null, imageUrl, name },
   onClick,
   children,
   ...props
@@ -26,9 +26,11 @@ const Card: React.FC<CardProps> = ({
             {children || (
               <>
                 <Typography className={classes.title}>{name}</Typography>
-                <Typography
-                  className={classes.subtitle}
-                >{`€ ${price}`}</Typography>
+                {price !== null && (
+                  <Typography
+                    className={classes.subtitle}
+                  >{`€ ${price}`}</Typography>
+                )}
               </>
             )}
           </div>

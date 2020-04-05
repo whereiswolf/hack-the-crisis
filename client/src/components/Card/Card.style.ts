@@ -1,7 +1,7 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createStyles } from '@material-ui/core'
 
-const WRAPPER_HEIGHT = 290
+const IMAGE_HEIGHT = 180
 const WRAPPER_WIDTH = 250
 
 export const getImageStyles = (url: string) =>
@@ -18,7 +18,7 @@ export const getImageStyles = (url: string) =>
 export default ({ palette, spacing, breakpoints }: Theme) =>
   createStyles({
     wrapper: {
-      height: WRAPPER_HEIGHT,
+      height: 'auto',
       width: WRAPPER_WIDTH,
       borderRadius: 18,
       display: 'flex',
@@ -28,7 +28,7 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
     },
     image: {
       width: '100%',
-      height: '60%',
+      height: IMAGE_HEIGHT,
       backgroundColor: 'red',
     },
     content: {
@@ -37,6 +37,8 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
       justifyContent: 'center',
       width: '100%',
       flex: 1,
+      padding: 10,
+      boxSizing: 'border-box',
     },
     title: {
       color: palette.text.hint,

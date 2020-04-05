@@ -4,6 +4,8 @@ export interface Tag {
   name: string
 }
 
+export type ListType = 'list' | 'map'
+
 export interface Voucher {
   id: number
   name: string
