@@ -49,3 +49,7 @@ export interface BusinessData {
 export interface VoucherData {
   voucher: Voucher
 }
+
+export interface VouchersForYouData {
+  vouchersForYou: Voucher[]
+}

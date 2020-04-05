@@ -9,10 +9,12 @@ const BadgeWrapper = styled.div`
   display: inline-block;
   background: ${(p) => p.theme.palette.primary.light};
 `
-interface BadgeProps {}
+interface BadgeProps {
+  style?: any
+}
 
-const Badge: React.FC<BadgeProps> = ({ children }) => (
-  <BadgeWrapper>
+const Badge: React.FC<BadgeProps> = ({ children, ...props }) => (
+  <BadgeWrapper {...props}>
     <Typography color="textPrimary" variant="h6">
       {children}
     </Typography>
