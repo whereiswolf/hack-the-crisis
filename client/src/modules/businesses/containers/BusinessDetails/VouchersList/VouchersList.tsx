@@ -5,7 +5,6 @@ import { queries } from './VouchersList.utils'
 import { Card, WithAccent } from 'components'
 import styled from 'styled-components'
 import { useHistory } from 'react-router'
-import { VoucherData } from 'types'
 
 interface VouchersListProps {
   vouchers?: any[]
