@@ -4,8 +4,8 @@
     "static/js/0.dd8e6378.chunk.js.map": "/hack-the-crisis/static/js/0.dd8e6378.chunk.js.map",
     "main.js": "/hack-the-crisis/static/js/main.5093e610.chunk.js",
     "main.js.map": "/hack-the-crisis/static/js/main.5093e610.chunk.js.map",
-    "runtime-main.js": "/hack-the-crisis/static/js/runtime-main.ac371af2.js",
-    "runtime-main.js.map": "/hack-the-crisis/static/js/runtime-main.ac371af2.js.map",
+    "runtime-main.js": "/hack-the-crisis/static/js/runtime-main.49a7e3e7.js",
+    "runtime-main.js.map": "/hack-the-crisis/static/js/runtime-main.49a7e3e7.js.map",
     "static/js/3.018e72a0.chunk.js": "/hack-the-crisis/static/js/3.018e72a0.chunk.js",
     "static/js/3.018e72a0.chunk.js.map": "/hack-the-crisis/static/js/3.018e72a0.chunk.js.map",
     "static/js/4.48b93816.chunk.js": "/hack-the-crisis/static/js/4.48b93816.chunk.js",
@@ -28,10 +28,10 @@
     "static/js/12.40e48fe0.chunk.js.map": "/hack-the-crisis/static/js/12.40e48fe0.chunk.js.map",
     "static/js/13.08d45ccc.chunk.js": "/hack-the-crisis/static/js/13.08d45ccc.chunk.js",
     "static/js/13.08d45ccc.chunk.js.map": "/hack-the-crisis/static/js/13.08d45ccc.chunk.js.map",
-    "static/js/14.c985b858.chunk.js": "/hack-the-crisis/static/js/14.c985b858.chunk.js",
-    "static/js/14.c985b858.chunk.js.map": "/hack-the-crisis/static/js/14.c985b858.chunk.js.map",
+    "static/js/14.3f48f8a5.chunk.js": "/hack-the-crisis/static/js/14.3f48f8a5.chunk.js",
+    "static/js/14.3f48f8a5.chunk.js.map": "/hack-the-crisis/static/js/14.3f48f8a5.chunk.js.map",
     "index.html": "/hack-the-crisis/index.html",
-    "precache-manifest.084a97cae7fc48a5bc7549053fd68e3b.js": "/hack-the-crisis/precache-manifest.084a97cae7fc48a5bc7549053fd68e3b.js",
+    "precache-manifest.8ac8538bee5eba836691617808bf4e1c.js": "/hack-the-crisis/precache-manifest.8ac8538bee5eba836691617808bf4e1c.js",
     "service-worker.js": "/hack-the-crisis/service-worker.js",
     "static/js/3.018e72a0.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/3.018e72a0.chunk.js.LICENSE.txt",
     "static/js/4.48b93816.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/4.48b93816.chunk.js.LICENSE.txt",
@@ -41,7 +41,7 @@
     "static/media/restaurantIcon.svg": "/hack-the-crisis/static/media/restaurantIcon.9c4c546f.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.ac371af2.js",
+    "static/js/runtime-main.49a7e3e7.js",
     "static/js/3.018e72a0.chunk.js",
     "static/js/main.5093e610.chunk.js"
   ]
