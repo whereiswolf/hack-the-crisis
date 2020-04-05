@@ -4,6 +4,8 @@ import { useQuery } from '@apollo/react-hooks'
 import { queries } from './VouchersList.utils'
 import { Card, WithAccent } from 'components'
 import styled from 'styled-components'
+import { useHistory } from 'react-router'
+import { VoucherData } from 'types'
 
 interface VouchersListProps {
   vouchers?: any[]
@@ -25,6 +27,7 @@ const VouchersList: React.FC<VouchersListProps> = ({ vouchers = [] }) => {
   const { vouchers: allVouchers } = data
   const bestVouchers = pickRandomElements(vouchers, 3)
   const specialVouchers = pickRandomElements(vouchers, 4)
+  const history = useHistory()
   return (
     <Grid
       container
@@ -55,7 +58,10 @@ const VouchersList: React.FC<VouchersListProps> = ({ vouchers = [] }) => {
           style={{ overflowX: 'auto', flexWrap: 'nowrap' }}
         >
           {bestVouchers.map((voucher) => (
-            <Card data={voucher} />
+            <Card
+              data={voucher}
+              onClick={() => history.push(`/vouchers/${voucher.id}`)}
+            />
           ))}
         </Grid>
       </Grid>
@@ -74,7 +80,11 @@ const VouchersList: React.FC<VouchersListProps> = ({ vouchers = [] }) => {
           alignItems="center"
         >
           {specialVouchers.map((voucher) => (
-            <Card light data={voucher} />
+            <Card
+              light
+              data={voucher}
+              onClick={() => history.push(`/vouchers/${voucher.id}`)}
+            />
           ))}
         </Grid>
       </SpecialOffer>
@@ -85,8 +95,11 @@ const VouchersList: React.FC<VouchersListProps> = ({ vouchers = [] }) => {
           </Typography>
         </Grid>
         <Grid item container spacing={4}>
-          {allVouchers.slice(0, 10).map((voucher) => (
-            <Card data={voucher} />
+          {allVouchers.slice(0, 10).map((voucher: any) => (
+            <Card
+              data={voucher}
+              onClick={() => history.push(`/vouchers/${voucher.id}`)}
+            />
           ))}
         </Grid>
       </Grid>

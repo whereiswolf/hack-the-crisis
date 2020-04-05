@@ -19,16 +19,14 @@ const Discount: React.FC<DiscountProps> = ({
     alignItems="center"
     {...props}
   >
-    {oldPrice && (
+    {Boolean(oldPrice) && (
       <OldPrice color="error" variant="h5">
         € {oldPrice.toFixed(2)}
       </OldPrice>
     )}
-    {newPrice && (
-      <NewPrice color="textPrimary" variant="h4">
-        € {newPrice.toFixed(2)}
-      </NewPrice>
-    )}
+    <NewPrice color="textPrimary" variant="h4">
+      € {newPrice.toFixed(2)}
+    </NewPrice>
   </Grid>
 )
 
