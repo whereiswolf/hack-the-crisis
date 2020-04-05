@@ -13,15 +13,16 @@ import {
 import Team from './Team'
 
 interface BusinessInfoProps {
-  amount?: number
-  raised?: number
-  name?: string
+  data?: {
+    amount?: number
+    raised?: number
+    name?: string
+    description?: string
+  }
 }
 
 const BusinessInfo: React.FC<BusinessInfoProps> = ({
-  amount = 5256,
-  raised = 3564,
-  name = 'BingoBong',
+  data: { amount = 5256, raised = 3564, name = 'BingoBong' } = {},
 }) => {
   const [currentTab, setCurrentTab] = useState<ITab>(tabs[0])
   const raisedPercentage = Math.round((raised / amount) * 100)

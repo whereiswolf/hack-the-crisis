@@ -3,7 +3,7 @@ import PinIcon from '../images/pin.svg'
 import { Icon, IconContainer, Wrapper, Title } from './AddressDetails.style'
 
 interface AddressDetailsProps {
-  address: string
+  address?: string
 }
 
 const AddressDetails: React.FC<AddressDetailsProps> = ({ address }) => {

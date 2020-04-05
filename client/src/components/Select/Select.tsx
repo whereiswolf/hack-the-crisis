@@ -98,7 +98,7 @@ const Select: React.FC<SelectProps> = ({
               <SelectItem
                 key={`select-${name}-${item.title}-${item.value}`}
                 onClick={() => onSelect(item.value)}
-                active={value === item.value}
+                active={value === item.value || controlledValue === item.value}
               >
                 {item.title}
               </SelectItem>

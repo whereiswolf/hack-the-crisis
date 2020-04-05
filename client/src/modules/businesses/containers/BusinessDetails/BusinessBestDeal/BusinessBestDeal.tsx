@@ -13,20 +13,16 @@ import {
 import { Voucher } from 'types'
 
 interface BusinessBestDealProps {
-  data: Voucher
+  category?: {
+    name: string
+  }
+  voucher?: Voucher
 }
 
 const BusinessBestDeal: React.FC<BusinessBestDealProps> = ({
-  data,
-  data: {
-    name,
-    business: {
-      category: { name: categoryName },
-    },
-    price,
-    promotion,
-  },
-}) => (
+  category,
+  voucher,
+} = {}) => (
   <Wrapper container justify="center">
     <Title color="textPrimary" variant="h4">
       Best <em>deal</em>
@@ -36,13 +32,16 @@ const BusinessBestDeal: React.FC<BusinessBestDealProps> = ({
       subtitle={'Hurry up!'}
       date={new Date().setMonth(12)}
     />
-    <Card data={data}>
+    <Card data={voucher}>
       <CardContent container direction="column" alignItems="flex-start">
-        <CardSubtitle>{categoryName}</CardSubtitle>
-        <CardTitle>{name}</CardTitle>
+        <CardSubtitle>{category?.name}</CardSubtitle>
+        <CardTitle>{voucher?.name}</CardTitle>
       </CardContent>
     </Card>
-    <Discount oldPrice={price} newPrice={promotion} />
+    <Discount
+      oldPrice={voucher?.price || 0}
+      newPrice={voucher?.promotion || 0}
+    />
     <Button variant="contained">Get the best deal!</Button>
   </Wrapper>
 )

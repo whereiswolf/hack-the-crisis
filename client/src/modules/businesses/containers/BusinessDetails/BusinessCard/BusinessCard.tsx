@@ -18,17 +18,19 @@ import {
 } from './BusinessCard.style'
 
 interface BusinessCardProps {
-  data: Business
+  data?: {
+    address?: string
+    category?: {
+      name: string
+    }
+    imageUrl?: string
+    siteUrl?: string
+    name?: string
+  }
 }
 
 const BusinessCard: React.FC<BusinessCardProps> = ({
-  data: {
-    address,
-    category: { name: businessMock },
-    imageUrl,
-    siteUrl,
-    name,
-  },
+  data: { address, category, imageUrl, siteUrl, name } = {},
 }) => {
   return (
     <Wrapper>
@@ -41,7 +43,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
           </UpperWrapper>
           <LowerWrapper>
             <RatingWrapper container alignItems="center">
-              <TypeLabel title={businessMock} iconUrl={RestaurantIcon} />
+              <TypeLabel title={category?.name} iconUrl={RestaurantIcon} />
               <Rating value={3.5} />
             </RatingWrapper>
             {siteUrl && (

@@ -52,7 +52,7 @@ export const Content = styled.div`
 export const BusinessImage = styled.div`
   width: 100%;
   height: 300px;
-  background-image: url('${(p: { src: string }) => p.src}');
+  background-image: url('${(p: { src?: string }) => p.src || ''}');
   background-size: cover;
   background-position: center center;
   border-radius: 18px;

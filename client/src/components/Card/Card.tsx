@@ -9,19 +9,18 @@ import styles, { getImageStyles } from './Card.style'
 const useStyles = makeStyles(styles)
 
 interface CardProps {
-  data: VoucherType | BusinessType
+  data?: VoucherType | BusinessType
   type?: 'voucher' | 'business'
   onClick?: () => void
 }
 
 const Card: React.FC<CardProps> = ({
   data,
-  data: { imageUrl },
   type = 'voucher',
   onClick,
   children,
   ...props
-}) => {
+} = {}) => {
   const classes = useStyles()
   const isVoucher = type === 'voucher'
   const Component = () =>
@@ -34,7 +33,7 @@ const Card: React.FC<CardProps> = ({
     <Grid item>
       <ButtonBase onClick={onClick} className={classes.buttonBase}>
         <div className={classes.wrapper} {...props}>
-          <div className={classes.image} style={getImageStyles(imageUrl)}>
+          <div className={classes.image} style={getImageStyles(data?.imageUrl)}>
             {!isVoucher && (
               <Progress
                 data={{ amount: (data as BusinessType).amount, percentage: 10 }}

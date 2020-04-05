@@ -42,6 +42,10 @@ export interface Business {
   vouchers: Voucher[]
 }
 
+export interface BusinessData {
+  business: Business
+}
+
 export interface VoucherData {
   voucher: Voucher
 }
