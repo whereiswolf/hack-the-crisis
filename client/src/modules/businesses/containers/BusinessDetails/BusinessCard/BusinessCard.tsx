@@ -14,6 +14,7 @@ import {
   Link,
   TypeLabel,
   RatingWrapper,
+  Wrapper,
 } from './BusinessCard.style'
 
 interface BusinessCardProps {
@@ -30,7 +31,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
   },
 }) => {
   return (
-    <Grid style={{ padding: '40px 100px' }}>
+    <Wrapper>
       <Grid container alignItems="center">
         <Avatar url={imageUrl} />
         <Content>
@@ -52,7 +53,7 @@ const BusinessCard: React.FC<BusinessCardProps> = ({
         </Content>
       </Grid>
       <BusinessImage src={imageUrl} />
-    </Grid>
+    </Wrapper>
   )
 }
 

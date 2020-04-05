@@ -3,6 +3,7 @@ import { Grid } from '@material-ui/core'
 import BusinessInfo from './BusinessInfo'
 import BusinessVouchers from './BusinessVouchers'
 import BusinessCard from './BusinessCard'
+import BusinessBestDeal from './BusinessBestDeal'
 
 interface BusinessDetailsProps {}
 
@@ -24,6 +25,19 @@ const businessMock = {
   siteUrl: 'https://juicy-orange.jj',
 }
 
+const voucher = {
+  id: 1,
+  name: 'Orange peeling lesson',
+  imageUrl:
+    'https://interactive-examples.mdn.mozilla.net/media/examples/grapefruit-slice-332-332.jpg',
+  description: 'string',
+  price: 18,
+  promotion: 15,
+  expirationDate: 'string',
+  business: businessMock,
+  tags: [],
+}
+
 const BusinessDetails: React.FC<BusinessDetailsProps> = () => {
   return (
     <Grid container direction="column">
@@ -37,7 +51,7 @@ const BusinessDetails: React.FC<BusinessDetailsProps> = () => {
           </Grid>
         </Grid>
         <Grid item md={4}>
-          BestDeals
+          <BusinessBestDeal data={voucher} />
         </Grid>
       </Grid>
       <Grid item>

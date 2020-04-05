@@ -23,6 +23,7 @@ export const dark = {
     primary: colors.text[100],
     secondary: colors.text[50],
     hint: colors.text[80],
+    disabled: colors.primary[55],
   },
   info: {
     main: colors.primary[40],
