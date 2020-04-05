@@ -4,7 +4,7 @@ import { Grid } from '@material-ui/core'
 export const Wrapper = styled(Grid)`
   box-sizing: border-box;
   background: #161616;
-  padding: 40px 50px 40px 82px;
+  padding: 40px 50px 40px 92px;
   display: flex;
   flex-direction: row;
 `

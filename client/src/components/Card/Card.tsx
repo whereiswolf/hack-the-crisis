@@ -12,6 +12,7 @@ interface CardProps {
   data?: VoucherType | BusinessType
   type?: 'voucher' | 'business'
   onClick?: () => void
+  light?: boolean
 }
 
 const Card: React.FC<CardProps> = ({
@@ -19,6 +20,7 @@ const Card: React.FC<CardProps> = ({
   type = 'voucher',
   onClick,
   children,
+  light,
   ...props
 } = {}) => {
   const classes = useStyles()
@@ -32,7 +34,10 @@ const Card: React.FC<CardProps> = ({
   return (
     <Grid item>
       <ButtonBase onClick={onClick} className={classes.buttonBase}>
-        <div className={classes.wrapper} {...props}>
+        <div
+          className={light ? classes.wrapperLight : classes.wrapper}
+          {...props}
+        >
           <div className={classes.image} style={getImageStyles(data?.imageUrl)}>
             {!isVoucher && (
               <Progress

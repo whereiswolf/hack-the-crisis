@@ -2,7 +2,7 @@ import React from 'react'
 import { Grid } from '@material-ui/core'
 import { useQuery } from '@apollo/react-hooks'
 import BusinessInfo from './BusinessInfo'
-import BusinessVouchers from './BusinessVouchers'
+import VouchersList from './VouchersList'
 import BusinessCard from './BusinessCard'
 import BusinessBestDeal from './BusinessBestDeal'
 import { useId } from 'utils'
@@ -36,7 +36,7 @@ const BusinessDetails: React.FC<BusinessDetailsProps> = () => {
         </Grid>
       </Grid>
       <Grid item>
-        <BusinessVouchers />
+        <VouchersList vouchers={business?.vouchers} />
       </Grid>
     </Grid>
   )
