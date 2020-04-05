@@ -39,7 +39,7 @@ export const Countdown = styled(CountdownBase)`
 
 export const Card = styled(CardBase)`
   width: 400px;
-  height: 400px;
+  min-height: 300px;
   background-color: ${(p) => p.theme.palette.text.disabled};
   border-radius: 18px;
   overflow: hidden;
