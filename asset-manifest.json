@@ -2,12 +2,12 @@
   "files": {
     "static/js/0.32226148.chunk.js": "/hack-the-crisis/static/js/0.32226148.chunk.js",
     "static/js/0.32226148.chunk.js.map": "/hack-the-crisis/static/js/0.32226148.chunk.js.map",
-    "main.js": "/hack-the-crisis/static/js/main.f9a16f3e.chunk.js",
-    "main.js.map": "/hack-the-crisis/static/js/main.f9a16f3e.chunk.js.map",
+    "main.js": "/hack-the-crisis/static/js/main.411c29e5.chunk.js",
+    "main.js.map": "/hack-the-crisis/static/js/main.411c29e5.chunk.js.map",
     "runtime-main.js": "/hack-the-crisis/static/js/runtime-main.c61c38a4.js",
     "runtime-main.js.map": "/hack-the-crisis/static/js/runtime-main.c61c38a4.js.map",
-    "static/js/3.3f47a7bd.chunk.js": "/hack-the-crisis/static/js/3.3f47a7bd.chunk.js",
-    "static/js/3.3f47a7bd.chunk.js.map": "/hack-the-crisis/static/js/3.3f47a7bd.chunk.js.map",
+    "static/js/3.1f1c22fb.chunk.js": "/hack-the-crisis/static/js/3.1f1c22fb.chunk.js",
+    "static/js/3.1f1c22fb.chunk.js.map": "/hack-the-crisis/static/js/3.1f1c22fb.chunk.js.map",
     "static/js/4.adf6aaac.chunk.js": "/hack-the-crisis/static/js/4.adf6aaac.chunk.js",
     "static/js/4.adf6aaac.chunk.js.map": "/hack-the-crisis/static/js/4.adf6aaac.chunk.js.map",
     "static/js/5.c2f69290.chunk.js": "/hack-the-crisis/static/js/5.c2f69290.chunk.js",
@@ -29,9 +29,9 @@
     "static/js/13.45ea9722.chunk.js": "/hack-the-crisis/static/js/13.45ea9722.chunk.js",
     "static/js/13.45ea9722.chunk.js.map": "/hack-the-crisis/static/js/13.45ea9722.chunk.js.map",
     "index.html": "/hack-the-crisis/index.html",
-    "precache-manifest.2b5a9538ea5cb5e8ba1642a07dce26bc.js": "/hack-the-crisis/precache-manifest.2b5a9538ea5cb5e8ba1642a07dce26bc.js",
+    "precache-manifest.8b5838b192fbd530b8e67eacaed40c8c.js": "/hack-the-crisis/precache-manifest.8b5838b192fbd530b8e67eacaed40c8c.js",
     "service-worker.js": "/hack-the-crisis/service-worker.js",
-    "static/js/3.3f47a7bd.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/3.3f47a7bd.chunk.js.LICENSE.txt",
+    "static/js/3.1f1c22fb.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/3.1f1c22fb.chunk.js.LICENSE.txt",
     "static/js/4.adf6aaac.chunk.js.LICENSE.txt": "/hack-the-crisis/static/js/4.adf6aaac.chunk.js.LICENSE.txt",
     "static/media/background.png": "/hack-the-crisis/static/media/background.74cd1b40.png",
     "static/media/demo.png": "/hack-the-crisis/static/media/demo.712d3313.png",
@@ -42,7 +42,7 @@
   },
   "entrypoints": [
     "static/js/runtime-main.c61c38a4.js",
-    "static/js/3.3f47a7bd.chunk.js",
-    "static/js/main.f9a16f3e.chunk.js"
+    "static/js/3.1f1c22fb.chunk.js",
+    "static/js/main.411c29e5.chunk.js"
   ]
 }
