@@ -26,12 +26,13 @@ import {
   VouchersNumberContainer,
   BonusInput,
   RestrictedButton,
-  StyledBackBusiness,
   useStyles,
+  MarginBottomContainer,
 } from './Order.styles'
 import OrderCompleteModal from './components/OrderCompleteModal'
 import { useHistory } from 'react-router'
 import OtherBusinessText from './components/OtherBusinessText'
+import BackBusiness from './components/BackBusiness'
 
 interface OrderProps {}
 
@@ -101,7 +102,7 @@ const Order: React.FC<OrderProps> = () => {
                   </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                  <StyledBackBusiness />
+                  <BackBusiness />
                   <BonusInput
                     {...bonusPriceProps}
                     InputProps={{
@@ -185,7 +186,7 @@ const Order: React.FC<OrderProps> = () => {
                 € {vouchersPrice}
               </Typography>
             </PriceContainer>
-            <Grid item xs={12}>
+            <MarginBottomContainer item xs={12}>
               <Button
                 variant="contained"
                 onClick={() => {
@@ -201,7 +202,7 @@ const Order: React.FC<OrderProps> = () => {
               >
                 Go to Payment
               </Button>
-            </Grid>
+            </MarginBottomContainer>
           </Grid>
           <Grid container xs={1}></Grid>
         </Grid>

@@ -5,7 +5,6 @@ import { Button } from 'components'
 import { colors } from 'config'
 import styled from 'styled-components'
 import TextInput from 'components/TextInput'
-import BackBusiness from './components/BackBusiness'
 
 export const GreyText = styled(Typography)`
   color: ${colors.primary[50]};
@@ -62,11 +61,15 @@ export const RestrictedButton = styled(Button)`
   max-height: 50px;
 `
 
-export const StyledBackBusiness = styled(BackBusiness)`
+export const BackBusinessContainer = styled(Grid)`
   margin-top: 30px !important;
 `
 export const OtherBusinessContainer = styled(Grid)`
   margin-top: 10px !important;
+  margin-bottom: 10px !important;
+`
+export const MarginBottomContainer = styled(Grid)`
+  margin-bottom: 20px !important;
 `
 
 export const useStyles = makeStyles((theme: Theme) =>
@@ -82,7 +85,6 @@ export const useStyles = makeStyles((theme: Theme) =>
     },
     orderConfig: {
       textAlign: 'center',
-      height: '90vh',
       background: theme.palette.primary.main,
     },
     orderInfo: {
