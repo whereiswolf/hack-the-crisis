@@ -1,5 +1,5 @@
-import { Context } from "nexus-prisma/dist/utils";
-import ratingModel from "modules/rating/rating.model";
+import { Context } from 'nexus-prisma/dist/utils'
+import ratingModel from 'modules/rating/rating.model'
 
 export const searchBusinesses = async (_: any, args: any, ctx: Context) => {
   const { name, categoryId } = args
@@ -10,14 +10,12 @@ export const searchBusinesses = async (_: any, args: any, ctx: Context) => {
         id: { equals: categoryId },
       },
     },
-    include: { ratings: true }
+    include: { ratings: true },
   })
-  return businesses.map((business) => {
-    const businessxd =  {
-      ...business,
-      avgRating: business.ratings.reduce((a, b) => a + b.rate, 0) / business.ratings.length
-    }
-    console.log(businessxd)
-    return businessxd
-  });
+  return businesses.map((business) => ({
+    ...business,
+    avgRating:
+      business.ratings.reduce((a, b) => a + b.rate, 0) /
+      business.ratings.length,
+  }))
 }
