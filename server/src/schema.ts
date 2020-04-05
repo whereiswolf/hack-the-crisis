@@ -88,6 +88,7 @@ const Mutation = objectType({
       resolve: createOneUser,
     })
     t.crud.createOneTag()
+    t.crud.createOneRating()
     t.crud.createOneCategory()
     t.crud.createOneBusiness()
     t.crud.createOneVoucher()
@@ -100,6 +101,7 @@ const Mutation = objectType({
     t.crud.deleteOneBusiness()
     t.crud.deleteOneVoucher()
     t.crud.deleteOneTag()
+    t.crud.deleteOneRating()
     t.crud.deleteOneCategory()
     t.crud.deleteOneOrder()
     t.crud.deleteOneUser()

@@ -1,4 +1,7 @@
-export const searchBusinesses = async (_: any, args: any, ctx: any) => {
+import { Context } from "nexus-prisma/dist/utils";
+import ratingModel from "modules/rating/rating.model";
+
+export const searchBusinesses = async (_: any, args: any, ctx: Context) => {
   const { name, categoryId } = args
   const businesses = await ctx.prisma.business.findMany({
     where: {
@@ -7,6 +10,14 @@ export const searchBusinesses = async (_: any, args: any, ctx: any) => {
         id: { equals: categoryId },
       },
     },
+    include: { ratings: true }
   })
-  return businesses
+  return businesses.map((business) => {
+    const businessxd =  {
+      ...business,
+      avgRating: business.ratings.reduce((a, b) => a + b.rate, 0) / business.ratings.length
+    }
+    console.log(businessxd)
+    return businessxd
+  });
 }

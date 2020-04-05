@@ -20,3 +20,11 @@
 20200404194957-make-email-column-unique-in-users-table
 20200404195400-making-users-email-column-unique
 20200405124949-make-tag-name-unique
+20200405140532-change-how-rating-works
+20200405140804-remove-business-id-column
+20200405140852-add-business-realtion-with-rating
+20200405140937-update-rating
+20200405141008-create-business-to-rating
+20200405141335-add-business-id-to-rating-table
+20200405142124-update-business
+20200405142746-add-price-to-order-table

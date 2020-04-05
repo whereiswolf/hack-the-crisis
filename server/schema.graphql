@@ -9,6 +9,7 @@ type Auth {
 type Business {
   address: String!
   amount: Float!
+  avgRating: Float
   category: Category
   city: String!
   description: String!
@@ -31,7 +32,7 @@ input BusinessCreateInput {
   history: String
   imageUrl: String!
   name: String!
-  ratings: RatingCreateManyWithoutBusinessesInput
+  ratings: RatingCreateManyWithoutBusinessInput
   siteUrl: String
   type: String!
   vouchers: VoucherCreateManyWithoutBusinessInput
@@ -40,6 +41,11 @@ input BusinessCreateInput {
 input BusinessCreateManyWithoutCategoryInput {
   connect: [BusinessWhereUniqueInput!]
   create: [BusinessCreateWithoutCategoryInput!]
+}
+
+input BusinessCreateOneWithoutRatingsInput {
+  connect: BusinessWhereUniqueInput
+  create: BusinessCreateWithoutRatingsInput
 }
 
 input BusinessCreateOneWithoutVouchersInput {
@@ -55,7 +61,21 @@ input BusinessCreateWithoutCategoryInput {
   history: String
   imageUrl: String!
   name: String!
-  ratings: RatingCreateManyWithoutBusinessesInput
+  ratings: RatingCreateManyWithoutBusinessInput
+  siteUrl: String
+  type: String!
+  vouchers: VoucherCreateManyWithoutBusinessInput
+}
+
+input BusinessCreateWithoutRatingsInput {
+  address: String!
+  amount: Float!
+  category: CategoryCreateOneWithoutBusinessesInput
+  city: String!
+  description: String!
+  history: String
+  imageUrl: String!
+  name: String!
   siteUrl: String
   type: String!
   vouchers: VoucherCreateManyWithoutBusinessInput
@@ -70,7 +90,7 @@ input BusinessCreateWithoutVouchersInput {
   history: String
   imageUrl: String!
   name: String!
-  ratings: RatingCreateManyWithoutBusinessesInput
+  ratings: RatingCreateManyWithoutBusinessInput
   siteUrl: String
   type: String!
 }
@@ -110,7 +130,7 @@ input BusinessUpdateInput {
   id: Int
   imageUrl: String
   name: String
-  ratings: RatingUpdateManyWithoutBusinessesInput
+  ratings: RatingUpdateManyWithoutBusinessInput
   siteUrl: String
   type: String
   vouchers: VoucherUpdateManyWithoutBusinessInput
@@ -164,7 +184,7 @@ input BusinessUpdateWithoutCategoryDataInput {
   id: Int
   imageUrl: String
   name: String
-  ratings: RatingUpdateManyWithoutBusinessesInput
+  ratings: RatingUpdateManyWithoutBusinessInput
   siteUrl: String
   type: String
   vouchers: VoucherUpdateManyWithoutBusinessInput
@@ -180,7 +200,7 @@ input BusinessUpdateWithoutVouchersDataInput {
   id: Int
   imageUrl: String
   name: String
-  ratings: RatingUpdateManyWithoutBusinessesInput
+  ratings: RatingUpdateManyWithoutBusinessInput
   siteUrl: String
   type: String
 }
@@ -317,12 +337,14 @@ type Mutation {
   createOneBusiness(data: BusinessCreateInput!): Business!
   createOneCategory(data: CategoryCreateInput!): Category!
   createOneOrder(data: OrderCreateInput!): Order!
+  createOneRating(data: RatingCreateInput!): Rating!
   createOneTag(data: TagCreateInput!): Tag!
   createOneUser(accountType: Int, email: String, password: String): User!
   createOneVoucher(data: VoucherCreateInput!): Voucher!
   deleteOneBusiness(where: BusinessWhereUniqueInput!): Business
   deleteOneCategory(where: CategoryWhereUniqueInput!): Category
   deleteOneOrder(where: OrderWhereUniqueInput!): Order
+  deleteOneRating(where: RatingWhereUniqueInput!): Rating
   deleteOneTag(where: TagWhereUniqueInput!): Tag
   deleteOneUser(where: UserWhereUniqueInput!): User
   deleteOneVoucher(where: VoucherWhereUniqueInput!): Voucher
@@ -383,6 +405,7 @@ input OrderCreateInput {
   count: Int
   email: String!
   name: String!
+  price: Float
   user: UserCreateOneWithoutOrdersInput
   voucher: VoucherCreateOneWithoutOrdersInput!
 }
@@ -396,6 +419,7 @@ input OrderCreateWithoutVoucherInput {
   count: Int
   email: String!
   name: String!
+  price: Float
   user: UserCreateOneWithoutOrdersInput
 }
 
@@ -413,6 +437,7 @@ input OrderScalarWhereInput {
   name: StringFilter
   NOT: [OrderScalarWhereInput!]
   OR: [OrderScalarWhereInput!]
+  price: NullableFloatFilter
   userId: NullableIntFilter
   voucherId: IntFilter
 }
@@ -422,6 +447,7 @@ input OrderUpdateInput {
   email: String
   id: Int
   name: String
+  price: Float
   user: UserUpdateOneWithoutOrdersInput
   voucher: VoucherUpdateOneRequiredWithoutOrdersInput
 }
@@ -431,6 +457,7 @@ input OrderUpdateManyDataInput {
   email: String
   id: Int
   name: String
+  price: Float
 }
 
 input OrderUpdateManyWithoutVoucherInput {
@@ -455,6 +482,7 @@ input OrderUpdateWithoutVoucherDataInput {
   email: String
   id: Int
   name: String
+  price: Float
   user: UserUpdateOneWithoutOrdersInput
 }
 
@@ -477,6 +505,7 @@ input OrderWhereInput {
   name: StringFilter
   NOT: [OrderWhereInput!]
   OR: [OrderWhereInput!]
+  price: NullableFloatFilter
   user: UserWhereInput
   userId: NullableIntFilter
   voucher: VoucherWhereInput
@@ -505,17 +534,22 @@ type Query {
 }
 
 type Rating {
-  businesses(after: BusinessWhereUniqueInput, before: BusinessWhereUniqueInput, first: Int, last: Int, skip: Int): [Business!]!
+  business: Business
   id: Int!
   rate: Int!
 }
 
-input RatingCreateManyWithoutBusinessesInput {
-  connect: [RatingWhereUniqueInput!]
-  create: [RatingCreateWithoutBusinessesInput!]
+input RatingCreateInput {
+  business: BusinessCreateOneWithoutRatingsInput
+  rate: Int!
 }
 
-input RatingCreateWithoutBusinessesInput {
+input RatingCreateManyWithoutBusinessInput {
+  connect: [RatingWhereUniqueInput!]
+  create: [RatingCreateWithoutBusinessInput!]
+}
+
+input RatingCreateWithoutBusinessInput {
   rate: Int!
 }
 
@@ -527,7 +561,7 @@ input RatingFilter {
 
 input RatingScalarWhereInput {
   AND: [RatingScalarWhereInput!]
-  businesses: BusinessFilter
+  businessId: NullableIntFilter
   id: IntFilter
   NOT: [RatingScalarWhereInput!]
   OR: [RatingScalarWhereInput!]
@@ -539,16 +573,16 @@ input RatingUpdateManyDataInput {
   rate: Int
 }
 
-input RatingUpdateManyWithoutBusinessesInput {
+input RatingUpdateManyWithoutBusinessInput {
   connect: [RatingWhereUniqueInput!]
-  create: [RatingCreateWithoutBusinessesInput!]
+  create: [RatingCreateWithoutBusinessInput!]
   delete: [RatingWhereUniqueInput!]
   deleteMany: [RatingScalarWhereInput!]
   disconnect: [RatingWhereUniqueInput!]
   set: [RatingWhereUniqueInput!]
-  update: [RatingUpdateWithWhereUniqueWithoutBusinessesInput!]
+  update: [RatingUpdateWithWhereUniqueWithoutBusinessInput!]
   updateMany: [RatingUpdateManyWithWhereNestedInput!]
-  upsert: [RatingUpsertWithWhereUniqueWithoutBusinessesInput!]
+  upsert: [RatingUpsertWithWhereUniqueWithoutBusinessInput!]
 }
 
 input RatingUpdateManyWithWhereNestedInput {
@@ -556,25 +590,26 @@ input RatingUpdateManyWithWhereNestedInput {
   where: RatingScalarWhereInput!
 }
 
-input RatingUpdateWithoutBusinessesDataInput {
+input RatingUpdateWithoutBusinessDataInput {
   id: Int
   rate: Int
 }
 
-input RatingUpdateWithWhereUniqueWithoutBusinessesInput {
-  data: RatingUpdateWithoutBusinessesDataInput!
+input RatingUpdateWithWhereUniqueWithoutBusinessInput {
+  data: RatingUpdateWithoutBusinessDataInput!
   where: RatingWhereUniqueInput!
 }
 
-input RatingUpsertWithWhereUniqueWithoutBusinessesInput {
-  create: RatingCreateWithoutBusinessesInput!
-  update: RatingUpdateWithoutBusinessesDataInput!
+input RatingUpsertWithWhereUniqueWithoutBusinessInput {
+  create: RatingCreateWithoutBusinessInput!
+  update: RatingUpdateWithoutBusinessDataInput!
   where: RatingWhereUniqueInput!
 }
 
 input RatingWhereInput {
   AND: [RatingWhereInput!]
-  businesses: BusinessFilter
+  business: BusinessWhereInput
+  businessId: NullableIntFilter
   id: IntFilter
   NOT: [RatingWhereInput!]
   OR: [RatingWhereInput!]
