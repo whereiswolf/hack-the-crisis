@@ -9,6 +9,7 @@ import {
   Title,
   SubTitle,
   Image,
+  VouchersWrapper,
   useStyles,
 } from './Home.style'
 import DemoImage from './demo.png'
@@ -22,20 +23,22 @@ const Home: React.FC<HomeProps> = () => {
   const history = useHistory()
   const classes = useStyles()
   return (
-    <Grid container style={{ height: '100%' }}>
+    <Grid container className={classes.root}>
       <Grid item md={7} className={classes.left}>
         <Title color="textPrimary" variant="h2">
           One platform to support <em>businesses</em> in need
         </Title>
-        <SubTitle color="textPrimary" variant="h5">
-          Find best Vouchers for you
-        </SubTitle>
-        <CardListWrapper>
-          <CardList
-            items={slicedVouchers}
-            onClick={({ id }) => history.push(`/vouchers/${id}`)}
-          />
-        </CardListWrapper>
+        <VouchersWrapper>
+          <SubTitle color="textPrimary" variant="h5">
+            Find best Vouchers for you
+          </SubTitle>
+          <CardListWrapper>
+            <CardList
+              items={slicedVouchers}
+              onClick={({ id }) => history.push(`/vouchers/${id}`)}
+            />
+          </CardListWrapper>
+        </VouchersWrapper>
       </Grid>
       <Grid item md={5} className={classes.right}>
         <Image src={DemoImage}></Image>

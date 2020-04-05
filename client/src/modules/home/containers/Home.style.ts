@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import background from './background.png'
 
 export const Title = styled(Typography)`
+  width: 80%;
   em {
     font-style: normal;
     color: ${(p) => p.theme.palette.secondary.main};
@@ -17,7 +18,6 @@ export const SubTitle = styled(Typography)`
 export const CardListWrapper = styled.div`
   padding: 20px 15px 0px 0px;
   width: 100%;
-  height: 100%;
   box-sizing: border-box;
 `
 
@@ -26,10 +26,15 @@ export const Image = styled.img`
   height: 760px;
 `
 
+export const VouchersWrapper = styled.div`
+  margin-top: 100px;
+`
+
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
+    root: { height: '100%' },
     left: {
-      padding: 100,
+      padding: 70,
       position: 'relative',
       '&::before': {
         backgroundImage: `url(${background})`,

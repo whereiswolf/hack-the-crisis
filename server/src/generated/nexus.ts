@@ -541,7 +541,6 @@ export interface NexusGenInputs {
   }
   TagWhereUniqueInput: { // input type
     id?: number | null; // Int
-    name?: string | null; // String
   }
   UserCreateOneWithoutOrdersInput: { // input type
     connect?: NexusGenInputs['UserWhereUniqueInput'] | null; // UserWhereUniqueInput
