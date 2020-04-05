@@ -17,6 +17,7 @@ import { useId } from 'utils'
 import Select from 'components/Select'
 import TextInput from 'components/TextInput'
 import VoucherDetails from './components/VoucherDetails'
+// import OrderCompleteModal from './components/OrderCompleteModal'
 import {
   GreyText,
   SquareButton,
@@ -53,6 +54,7 @@ const Order: React.FC<OrderProps> = () => {
   const classes = useStyles()
   return (
     <div className={classes.root}>
+      {/* <OrderCompleteModal />  */}
       <Grid container spacing={0}>
         <Grid container xs={8} spacing={0}>
           <Grid container direction="column">

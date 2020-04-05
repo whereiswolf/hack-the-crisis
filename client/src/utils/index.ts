@@ -1,5 +1,6 @@
 import { RouteProps } from 'react-router'
 import useReactRouter from 'use-react-router'
+import hexRgb from 'hex-rgb'
 
 export const getTranslationKeys = <T>(moduleName: string, strings: T) =>
   Object.entries(strings).reduce<T>(
@@ -20,4 +21,10 @@ export function useId() {
     },
   } = useReactRouter()
   return Number(id)
+}
+
+export const rgba = (hex: string, opacity: number = 1) => {
+  const rgbArray = hexRgb(hex, { format: 'array' })
+  rgbArray[3] = opacity
+  return `rgba(${rgbArray.join(', ')})`
 }
