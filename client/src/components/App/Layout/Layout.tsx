@@ -29,7 +29,7 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
         <Toolbar>
           <Grid container justify="space-between" alignItems="center">
             <Grid item>
-              <Typography>Place for Logo</Typography>
+              <Typography>Vouchee</Typography>
             </Grid>
             <Grid item>
               {items
