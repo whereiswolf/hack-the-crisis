@@ -48,13 +48,13 @@ const ContactUs: React.FC<ContactUsProps> = () => (
   <Grid
     container
     spacing={4}
-    style={{ padding: '32px 100px' }}
+    style={{ padding: '60px 100px' }}
     justify="center"
     alignItems="center"
     direction="column"
   >
     <Grid item>
-      <Typography align="center" color="textPrimary" variant="h2">
+      <Typography align="center" color="textPrimary" variant="h4">
         Contact us
       </Typography>
     </Grid>
