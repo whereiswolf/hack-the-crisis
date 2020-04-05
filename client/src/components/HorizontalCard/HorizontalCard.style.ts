@@ -2,7 +2,7 @@ import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createStyles } from '@material-ui/core'
 
 const IMAGE_HEIGHT = 132
-const WRAPPER_WIDTH = 304
+const WRAPPER_WIDTH = 300
 
 export const getImageStyles = (url: string) =>
   url

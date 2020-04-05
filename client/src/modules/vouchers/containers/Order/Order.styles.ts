@@ -72,9 +72,14 @@ export const MarginBottomContainer = styled(Grid)`
   margin-bottom: 20px !important;
 `
 
+export const FullHeightContainer = styled(Grid)`
+  height: 100%;
+`
+
 export const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     root: {
+      height: '100%',
       background: '#000',
       flexGrow: 1,
     },

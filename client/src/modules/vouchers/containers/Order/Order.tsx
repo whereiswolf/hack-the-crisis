@@ -28,6 +28,7 @@ import {
   RestrictedButton,
   useStyles,
   MarginBottomContainer,
+  FullHeightContainer,
 } from './Order.styles'
 import OrderCompleteModal from './components/OrderCompleteModal'
 import { useHistory } from 'react-router'
@@ -84,7 +85,7 @@ const Order: React.FC<OrderProps> = () => {
         isOpen={isOpen}
         onClick={() => setIsOpen(false)}
       />
-      <Grid container spacing={0}>
+      <FullHeightContainer container spacing={0}>
         <Grid container xs={8} spacing={0}>
           <Grid container direction="column">
             <VoucherDetails voucher={voucher || {}} />
@@ -122,7 +123,7 @@ const Order: React.FC<OrderProps> = () => {
             </Grid>
           </Grid>
         </Grid>
-        <Grid
+        <FullHeightContainer
           container
           xs={4}
           className={classes.orderConfig}
@@ -205,8 +206,8 @@ const Order: React.FC<OrderProps> = () => {
             </MarginBottomContainer>
           </Grid>
           <Grid container xs={1}></Grid>
-        </Grid>
-      </Grid>
+        </FullHeightContainer>
+      </FullHeightContainer>
     </div>
   )
 }
