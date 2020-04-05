@@ -1,10 +1,10 @@
 import React from 'react'
-import { Grid } from '@material-ui/core'
+import { Grid, GridProps } from '@material-ui/core'
 import { Voucher, Business } from 'types'
 import { Card } from 'components'
 import HorizontalCard from 'components/HorizontalCard'
 
-interface CardListProps {
+interface CardListProps extends Omit<GridProps, 'onClick'> {
   items: object[]
   type?: 'voucher' | 'business'
   onClick?: (voucher: Voucher | Business) => any
@@ -16,11 +16,12 @@ const CardList: React.FC<CardListProps> = ({
   type = 'voucher',
   onClick = () => {},
   withHorizontalCards = false,
+  ...props
 }) => {
   const CardItem = withHorizontalCards ? HorizontalCard : Card
 
   return (
-    <Grid container spacing={4}>
+    <Grid container spacing={4} {...props}>
       {(items as Voucher[]).map((item) => (
         <CardItem
           type={type}

@@ -93,9 +93,20 @@ const Order: React.FC<OrderProps> = () => {
               <Grid item xs={1}></Grid>
               <Grid container item xs={11}>
                 <Grid item xs={12}>
+                  <br />
                   <OtherBusinessText name={voucher?.business?.name} />
-                  <Grid item xs={12}>
+                  <Grid
+                    item
+                    xs={12}
+                    style={{
+                      paddingRight: 16,
+                    }}
+                  >
                     <CardList
+                      style={{
+                        flexWrap: 'nowrap',
+                        overflowX: 'auto',
+                      }}
                       withHorizontalCards
                       items={voucher?.business?.vouchers || []}
                       onClick={({ id }) => history.push(`/vouchers/${id}`)}

@@ -24,7 +24,7 @@ const Home: React.FC<HomeProps> = () => {
   const classes = useStyles()
   return (
     <Grid container className={classes.root}>
-      <Grid item md={7} className={classes.left}>
+      <Grid item md={8} className={classes.left}>
         <Title color="textPrimary" variant="h2">
           One platform to support <em>businesses</em> in need
         </Title>
@@ -40,7 +40,7 @@ const Home: React.FC<HomeProps> = () => {
           </CardListWrapper>
         </VouchersWrapper>
       </Grid>
-      <Grid item md={5} className={classes.right}>
+      <Grid item md={4} className={classes.right}>
         <Image src={DemoImage}></Image>
       </Grid>
     </Grid>

@@ -1,5 +1,6 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createStyles } from '@material-ui/core'
+import { CSSProperties } from '@material-ui/core/styles/withStyles'
 
 const IMAGE_HEIGHT = 180
 const WRAPPER_WIDTH = 250
@@ -15,16 +16,24 @@ export const getImageStyles = (url?: string) =>
         backgroundColor: 'rgba(255,255,255,0.1)',
       }
 
+const wrapper: CSSProperties = {
+  height: 'auto',
+  width: WRAPPER_WIDTH,
+  borderRadius: 18,
+  display: 'flex',
+  flexDirection: 'column',
+  overflow: 'hidden',
+}
+
 export default ({ palette, spacing, breakpoints }: Theme) =>
   createStyles({
     wrapper: {
-      height: 'auto',
-      width: WRAPPER_WIDTH,
-      borderRadius: 18,
-      display: 'flex',
-      flexDirection: 'column',
-      overflow: 'hidden',
+      ...wrapper,
       backgroundColor: palette.primary.main,
+    },
+    wrapperLight: {
+      ...wrapper,
+      backgroundColor: palette.primary.light,
     },
     image: {
       width: '100%',
