@@ -1,8 +1,6 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import React from 'react'
-import { Rating } from 'components'
-import { createStyles, makeStyles, Typography, Grid } from '@material-ui/core'
-import { Business } from 'types'
+import { createStyles, makeStyles, Typography } from '@material-ui/core'
 
 const styles = ({ palette, spacing, breakpoints }: Theme) =>
   createStyles({
