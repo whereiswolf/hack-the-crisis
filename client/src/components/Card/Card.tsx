@@ -13,6 +13,7 @@ interface CardProps {
 const Card: React.FC<CardProps> = ({
   data: { price, imageUrl, name },
   onClick,
+  children,
   ...props
 }) => {
   const classes = useStyles()
@@ -22,8 +23,14 @@ const Card: React.FC<CardProps> = ({
         <div className={classes.wrapper} {...props}>
           <div className={classes.image} style={getImageStyles(imageUrl)} />
           <div className={classes.content}>
-            <Typography className={classes.title}>{name}</Typography>
-            <Typography className={classes.subtitle}>{`€ ${price}`}</Typography>
+            {children || (
+              <>
+                <Typography className={classes.title}>{name}</Typography>
+                <Typography
+                  className={classes.subtitle}
+                >{`€ ${price}`}</Typography>
+              </>
+            )}
           </div>
         </div>
       </ButtonBase>

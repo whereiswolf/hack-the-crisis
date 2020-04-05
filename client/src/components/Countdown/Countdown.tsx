@@ -10,8 +10,13 @@ interface CountdownProps extends GridProps {
   date: Date | number
 }
 
-const Countdown: React.FC<CountdownProps> = ({ title, subtitle, date }) => (
-  <Grid container direction="row" alignItems="center" spacing={4}>
+const Countdown: React.FC<CountdownProps> = ({
+  title,
+  subtitle,
+  date,
+  ...props
+}) => (
+  <Grid container direction="row" alignItems="center" spacing={4} {...props}>
     <Grid item>
       <Grid
         container

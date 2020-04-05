@@ -25,8 +25,7 @@ export const LowerWrapper = styled.div`
   justify-content: space-between;
 `
 export const Wrapper = styled.div`
-  display: flex;
-  align-items: center;
+  padding: 40px 60px 44px 100px;
 `
 
 export const Link = styled.a`
