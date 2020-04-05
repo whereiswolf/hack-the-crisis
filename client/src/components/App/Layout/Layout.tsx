@@ -45,7 +45,9 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
             </Grid>
             <Grid item>
               <Button>{i18n.language.toUpperCase()}</Button>
-              <Button>{t(strings.LOGIN)}</Button>
+              <Button to={'/login'} component={Link}>
+                {t(strings.LOGIN)}
+              </Button>
             </Grid>
           </Grid>
         </Toolbar>
