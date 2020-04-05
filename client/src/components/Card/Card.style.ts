@@ -4,7 +4,7 @@ import { createStyles } from '@material-ui/core'
 const IMAGE_HEIGHT = 180
 const WRAPPER_WIDTH = 250
 
-export const getImageStyles = (url: string) =>
+export const getImageStyles = (url?: string) =>
   url
     ? {
         backgroundImage: `url('${url}')`,
@@ -30,6 +30,9 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
       width: '100%',
       height: IMAGE_HEIGHT,
       backgroundColor: palette.primary.light,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
     },
     content: {
       display: 'flex',
