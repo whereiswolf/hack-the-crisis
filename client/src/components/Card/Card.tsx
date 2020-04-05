@@ -26,11 +26,11 @@ const Card: React.FC<CardProps> = ({
             {children || (
               <>
                 <Typography className={classes.title}>{name}</Typography>
-            {price !== null && (
-              <Typography
-                className={classes.subtitle}
-              >{`€ ${price}`}</Typography>
-            )}
+                {price !== null && (
+                  <Typography
+                    className={classes.subtitle}
+                  >{`€ ${price}`}</Typography>
+                )}
               </>
             )}
           </div>
