@@ -27,7 +27,7 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
     <>
       <AppBar>
         <Toolbar>
-          <Grid container justify="space-between">
+          <Grid container justify="space-between" alignItems="center">
             <Grid item>
               <Typography>Place for Logo</Typography>
             </Grid>
@@ -44,7 +44,7 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
               ))}
             </Grid>
             <Grid item>
-              <Button>{i18n.language}</Button>
+              <Button>{i18n.language.toUpperCase()}</Button>
               <Button>{t(strings.LOGIN)}</Button>
             </Grid>
           </Grid>

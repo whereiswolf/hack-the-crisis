@@ -18,6 +18,8 @@ const theme: ThemeOptions = {
     ].join(','),
     button: {
       textTransform: 'none',
+      fontSize: 17,
+      fontWeight: 'bold',
     },
     h2: {
       fontSize: 68,
@@ -36,6 +38,7 @@ const theme: ThemeOptions = {
       fontWeight: 'bold',
     },
     body1: {
+      fontFamily: 'Muli',
       fontWeight: 300,
     },
   },

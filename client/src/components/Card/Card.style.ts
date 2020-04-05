@@ -1,5 +1,6 @@
 import { Theme } from '@material-ui/core/styles/createMuiTheme'
 import { createStyles } from '@material-ui/core'
+import { colors } from 'config'
 
 const IMAGE_HEIGHT = 180
 const WRAPPER_WIDTH = 250
@@ -29,7 +30,7 @@ export default ({ palette, spacing, breakpoints }: Theme) =>
     image: {
       width: '100%',
       height: IMAGE_HEIGHT,
-      backgroundColor: 'red',
+      backgroundColor: palette.primary.light,
     },
     content: {
       display: 'flex',
