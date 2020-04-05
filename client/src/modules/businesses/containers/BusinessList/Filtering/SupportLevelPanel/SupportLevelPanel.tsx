@@ -1,7 +1,5 @@
 import React from 'react'
 import { Grid, Button } from '@material-ui/core'
-import { useTranslation } from 'react-i18next'
-import BusinessType, { BusinessTypeTranslation } from 'enums/BusinessType'
 
 interface SupportLevelPanelProps {
   level: number | null

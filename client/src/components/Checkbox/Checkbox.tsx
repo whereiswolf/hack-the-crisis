@@ -21,8 +21,8 @@ const CheckBox: React.FC<CheckBoxProps> = ({
     if (onClick) onClick()
   }
   return (
-    <CheckBoxWrapper {...props}>
-      <Box onClick={handleClick}>{showTick && <Tick />}</Box>
+    <CheckBoxWrapper {...props} onClick={handleClick}>
+      <Box>{showTick && <Tick />}</Box>
       {children ? <div>{children}</div> : <Title>{title}</Title>}
     </CheckBoxWrapper>
   )
