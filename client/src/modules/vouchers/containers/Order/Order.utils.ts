@@ -20,7 +20,33 @@ export const GET_ORDER = gql`
   }
 `
 
-export const useVouchersNumber = (price = 0) => {
+export interface CreateOrder {
+  createOneOrder: {
+    id: number
+  }
+}
+
+export const CREATE_ORDER = gql`
+  mutation CreateOneOrder(
+    $email: String!
+    $name: String!
+    $count: Int
+    $voucherId: Int
+  ) {
+    createOneOrder(
+      data: {
+        email: $email
+        name: $name
+        count: $count
+        voucher: { connect: { id: $voucherId } }
+      }
+    ) {
+      id
+    }
+  }
+`
+
+export const useVouchersNumber = (price = 0, bonusPrice = 0) => {
   const [vouchersNumber, setVouchersNumber] = useState(0)
   const addVoucher = () => setVouchersNumber(vouchersNumber + 1)
   const removeVoucher = () =>
@@ -30,7 +56,7 @@ export const useVouchersNumber = (price = 0) => {
     addVoucher,
     removeVoucher,
     vouchersNumber,
-    vouchersPrice: (vouchersNumber * price).toFixed(2),
+    vouchersPrice: (vouchersNumber * price + bonusPrice).toFixed(2),
   }
 }
 
@@ -81,5 +107,23 @@ export const useOrderForm = () => {
       onChange: (val: any) => setNote(val),
       placeholder: 'Say something to your friend!',
     },
+  }
+}
+
+export const useBonusPrice = () => {
+  const [currentBonusPrice, setCurrentBonusPrice] = useState('')
+  const [totalBonusPrice, setTotalBonusPrice] = useState(0)
+
+  return {
+    submitBonusPrice: () => {
+      setTotalBonusPrice(totalBonusPrice + (Number(currentBonusPrice) || 0))
+      setCurrentBonusPrice('0.00')
+    },
+    bonusPriceProps: {
+      value: currentBonusPrice,
+      onChange: (val: any) => setCurrentBonusPrice(val),
+      placeholder: '0.00',
+    },
+    totalBonusPrice,
   }
 }

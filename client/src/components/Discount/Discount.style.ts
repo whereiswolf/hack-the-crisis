@@ -3,7 +3,8 @@ import styled from 'styled-components'
 
 export const OldPrice = styled(Typography)`
   font-weight: 800 !important;
-  font-size: 32px !important;
+  font-size: 26px !important;
+  margin-left: 15px !important;
   position: relative;
 
   ::before {
