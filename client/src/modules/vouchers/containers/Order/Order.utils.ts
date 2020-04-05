@@ -63,6 +63,7 @@ export const useVouchersNumber = (price = 0, bonusPrice = 0) => {
     removeVoucher,
     vouchersNumber,
     vouchersPrice: (vouchersNumber * price + bonusPrice).toFixed(2),
+    resetVouchersNumber: () => setVouchersNumber(0),
   }
 }
 

@@ -53,6 +53,7 @@ const Order: React.FC<OrderProps> = () => {
     removeVoucher,
     vouchersNumber,
     vouchersPrice,
+    resetVouchersNumber,
   } = useVouchersNumber(voucher?.promotion || voucher?.price, totalBonusPrice)
   const {
     destinationProps,
@@ -70,6 +71,7 @@ const Order: React.FC<OrderProps> = () => {
       setIsOpen(true)
       resetForm()
       resetBonus()
+      resetVouchersNumber()
     },
   })
 
