@@ -6,6 +6,7 @@ const BUSINESSES = gql`
       id
       name
       imageUrl
+      amount
     }
   }
 `
