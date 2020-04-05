@@ -4,6 +4,7 @@ import { Grid } from '@material-ui/core'
 import { BusinessType } from 'enums'
 import Filtering, { Filters } from './Filtering'
 import { CardList } from 'components'
+import { useHistory } from 'react-router'
 import { queries } from './Vouchers.utils'
 import { CardListWrapper } from './Vouchers.style'
 
@@ -21,6 +22,7 @@ const Vouchers: React.FC<VouchersProps> = () => {
     variables: defaultFilters,
   })
   const { vouchers } = data
+  const history = useHistory()
   return (
     <Grid container>
       <Grid item md={5}>
@@ -28,7 +30,10 @@ const Vouchers: React.FC<VouchersProps> = () => {
       </Grid>
       <Grid item md={7}>
         <CardListWrapper>
-          <CardList items={vouchers} />
+          <CardList
+            items={vouchers}
+            onClick={({ id }) => history.push(`/vouchers/${id}`)}
+          />
         </CardListWrapper>
       </Grid>
     </Grid>

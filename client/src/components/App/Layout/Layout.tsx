@@ -1,5 +1,5 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useLocation } from 'react-router-dom'
 import { AppBar, Grid, Button, Typography, Toolbar } from '@material-ui/core'
 import { useTranslation } from 'react-i18next'
 import strings from 'strings'
@@ -16,6 +16,7 @@ interface LayoutProps {
 
 const Layout: React.FC<LayoutProps> = ({ items, children }) => {
   const { t, i18n } = useTranslation()
+  const { pathname } = useLocation()
   return (
     <>
       <AppBar>
@@ -27,7 +28,12 @@ const Layout: React.FC<LayoutProps> = ({ items, children }) => {
             <Grid item>
               {items.map(({ label, path }) => (
                 <Button key={path} to={path} component={Link}>
-                  {t(label)}
+                  <Typography
+                    variant="button"
+                    color={path === pathname ? 'secondary' : 'inherit'}
+                  >
+                    {t(label)}
+                  </Typography>
                 </Button>
               ))}
             </Grid>
