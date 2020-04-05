@@ -50,6 +50,7 @@ const ContactUs: React.FC<ContactUsProps> = () => (
     spacing={4}
     style={{ padding: '32px 100px' }}
     justify="center"
+    alignItems="center"
     direction="column"
   >
     <Grid item>
@@ -57,7 +58,14 @@ const ContactUs: React.FC<ContactUsProps> = () => (
         Contact us
       </Typography>
     </Grid>
-    <Grid item container spacing={4} justify="center" alignItems="center">
+    <Grid
+      style={{ maxWidth: 900 }}
+      item
+      container
+      spacing={4}
+      justify="center"
+      alignItems="center"
+    >
       {contacts.map((contact) => (
         <Card
           data={contact as any}
