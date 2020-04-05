@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "be9d4acdc52095e0b0172372931f6b28",
+    "revision": "d8864ed8669f804836e2dc499476b893",
     "url": "/hack-the-crisis/index.html"
   },
   {
@@ -24,12 +24,12 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hack-the-crisis/static/js/13.bd3f9096.chunk.js"
   },
   {
-    "revision": "fcc7c9bdc04e4b58ccf2",
-    "url": "/hack-the-crisis/static/js/3.1f1c22fb.chunk.js"
+    "revision": "782f69e0641fa434bfed",
+    "url": "/hack-the-crisis/static/js/3.44699e43.chunk.js"
   },
   {
     "revision": "729937898630e839994162d5d9f8ce89",
-    "url": "/hack-the-crisis/static/js/3.1f1c22fb.chunk.js.LICENSE.txt"
+    "url": "/hack-the-crisis/static/js/3.44699e43.chunk.js.LICENSE.txt"
   },
   {
     "revision": "97a0c0e831f6f17d29e8",
@@ -44,28 +44,28 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/hack-the-crisis/static/js/5.c2f69290.chunk.js"
   },
   {
-    "revision": "c225fc4eba163d7b25ae",
-    "url": "/hack-the-crisis/static/js/6.2a32da30.chunk.js"
+    "revision": "2f690a5b6d6681f37c91",
+    "url": "/hack-the-crisis/static/js/6.52511921.chunk.js"
   },
   {
     "revision": "b539d5c8870afa36e7e8",
     "url": "/hack-the-crisis/static/js/7.4470ed3b.chunk.js"
   },
   {
-    "revision": "643249e29d20af736766",
-    "url": "/hack-the-crisis/static/js/8.0303defd.chunk.js"
+    "revision": "b9f128aa833ffe11db41",
+    "url": "/hack-the-crisis/static/js/8.f7b1744a.chunk.js"
   },
   {
     "revision": "735dedffb6ddbb4acdc0",
     "url": "/hack-the-crisis/static/js/9.bdb9534c.chunk.js"
   },
   {
-    "revision": "d9fee9c70f8a10719eec",
-    "url": "/hack-the-crisis/static/js/main.0c4b3f75.chunk.js"
+    "revision": "f76ee7e11927805a5e62",
+    "url": "/hack-the-crisis/static/js/main.297af5ba.chunk.js"
   },
   {
-    "revision": "4ec22642399496d0a080",
-    "url": "/hack-the-crisis/static/js/runtime-main.e58aa328.js"
+    "revision": "7c486eaa66ade5f21ea1",
+    "url": "/hack-the-crisis/static/js/runtime-main.7411bcdd.js"
   },
   {
     "revision": "74cd1b40c6680d2f78d1f5f3d67b2422",
