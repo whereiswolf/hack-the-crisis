@@ -17,6 +17,7 @@ import Rating from './modules/rating/rating.model'
 import File from './modules/file/file.model'
 import User from './modules/user/user.model'
 import Auth from './modules/auth/auth.model'
+import { getSpecialVouchers } from './modules/voucher/voucher.resolver'
 
 const Upload = GraphQLUpload
 
@@ -42,6 +43,10 @@ const Query = objectType({
         distance: intArg({ nullable: true }),
         category: intArg({ nullable: true }),
       },
+    })
+    t.list.field('vouchersForYou', {
+      type: 'Voucher',
+      resolve: getSpecialVouchers
     })
     t.crud.voucher()
     t.list.field('businesses', {

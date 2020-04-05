@@ -1035,6 +1035,7 @@ export interface NexusGenFieldTypes {
     users: NexusGenRootTypes['User'][]; // [User!]!
     voucher: NexusGenRootTypes['Voucher'] | null; // Voucher
     vouchers: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
+    vouchersForYou: NexusGenRootTypes['Voucher'][]; // [Voucher!]!
   }
   Rating: { // field return type
     business: NexusGenRootTypes['Business'] | null; // Business

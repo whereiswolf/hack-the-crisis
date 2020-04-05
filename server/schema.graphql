@@ -531,6 +531,7 @@ type Query {
   users(after: UserWhereUniqueInput, before: UserWhereUniqueInput, first: Int, last: Int, skip: Int): [User!]!
   voucher(where: VoucherWhereUniqueInput!): Voucher
   vouchers(businessId: Int, businessType: String, category: Int, city: String, distance: Int, name: String): [Voucher!]!
+  vouchersForYou: [Voucher!]!
 }
 
 type Rating {
