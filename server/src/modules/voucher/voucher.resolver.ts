@@ -9,13 +9,13 @@ export const searchVouchers = async (_: any, args: any, ctx: any) => {
   const { businessId, businessType, name, city, category } = args
   return ctx.prisma.voucher.findMany({
     where: {
-      name: name? { equals: name } : {contains: ''},
+      name: name? { equals: name } : {},
       business: {
-        id: businessId ? { equals: businessId } : {contains: ''},
-        type: businessType? { equals: businessType } : {contains: ''},
-        city: city ? { contains: city } : {contains: ''},
+        id: businessId ? { equals: businessId } : {},
+        type: businessType? { equals: businessType } : {},
+        city: city ? { contains: city } : {},
         category: {
-          id: category ? { equals: category } : {contains: ''},
+          id: category ? { equals: category } : {},
         },
       },
     },
