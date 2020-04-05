@@ -5,7 +5,17 @@ import Badge from '../Badge'
 import Separator from './Separator'
 
 const renderNumber = (value: number) => (
-  <Badge>{value < 10 ? '0' + value : value}</Badge>
+  <Badge
+    style={{
+      width: 48,
+      height: 48,
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+    }}
+  >
+    {value < 10 ? '0' + value : value}
+  </Badge>
 )
 
 const CountdownRender = ({

@@ -1,6 +1,5 @@
 import React from 'react'
 import {
-  Title,
   Button,
   Wrapper,
   Discount,
@@ -24,9 +23,6 @@ const BusinessBestDeal: React.FC<BusinessBestDealProps> = ({
   voucher,
 } = {}) => (
   <Wrapper container justify="center">
-    <Title color="textPrimary" variant="h4">
-      Best <em>deal</em>
-    </Title>
     <Countdown
       title={'This Voucher ends in:'}
       subtitle={'Hurry up!'}
@@ -46,7 +42,7 @@ const BusinessBestDeal: React.FC<BusinessBestDealProps> = ({
       oldPrice={voucher?.price || 0}
       newPrice={voucher?.promotion || 0}
     />
-    <Button variant="contained">Get the best deal!</Button>
+    <Button variant="contained">Get this deal!</Button>
   </Wrapper>
 )
 
