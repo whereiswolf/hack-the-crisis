@@ -6,7 +6,6 @@ export const Background = styled(Grid)`
   background: url(${loginBg});
   background-size: cover;
   background-position: center center;
-  height: 100%;
   position: relative;
 `
 

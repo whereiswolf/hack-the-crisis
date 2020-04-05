@@ -1,6 +1,6 @@
 import { getTranslationKeys } from 'utils'
 
-export const MODULE_NAME = 'about-us'
+export const MODULE_NAME = 'login'
 
 export const STRINGS = {
   MODULE_NAME: 'MODULE_NAME',

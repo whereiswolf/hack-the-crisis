@@ -24,11 +24,11 @@ const VoucherNameContainer = styled(Grid)`
 const useStyles = makeStyles((theme: Theme) =>
   createStyles({
     orderInfo: {
-      height: '400px',
+      height: '360px',
     },
     orderImg: {
-      height: '340px',
-      width: '340px',
+      height: '300px',
+      width: '300px',
     },
   })
 )

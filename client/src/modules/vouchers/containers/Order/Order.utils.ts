@@ -15,6 +15,12 @@ export const GET_ORDER = gql`
       }
       business {
         name
+        vouchers {
+          id
+          name
+          price
+          imageUrl
+        }
       }
     }
   }
@@ -57,6 +63,7 @@ export const useVouchersNumber = (price = 0, bonusPrice = 0) => {
     removeVoucher,
     vouchersNumber,
     vouchersPrice: (vouchersNumber * price + bonusPrice).toFixed(2),
+    resetVouchersNumber: () => setVouchersNumber(0),
   }
 }
 
@@ -107,6 +114,12 @@ export const useOrderForm = () => {
       onChange: (val: any) => setNote(val),
       placeholder: 'Say something to your friend!',
     },
+    resetForm: () => {
+      setName('')
+      setEmail('')
+      setNote('')
+      setDestination(DESTINATION.MYSELF)
+    },
   }
 }
 
@@ -125,5 +138,6 @@ export const useBonusPrice = () => {
       placeholder: '0.00',
     },
     totalBonusPrice,
+    resetBonus: () => setTotalBonusPrice(0),
   }
 }

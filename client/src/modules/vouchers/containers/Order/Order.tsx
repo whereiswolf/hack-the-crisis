@@ -1,8 +1,8 @@
-import React from 'react'
+import React, { useState } from 'react'
 import { useQuery, useMutation } from '@apollo/react-hooks'
 import { Typography, InputAdornment } from '@material-ui/core'
 import Grid from '@material-ui/core/Grid'
-import { Button } from 'components'
+import { Button, CardList } from 'components'
 import {
   GET_ORDER,
   useVouchersNumber,
@@ -26,8 +26,12 @@ import {
   VouchersNumberContainer,
   BonusInput,
   RestrictedButton,
+  StyledBackBusiness,
   useStyles,
 } from './Order.styles'
+import OrderCompleteModal from './components/OrderCompleteModal'
+import { useHistory } from 'react-router'
+import OtherBusinessText from './components/OtherBusinessText'
 
 interface OrderProps {}
 
@@ -36,25 +40,49 @@ const Order: React.FC<OrderProps> = () => {
   const { data: { voucher } = {} } = useQuery<VoucherData>(GET_ORDER, {
     variables: { id },
   })
-
-  const { totalBonusPrice, submitBonusPrice, bonusPriceProps } = useBonusPrice()
+  const history = useHistory()
+  const [isOpen, setIsOpen] = useState(false)
+  const {
+    totalBonusPrice,
+    submitBonusPrice,
+    bonusPriceProps,
+    resetBonus,
+  } = useBonusPrice()
   const {
     addVoucher,
     removeVoucher,
     vouchersNumber,
     vouchersPrice,
+    resetVouchersNumber,
   } = useVouchersNumber(voucher?.promotion || voucher?.price, totalBonusPrice)
-  const { destinationProps, nameProps, emailProps, noteProps } = useOrderForm()
+  const {
+    destinationProps,
+    nameProps,
+    emailProps,
+    noteProps,
+    resetForm,
+  } = useOrderForm()
 
   const [
     createOrder,
     // { loading: mutationLoading, error: mutationError, data },
-  ] = useMutation<CreateOrder>(CREATE_ORDER)
+  ] = useMutation<CreateOrder>(CREATE_ORDER, {
+    onCompleted: (data: any) => {
+      setIsOpen(true)
+      resetForm()
+      resetBonus()
+      resetVouchersNumber()
+    },
+  })
 
   const classes = useStyles()
   return (
     <div className={classes.root}>
-      {/* <OrderCompleteModal />  */}
+      <OrderCompleteModal
+        imageUrl={voucher?.imageUrl}
+        isOpen={isOpen}
+        onClick={() => setIsOpen(false)}
+      />
       <Grid container spacing={0}>
         <Grid container xs={8} spacing={0}>
           <Grid container direction="column">
@@ -63,35 +91,17 @@ const Order: React.FC<OrderProps> = () => {
               <Grid item xs={1}></Grid>
               <Grid container item xs={11}>
                 <Grid item xs={12}>
-                  <GreyText variant="h6">
-                    Add other Vouchers from{' '}
-                    <Typography
-                      color="textPrimary"
-                      component="span"
-                      variant="h6"
-                    >
-                      {voucher?.business?.name}
-                    </Typography>
-                  </GreyText>
+                  <OtherBusinessText name={voucher?.business?.name} />
+                  <Grid item xs={12}>
+                    <CardList
+                      withHorizontalCards
+                      items={voucher?.business?.vouchers || []}
+                      onClick={({ id }) => history.push(`/vouchers/${id}`)}
+                    />
+                  </Grid>
                 </Grid>
                 <Grid item xs={12}>
-                  <Grid item xs={12}>
-                    <Typography variant="h5" color="textPrimary">
-                      Back this{' '}
-                      <Typography
-                        color="secondary"
-                        component="span"
-                        variant="h5"
-                      >
-                        business
-                      </Typography>
-                    </Typography>
-                    <Typography variant="body1" color="textSecondary">
-                      Do you want to show some extra love ? Pick the price and
-                      add it to the total amount of your current Voucher order.
-                    </Typography>
-                    <br />
-                  </Grid>
+                  <StyledBackBusiness />
                   <BonusInput
                     {...bonusPriceProps}
                     InputProps={{
@@ -100,7 +110,6 @@ const Order: React.FC<OrderProps> = () => {
                       ),
                     }}
                   />
-
                   <RestrictedButton
                     onClick={() => submitBonusPrice()}
                     variant="outlined"
@@ -187,7 +196,6 @@ const Order: React.FC<OrderProps> = () => {
                       count: vouchersNumber,
                       voucherId: id,
                     },
-                    // onCompleted: (data: CreateOrder) => {},
                   })
                 }}
               >

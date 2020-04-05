@@ -17,7 +17,7 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
   return (
     <Wrapper
       container
-      direction="column"
+      direction="row"
       justify="center"
       alignItems="center"
       spacing={2}
@@ -71,15 +71,15 @@ const RegistrationForm: React.FC<RegistrationFormProps> = () => {
           onClick={() => setTermsAccepted(!termsAccepted)}
         />
       </InputsWrapper>
-      <br />
-      <Button
-        onClick={() => history.push('/')}
-        style={{ minWidth: 225 }}
-        variant="contained"
-      >
-        Confirm
-      </Button>
-      <Grid item>
+      <Grid item container direction="column" alignItems="center">
+        <br />
+        <Button
+          onClick={() => history.push('/')}
+          style={{ minWidth: 225, marginBottom: 16 }}
+          variant="contained"
+        >
+          Confirm
+        </Button>
         <Link href="#">
           <Info variant="body2">Already have an account?</Info>
         </Link>
